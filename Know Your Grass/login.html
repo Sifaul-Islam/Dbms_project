@@ -55,10 +55,10 @@
                       <input type="email" class="form-control" placeholder="পাসওয়ার্ড" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <div class="form-check form-switch">
-                      <span onclick="toggleCheck(this)"  cursor: pointer;">⬜</span>
-                      <label class="form-check-label"  for="rememberMe" style="float: left;">আমাকে মনে রেখো</label>
+                      <span onclick="toggleCheck(this)" style="cursor: pointer;">⬜</span>
+                      <label class="form-check-label" for="rememberMe">আমাকে মনে রেখো</label>
 
-                      <script>
+                      <script style="float: left;">
                         function toggleCheck(el) {
                           el.innerText = el.innerText === '✅' ? '⬜' : '✅';
                         }
