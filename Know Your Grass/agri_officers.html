@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    কৃষি অফিসার - Know Your Grass
+  </title>
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="https://demos.creative-tim.com/soft-ui-dashboard/assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="#">
+        <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+        <span class="ms-1 font-weight-bold">Farm2Fork</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <!-- Dashboard -->
+        <li class="nav-item">
+          <a class="nav-link" href="admin_dashboard.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-home" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">ড্যাশবোর্ড</span>
+          </a>
+        </li>
+
+        <!-- Distributor Section -->
+        <li class="nav-item">
+          <a class="nav-link" href="distributors.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-truck" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">বিতরণকারী</span>
+          </a>
+        </li>
+
+        <!-- Agri Officer Section -->
+<!--
+        <li class="nav-item">
+          <a class="nav-link active" href="agri-officers.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-leaf" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">কৃষি অফিসার</span>
+          </a>
+        </li>
+-->
+          
+          
+          <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="agri-officers.html" id="agriOfficerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+      <i class="fas fa-leaf" style="color: black;"></i>
+    </div>
+    <span class="nav-link-text ms-1" href="agri_officers.html">কৃষি অফিসার</span>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="agriOfficerDropdown">
+      <li><a class="dropdown-item" href="agri_officers.html">কৃষি অফিসার</a></li>
+    <li><a class="dropdown-item" href="agri_officers_admin.html">কৃষি পণ্যের তথ্য প্রদান ( কৃষি অফিসার এডমিন প্যানেল)</a></li>
+<!--
+    <li><a class="dropdown-item" href="pest-control.html">Pest Control</a></li>
+    <li><a class="dropdown-item" href="soil-analysis.html">Soil Analysis</a></li>
+-->
+  </ul>
+</li>
+
+        <!-- Food Safety Officer Section -->
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/food-safety-officers.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-shield-alt" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">খাদ্য নিরাপত্তা অফিসার</span>
+          </a>
+        </li>
+
+        <!-- Reports Section -->
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/reports.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-file-alt" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">প্রতিবেদন</span>
+          </a>
+        </li>
+
+        <!-- Inspections Section -->
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/inspections.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-search" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">পরিদর্শন</span>
+          </a>
+        </li>
+
+        <!-- Profile & Account -->
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">অ্যাকাউন্ট ব্যবস্থাপনা</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/profile.html">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fas fa-user" style="color: black;"></i>
+            </div>
+            <span class="nav-link-text ms-1">প্রোফাইল</span>
+              
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sidenav-footer mx-3">
+      <a class="btn btn-primary mt-3 w-100" href="#">সহায়তা</a>
+    </div>
+  </aside>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠাসমূহ</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">কৃষি অফিসার</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">কৃষি অফিসার</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="কৃষি অফিসার খুঁজুন...">
+            </div>
+          </div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">প্রোফাইল</span>
+                  
+              </a>
+                
+ 
+                
+                
+                
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container-fluid py-4">
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addAgriOfficerModal">
+        কৃষি অফিসার যোগ করুন
+      </button>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>কৃষি পন্যের তথ্য</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">নাম</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ইমেইল</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">অবস্থা</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">যোগদানের তারিখ</th>
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="agri-officer1">
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">শাকিব খান</h6>
+                            <p class="text-xs text-secondary mb-0">sakib@farm2fork.com</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">sakib@farm2fork.com</p>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">সক্রিয়</span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">১৫/০৩/২১</span>
+                      </td>
+                      <td class="align-middle">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit agri officer">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal for adding agri officer -->
+      <div class="modal fade" id="addAgriOfficerModal" tabindex="-1" aria-labelledby="addAgriOfficerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addAgriOfficerModalLabel">কৃষি অফিসার যোগ করুন</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="বন্ধ করুন"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="agriOfficerName" class="form-label">নাম</label>
+                  <input type="text" class="form-control" id="agriOfficerName" placeholder="কৃষি অফিসারের নাম লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="agriOfficerEmail" class="form-label">ইমেইল</label>
+                  <input type="email" class="form-control" id="agriOfficerEmail" placeholder="ইমেইল লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="agriOfficerStatus" class="form-label">অবস্থা</label>
+                  <select class="form-select" id="agriOfficerStatus">
+                    <option value="Active">সক্রিয়</option>
+                    <option value="Inactive">নিষ্ক্রিয়</option>
+                  </select>
+                </div>
+                <!-- Additional input fields can be added as needed -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+              <button type="button" class="btn btn-primary">কৃষি অফিসার যোগ করুন</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
+  </main>
+
+  <!-- Core JS Files -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+</body>
+
+</html>
