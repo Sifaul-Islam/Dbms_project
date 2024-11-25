@@ -175,12 +175,29 @@
                                         <!-- Add more rows as needed -->
                                     </tbody>
                                 </table>
+                                <script>
+                                    var map = L.map('map').setView([37.7749, -122.4194], 13);
+                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    }).addTo(map);
+                                    L.marker([37.7749, -122.4194]).addTo(map)
+                                        .bindPopup('San Francisco')
+                                        .openPopup();
+                                </script>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+<script>
+        var map = L.map('map').setView([37.7749, -122.4194], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([37.7749, -122.4194]).addTo(map)
+            .bindPopup('San Francisco')
+            .openPopup();
+    </script>
             <!-- Pie Chart for Product Tracking Summary and Distributor Table -->
             <div class="row mt-4">
                 <div class="col-lg-6">
