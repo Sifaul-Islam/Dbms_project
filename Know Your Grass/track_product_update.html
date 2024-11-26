@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ড্যাশবোর্ড -Agri Officer</title>
+
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" href="#" target="_blank">
+                <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+                <br><span class="ms-1 font-weight-bold">Agri Officer</span>
+            </a>
+        </div>
+    
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <!-- Dashboard -->
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-tachometer-alt text-primary"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">ড্যাশবোর্ড</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="agri-officers.html" id="agriOfficerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-leaf" style="color: black;"></i>
+                    </div> -->
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-tachometer-alt text-primary"></i>
+                  </div>
+                      <span class="nav-link-text ms-1" href="agri_officers_new.html">কৃষি অফিসার ড্যাশবোর্ড</span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="agriOfficerDropdown">
+                      <li><a class="dropdown-item" href="agri_officers_new.html">কৃষি অফিসার</a></li>
+                    <li><a class="dropdown-item" href="add_products_details.html">কৃষি পণ্যের তথ্য প্রদান (কৃষি অফিসার এডমিন প্যানেল)</a></li>
+                    <li><a class="dropdown-item" href="track_product_update.html">পণ্য আপডেট ট্র্যাক</a></li>
+                    <li><a class="dropdown-item" href="add_affected_batches_details.html">সংযুক্ত ব্যাচ বিবরণ যোগ করুন</a></li>
+                    <li><a class="dropdown-item" href="report_and _analysis.html">প্রতিবেদন বিশ্লেষণ</a></li>
+                  </ul>
+                </li>
+
+    
+
+            </ul>
+        </div>
+    </aside>
+    
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                  <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
+                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
+                </ol>
+                <h6 class="font-weight-bolder mb-0">ড্যাশবোর্ড</h6>
+              </nav>
+            
+              <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                  <div class="input-group">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+                  </div>
+                </div>
+                <ul class="navbar-nav justify-content-end">
+                  <li class="nav-item d-flex align-items-center">
+                    <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                      <i class="fa fa-user me-sm-1"></i>
+                      <span class="d-sm-inline d-none">প্রোফাইল</span>
+                    </a>
+                  </li>
+                  <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                    <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                      <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+            </div>
+            </div>
+          </nav>
+          
+            
+
+
+               
+    <div class="container-fluid py-4">
+        <!-- Supply Chain Tracking Progress Bar -->
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>সাপ্লাই চেইন ট্র্যাকিং</h6>
+          </div>
+          <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- Icons and stages with progress bar -->
+        <div class="progress-container" style="width: 80%;"> <!-- Adjust width here to increase length -->
+          <!-- Progress bar background -->
+          <div class="progress" style="height: 8px;">
+            <div id="progressBar" class="progress-bar bg-primary" style="width: 75%;"></div> <!-- Adjust width for progress percentage -->
+          </div>
+          <!-- Steps with icons and labels -->
+          <div class="d-flex justify-content-between mt-4">
+            <div class="text-center" style="width: 25%;"> <!-- Adjust width for spacing -->
+              <i class="fas fa-tractor fa-4x text-success"></i>
+              <div class="small">খামার</div>
+            </div>
+            <div class="text-center" style="width: 25%;"> <!-- Adjust width for spacing -->
+              <i class="fas fa-industry fa-4x text-info"></i>
+              <div class="small">প্রসেসিং</div>
+            </div>
+            <div class="text-center" style="width: 25%;"> <!-- Adjust width for spacing -->
+              <i class="fas fa-warehouse fa-4x text-warning"></i>
+              <div class="small">স্টোরেজ</div>
+            </div>
+            <div class="text-center" style="width: 25%;"> <!-- Adjust width for spacing -->
+              <i class="fas fa-truck fa-4x text-danger"></i>
+              <div class="small">বিতরণ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+            <!-- Timestamps and location input for each stage -->
+            <form>
+              <div class="mb-3">
+                <label for="farmTimestamp" class="form-label">খামার - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="farmTimestamp" onchange="updateProgress('farm')">
+              </div>
+              <div class="mb-3">
+                <label for="farmLocation" class="form-label">খামার - অবস্থান</label>
+                <input type="text" class="form-control" id="farmLocation" placeholder="অবস্থান লিখুন">
+              </div>
+      
+              <div class="mb-3">
+                <label for="processingTimestamp" class="form-label">প্রসেসিং - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="processingTimestamp" onchange="updateProgress('processing')">
+              </div>
+              <div class="mb-3">
+                <label for="processingLocation" class="form-label">প্রসেসিং - অবস্থান</label>
+                <input type="text" class="form-control" id="processingLocation" placeholder="অবস্থান লিখুন">
+              </div>
+      
+              <div class="mb-3">
+                <label for="storageTimestamp" class="form-label">স্টোরেজ - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="storageTimestamp" onchange="updateProgress('storage')">
+              </div>
+              <div class="mb-3">
+                <label for="storageLocation" class="form-label">স্টোরেজ - অবস্থান</label>
+                <input type="text" class="form-control" id="storageLocation" placeholder="অবস্থান লিখুন">
+              </div>
+      
+              <div class="mb-3">
+                <label for="distributionTimestamp" class="form-label">বিতরণ - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="distributionTimestamp" onchange="updateProgress('distribution')">
+              </div>
+              <div class="mb-3">
+                <label for="distributionLocation" class="form-label">বিতরণ - অবস্থান</label>
+                <input type="text" class="form-control" id="distributionLocation" placeholder="অবস্থান লিখুন">
+              </div>
+      
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary">রেকর্ড সংরক্ষণ করুন</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+
+            
+           
+          </div>
+      </main>
+      
+     
+
+  <!-- JS Scripts -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+
+
+  <script>
+    // Inventory Bar Chart
+    var ctxInventoryBar = document.getElementById('inventoryBarChart').getContext('2d');
+    new Chart(ctxInventoryBar, {
+      type: 'bar',
+      data: {
+        labels: ['Stored', 'In Transit', 'Awaiting Inspection'],
+        datasets: [{
+          label: 'Inventory Levels',
+          data: [55, 25, 20],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Temperature and Humidity Line Chart
+    var ctxTempHumidity = document.getElementById('temperatureHumidityChart').getContext('2d');
+    new Chart(ctxTempHumidity, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+        datasets: [
+          {
+            label: 'Temperature (°C)',
+            data: [7, 8, 9, 10, 11, 9],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Humidity (%)',
+            data: [60, 62, 58, 57, 56, 59],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+</body>
+
+</html>
