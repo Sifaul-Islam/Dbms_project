@@ -17,17 +17,17 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href="#" target="_blank">
+            <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
                 <img src="kng1.png" class="navbar-brand-img h-100" alt="main_logo">
-               <br> <span class="ms-1 font-weight-bold">Warehouse Manager</span>
             </a>
         </div>
+    
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-links" href="#">
+                    <a class="nav-link" href="admin_dashboard.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-tachometer-alt text-primary"></i>
                         </div>
@@ -35,19 +35,38 @@
                     </a>
                 </li>
     
-                <!-- Inventory Management -->
+                <!-- Product Records -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_product_records.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-warehouse text-info"></i>
+                            <i class="fas fa-box-open text-info"></i>
                         </div>
-                        <span class="nav-link-text ms-1">গুদাম ব্যবস্থাপনা</span>
+                        <span class="nav-link-text ms-1">পণ্যের রেকর্ড</span>
+                    </a>
+                </li>
+    
+                <!-- Supply Chain Tracking -->
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_supply_chain_tracking.html">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-route text-success"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">সরবরাহ চেইন ট্র্যাকিং</span>
+                    </a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link active" href="admin_reports.html">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-barcode text-warning"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
                     </a>
                 </li>
     
                 <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_storage.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
@@ -57,31 +76,33 @@
     
                 <!-- Quality Control -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_quality_verification.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-check-circle text-danger"></i>
                         </div>
                         <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
                     </a>
                 </li>
-
-                <!-- Product Tracking -->
+    
+                <!-- Recall Management -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-route text-warning"></i>
+                            <i class="fas fa-exclamation-triangle text-dark"></i>
                         </div>
-                        <span class="nav-link-text ms-1">পণ্য ট্র্যাকিং</span>
+                        <span class="nav-link-text ms-1">প্রত্যাহার ব্যবস্থাপনা</span>
                     </a>
                 </li>
     
-                <!-- Data Reports -->
+            
+    
+                <!-- User Management -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link" href="admin_user_management.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-users-cog text-info"></i>
                         </div>
-                        <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
+                        <span class="nav-link-text ms-1">ব্যবহারকারী ব্যবস্থাপনা</span>
                     </a>
                 </li>
             </ul>

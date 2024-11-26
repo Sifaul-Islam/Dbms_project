@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>সংরক্ষণ অবস্থা - Warehouse Status</title>
+  <title>সংরক্ষণ অবস্থা - Admin Save Status</title>
 
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -17,17 +17,17 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-            <a class="navbar-brand m-0" href="#" target="_blank">
+            <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html" target="_blank">
                 <img src="kng1.png" class="navbar-brand-img h-100" alt="main_logo">
-               <br> <span class="ms-1 font-weight-bold">Warehouse Manager</span>
             </a>
         </div>
+    
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_dashboard.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-tachometer-alt text-primary"></i>
                         </div>
@@ -35,21 +35,40 @@
                     </a>
                 </li>
     
-                <!-- Inventory Management -->
+                <!-- Product Records -->
                 <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link" href="admin_product_records.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-warehouse text-info"></i>
+                            <i class="fas fa-box-open text-info"></i>
                         </div>
-                        <span class="nav-link-text ms-1">গুদাম ব্যবস্থাপনা</span>
+                        <span class="nav-link-text ms-1">পণ্যের রেকর্ড</span>
+                    </a>
+                </li>
+    
+                <!-- Supply Chain Tracking -->
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_supply_chain_tracking.html">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-route text-success"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">সরবরাহ চেইন ট্র্যাকিং</span>
+                    </a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" href="admin_reports.html">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-barcode text-warning"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
                     </a>
                 </li>
     
                 <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
+                    <a class="nav-link active" href="admin_storage.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-thermometer-half"></i>
+                            <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
                         <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
                     </a>
@@ -57,31 +76,33 @@
     
                 <!-- Quality Control -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_quality_verification.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-check-circle text-danger"></i>
                         </div>
                         <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
                     </a>
                 </li>
-
-                <!-- Product Tracking -->
+    
+                <!-- Recall Management -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-route text-warning"></i>
+                            <i class="fas fa-exclamation-triangle text-dark"></i>
                         </div>
-                        <span class="nav-link-text ms-1">পণ্য ট্র্যাকিং</span>
+                        <span class="nav-link-text ms-1">প্রত্যাহার ব্যবস্থাপনা</span>
                     </a>
                 </li>
     
-                <!-- Data Reports -->
+            
+    
+                <!-- User Management -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="admin_user_management.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-chart-bar text-secondary"></i>
+                            <i class="fas fa-users-cog text-info"></i>
                         </div>
-                        <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
+                        <span class="nav-link-text ms-1">ব্যবহারকারী ব্যবস্থাপনা</span>
                     </a>
                 </li>
             </ul>
@@ -102,20 +123,19 @@
         </nav>
 
         <div class="container-fluid py-4">
-            <!-- Warehouse Rooms List -->
+            <!-- Warehouse Status List -->
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0 d-flex justify-content-between">
-                            <h6>সংরক্ষণ কক্ষের তালিকা</h6>
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addStorageRoomModal">নতুন সংরক্ষণ কক্ষ যোগ করুন</button>
+                            <h6>সংরক্ষণাগারসমূহের অবস্থা</h6>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">সংরক্ষণ কক্ষের নাম</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">সংরক্ষণাগারের নাম</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তাপমাত্রা (°C)</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">আর্দ্রতা (%)</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যসমূহ</th>
@@ -125,23 +145,58 @@
                                     <tbody>
                                         <tr>
                                             <td class="align-middle">
-                                                <p class="text-sm font-weight-bold mb-0">Room A</p>
+                                                <p class="text-sm font-weight-bold mb-0">চাঁপাইনবাবগঞ্জ সংরক্ষণাগার</p>
                                             </td>
                                             <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">৮°C</span>
+                                                <span class="text-xs font-weight-bold">১০°C</span>
                                             </td>
                                             <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">৬৫%</span>
+                                                <span class="text-xs font-weight-bold">৭০%</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">আপেল, আলু</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStorageRoomModal" onclick="populateEditModal('Room A', '৮', '৬৫', ['আপেল', 'আলু'])">সম্পাদনা</button>
-                                                <button class="btn btn-sm btn-danger" onclick="deleteStorageRoom('Room A')">মুছুন</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStorageRoomModal" onclick="populateEditModal('চাঁপাইনবাবগঞ্জ সংরক্ষণাগার', '১০', '৭০', ['আপেল', 'আলু'])">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteStorageRoom('চাঁপাইনবাবগঞ্জ সংরক্ষণাগার')">মুছুন</button>
                                             </td>
                                         </tr>
-                                        <!-- Add more rows as needed -->
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-sm font-weight-bold mb-0">রাজশাহী সংরক্ষণাগার</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">৯°C</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">৬৫%</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">গম, টমেটো</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStorageRoomModal" onclick="populateEditModal('রাজশাহী সংরক্ষণাগার', '৯', '৬৫', ['গম', 'টমেটো'])">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteStorageRoom('রাজশাহী সংরক্ষণাগার')">মুছুন</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="align-middle">
+                                                <p class="text-sm font-weight-bold mb-0">রংপুর সংরক্ষণাগার</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">৮°C</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">৭৫%</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">আলু, পেয়াজ</span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editStorageRoomModal" onclick="populateEditModal('রংপুর সংরক্ষণাগার', '৮', '৭৫', ['আলু', 'পেয়াজ'])">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-danger" onclick="deleteStorageRoom('রংপুর সংরক্ষণাগার')">মুছুন</button>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -165,46 +220,6 @@
             </div>
         </div>
     </main>
-
-    <!-- Add Storage Room Modal -->
-    <div class="modal fade" id="addStorageRoomModal" tabindex="-1" aria-labelledby="addStorageRoomModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addStorageRoomModalLabel">নতুন সংরক্ষণ কক্ষ যোগ করুন</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="storageRoomName" class="form-label">সংরক্ষণ কক্ষের নাম</label>
-                            <input type="text" class="form-control" id="storageRoomName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="storageTemperature" class="form-label">তাপমাত্রা (°C)</label>
-                            <input type="number" class="form-control" id="storageTemperature">
-                        </div>
-                        <div class="mb-3">
-                            <label for="storageHumidity" class="form-label">আর্দ্রতা (%)</label>
-                            <input type="number" class="form-control" id="storageHumidity">
-                        </div>
-                        <div class="mb-3">
-                            <label for="storageProducts" class="form-label">পণ্যসমূহ</label>
-                            <select multiple class="form-control" id="storageProducts">
-                                <option value="আপেল">আপেল</option>
-                                <option value="আলু">আলু</option>
-                                <!-- Add more products as needed -->
-                            </select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                    <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Edit Storage Room Modal -->
     <div class="modal fade" id="editStorageRoomModal" tabindex="-1" aria-labelledby="editStorageRoomModalLabel" aria-hidden="true">
@@ -233,6 +248,9 @@
                             <select multiple class="form-control" id="editStorageProducts">
                                 <option value="আপেল">আপেল</option>
                                 <option value="আলু">আলু</option>
+                                <option value="গম">গম</option>
+                                <option value="টমেটো">টমেটো</option>
+                                <option value="পেয়াজ">পেয়াজ</option>
                                 <!-- Add more products as needed -->
                             </select>
                         </div>
@@ -274,18 +292,18 @@
         new Chart(ctxWarehouseChart, {
             type: 'bar',
             data: {
-                labels: ['আপেল', 'আলু'],
+                labels: ['আপেল', 'আলু', 'গম', 'টমেটো', 'পেয়াজ'],
                 datasets: [
                     {
                         label: 'তাপমাত্রা (°C)',
-                        data: [8, 10],
+                        data: [10, 9, 8, 7, 6],
                         backgroundColor: 'rgba(54, 162, 235, 0.6)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'আর্দ্রতা (%)',
-                        data: [65, 70],
+                        data: [70, 65, 75, 80, 85],
                         backgroundColor: 'rgba(255, 206, 86, 0.6)',
                         borderColor: 'rgba(255, 206, 86, 1)',
                         borderWidth: 1
