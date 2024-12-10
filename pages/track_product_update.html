@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ড্যাশবোর্ড - Agri Officer</title>
+
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+    <div class="sidenav-header">
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <a class="navbar-brand m-0" href="#" target="_blank">
+            <img src="kng1.png" class="navbar-brand-img h-100" alt="main_logo">
+            <br><span class="ms-1 font-weight-bold">Agri Officer</span>
+        </a>
+    </div>
+
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="agri_officer_dashboard_new.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tachometer-alt text-primary"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">ড্যাশবোর্ড</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="agri_officers_new.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-tie text-success"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">কৃষি অফিসার ড্যাশবোর্ড</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add_products_details.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-seedling text-warning"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">কৃষি পণ্যের তথ্য প্রদান</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="track_product_update.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-truck text-info"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">পণ্য আপডেট ট্র্যাক</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add_affected_batches_details.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-exclamation-triangle text-danger"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">সংযুক্ত ব্যাচ বিবরণ যোগ করুন</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="soil-analysis.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-chart-line text-purple"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">প্রতিবেদন বিশ্লেষণ</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">ড্যাশবোর্ড</h6>
+        </nav>
+      </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+      <!-- Supply Chain Table -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header pb-0 d-flex justify-content-between">
+              <h6>সাপ্লাই চেইনের তালিকা</h6>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#supplyChainModal" onclick="clearModal()">নতুন সাপ্লাই চেইন যোগ করুন</button>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped" id="supplyChainTable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>পণ্যের নাম</th>
+                    <th>খামার</th>
+                    <th>প্রসেসিং</th>
+                    <th>স্টোরেজ</th>
+                    <th>বিতরণ</th>
+                    <th>কার্যক্রম</th>
+                  </tr>
+                </thead>
+                <tbody id="supplyChainTableBody">
+                  <!-- Rows populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for Supply Chain Input -->
+  <div class="modal fade" id="supplyChainModal" tabindex="-1" aria-labelledby="supplyChainModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="supplyChainModalLabel">সাপ্লাই চেইন তথ্য</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="supplyChainForm">
+            <input type="hidden" id="editIndex">
+            <div class="mb-3">
+              <label for="productName" class="form-label">পণ্যের নাম</label>
+              <input type="text" class="form-control" id="productName" placeholder="পণ্যের নাম লিখুন" required>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label for="farmTimestamp" class="form-label">খামার - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="farmTimestamp">
+              </div>
+              <div class="col-md-6">
+                <label for="processingTimestamp" class="form-label">প্রসেসিং - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="processingTimestamp">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="storageTimestamp" class="form-label">স্টোরেজ - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="storageTimestamp">
+              </div>
+              <div class="col-md-6">
+                <label for="distributionTimestamp" class="form-label">বিতরণ - তারিখ ও সময়</label>
+                <input type="datetime-local" class="form-control" id="distributionTimestamp">
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script>
+    const tableBody = document.getElementById('supplyChainTableBody');
+
+    let supplyChains = [
+      {
+        productName: "ধান",
+        farmTimestamp: "2023-12-01T08:30",
+        processingTimestamp: "2023-12-02T12:00",
+        storageTimestamp: "2023-12-03T15:45",
+        distributionTimestamp: "",
+      },
+      {
+        productName: "গম",
+        farmTimestamp: "2023-12-05T09:00",
+        processingTimestamp: "2023-12-06T14:20",
+        storageTimestamp: "2023-12-07T18:10",
+        distributionTimestamp: "2023-12-08T10:00",
+      },
+      {
+        productName: "আলু",
+        farmTimestamp: "",
+        processingTimestamp: "",
+        storageTimestamp: "",
+        distributionTimestamp: "",
+      },
+    ];
+
+    document.getElementById('supplyChainForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const productName = document.getElementById('productName').value;
+      const farmTimestamp = document.getElementById('farmTimestamp').value;
+      const processingTimestamp = document.getElementById('processingTimestamp').value;
+      const storageTimestamp = document.getElementById('storageTimestamp').value;
+      const distributionTimestamp = document.getElementById('distributionTimestamp').value;
+      const editIndex = document.getElementById('editIndex').value;
+
+      const newEntry = { productName, farmTimestamp, processingTimestamp, storageTimestamp, distributionTimestamp };
+
+      if (editIndex === '') {
+        supplyChains.push(newEntry);
+      } else {
+        supplyChains[editIndex] = newEntry;
+      }
+
+      updateTable();
+      document.getElementById('supplyChainModal').click(); // Close modal
+    });
+
+    function updateTable() {
+      tableBody.innerHTML = '';
+      supplyChains.forEach((supplyChain, index) => {
+        const row = `<tr>
+          <td>${index + 1}</td>
+          <td>${supplyChain.productName}</td>
+          <td>${supplyChain.farmTimestamp || '-'}</td>
+          <td>${supplyChain.processingTimestamp || '-'}</td>
+          <td>${supplyChain.storageTimestamp || '-'}</td>
+          <td>${supplyChain.distributionTimestamp || '-'}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="deleteSupplyChain(${index})">মুছুন</button>
+          </td>
+        </tr>`;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+    }
+
+    function editSupplyChain(index) {
+      const entry = supplyChains[index];
+      document.getElementById('productName').value = entry.productName;
+      document.getElementById('farmTimestamp').value = entry.farmTimestamp;
+      document.getElementById('processingTimestamp').value = entry.processingTimestamp;
+      document.getElementById('storageTimestamp').value = entry.storageTimestamp;
+      document.getElementById('distributionTimestamp').value = entry.distributionTimestamp;
+      document.getElementById('editIndex').value = index;
+      document.getElementById('supplyChainModalLabel').innerText = 'সাপ্লাই চেইন সম্পাদনা';
+      document.getElementById('supplyChainModal').click();
+    }
+
+    function deleteSupplyChain(index) {
+      if (confirm('আপনি কি নিশ্চিত?')) {
+        supplyChains.splice(index, 1);
+        updateTable();
+      }
+    }
+
+    function clearModal() {
+      document.getElementById('supplyChainForm').reset();
+      document.getElementById('editIndex').value = '';
+      document.getElementById('supplyChainModalLabel').innerText = 'নতুন সাপ্লাই চেইন যোগ করুন';
+    }
+
+    // Initial Table Update
+    updateTable();
+  </script>
+</body>
+
+</html>

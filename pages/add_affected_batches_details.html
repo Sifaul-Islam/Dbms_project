@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>ড্যাশবোর্ড - Agri Officer</title>
+
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3" id="sidenav-main">
+    <div class="sidenav-header">
+        <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+        <a class="navbar-brand m-0" href="#" target="_blank">
+            <img src="kng1.png" class="navbar-brand-img h-100" alt="main_logo">
+            <br><span class="ms-1 font-weight-bold">Agri Officer</span>
+        </a>
+    </div>
+
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="agri_officer_dashboard_new.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-tachometer-alt text-primary"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">ড্যাশবোর্ড</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="agri_officers_new.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-user-tie text-success"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">কৃষি অফিসার ড্যাশবোর্ড</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add_products_details.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-seedling text-warning"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">কৃষি পণ্যের তথ্য প্রদান</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active" href="track_product_update.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-truck text-info"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">পণ্য আপডেট ট্র্যাক</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="add_affected_batches_details.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-exclamation-triangle text-danger"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">সংযুক্ত ব্যাচ বিবরণ যোগ করুন</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="soil-analysis.html">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fas fa-chart-line text-purple"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">প্রতিবেদন বিশ্লেষণ</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</aside>
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
+          </ol>
+          <h6 class="font-weight-bolder mb-0">ড্যাশবোর্ড</h6>
+        </nav>
+      </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+      <!-- Affected Batches Table -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header pb-0 d-flex justify-content-between">
+              <h6>প্রভাবিত ব্যাচের তালিকা</h6>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#affectedBatchModal" onclick="clearModal()">নতুন ব্যাচ যোগ করুন</button>
+            </div>
+            <div class="card-body">
+              <table class="table table-striped" id="affectedBatchTable">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>ব্যাচ আইডি</th>
+                    <th>তারিখ ও সময়</th>
+                    <th>বিতরণ পয়েন্ট</th>
+                    <th>বিজ্ঞপ্তি স্থিতি</th>
+                    <th>কার্যক্রম</th>
+                  </tr>
+                </thead>
+                <tbody id="affectedBatchTableBody">
+                  <!-- Rows populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for Affected Batch Input -->
+  <div class="modal fade" id="affectedBatchModal" tabindex="-1" aria-labelledby="affectedBatchModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="affectedBatchModalLabel">প্রভাবিত ব্যাচ তথ্য</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="affectedBatchForm">
+            <input type="hidden" id="editIndex">
+            <div class="mb-3">
+              <label for="batchID" class="form-label">ব্যাচ আইডি</label>
+              <input type="text" class="form-control" id="batchID" placeholder="ব্যাচ আইডি লিখুন" required>
+            </div>
+            <div class="mb-3">
+              <label for="affectedTimestamp" class="form-label">তারিখ ও সময়</label>
+              <input type="datetime-local" class="form-control" id="affectedTimestamp">
+            </div>
+            <div class="mb-3">
+              <label for="distributionPoints" class="form-label">বিতরণ পয়েন্ট</label>
+              <textarea class="form-control" id="distributionPoints" rows="3" placeholder="বিতরণ পয়েন্ট লিখুন"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="notificationStatus" class="form-label">বিজ্ঞপ্তি স্থিতি</label>
+              <select class="form-control" id="notificationStatus">
+                <option>অধিকাংশ বিতরণ পয়েন্টে প্রভাবিত</option>
+                <option>কিছু বিতরণ পয়েন্টে প্রভাবিত</option>
+                <option>প্রভাব নেই</option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script>
+    const tableBody = document.getElementById('affectedBatchTableBody');
+
+    let affectedBatches = [
+      {
+        batchID: "B001",
+        affectedTimestamp: "2023-12-10T08:30",
+        distributionPoints: "Dhaka, Chittagong, Rajshahi",
+        notificationStatus: "অধিকাংশ বিতরণ পয়েন্টে প্রভাবিত",
+      },
+      {
+        batchID: "B002",
+        affectedTimestamp: "2023-12-11T10:00",
+        distributionPoints: "Khulna, Sylhet",
+        notificationStatus: "কিছু বিতরণ পয়েন্টে প্রভাবিত",
+      },
+    ];
+
+    document.getElementById('affectedBatchForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const batchID = document.getElementById('batchID').value;
+      const affectedTimestamp = document.getElementById('affectedTimestamp').value;
+      const distributionPoints = document.getElementById('distributionPoints').value;
+      const notificationStatus = document.getElementById('notificationStatus').value;
+      const editIndex = document.getElementById('editIndex').value;
+
+      const newEntry = { batchID, affectedTimestamp, distributionPoints, notificationStatus };
+
+      if (editIndex === '') {
+        affectedBatches.push(newEntry);
+      } else {
+        affectedBatches[editIndex] = newEntry;
+      }
+
+      updateTable();
+      document.getElementById('affectedBatchModal').click(); // Close modal
+    });
+
+    function updateTable() {
+      tableBody.innerHTML = '';
+      affectedBatches.forEach((batch, index) => {
+        const row = `<tr>
+          <td>${index + 1}</td>
+          <td>${batch.batchID}</td>
+          <td>${batch.affectedTimestamp || '-'}</td>
+          <td>${batch.distributionPoints || '-'}</td>
+          <td>${batch.notificationStatus || '-'}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="deleteBatch(${index})">মুছুন</button>
+          </td>
+        </tr>`;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+    }
+
+    function editBatch(index) {
+      const batch = affectedBatches[index];
+      document.getElementById('batchID').value = batch.batchID;
+      document.getElementById('affectedTimestamp').value = batch.affectedTimestamp;
+      document.getElementById('distributionPoints').value = batch.distributionPoints;
+      document.getElementById('notificationStatus').value = batch.notificationStatus;
+      document.getElementById('editIndex').value = index;
+      document.getElementById('affectedBatchModalLabel').innerText = 'ব্যাচ সম্পাদনা করুন';
+      document.getElementById('affectedBatchModal').click();
+    }
+
+    function deleteBatch(index) {
+      if (confirm('আপনি কি নিশ্চিত?')) {
+        affectedBatches.splice(index, 1);
+        updateTable();
+      }
+    }
+
+    function clearModal() {
+      document.getElementById('affectedBatchForm').reset();
+      document.getElementById('editIndex').value = '';
+      document.getElementById('affectedBatchModalLabel').innerText = 'নতুন ব্যাচ যোগ করুন';
+    }
+
+    // Initial Table Update
+    updateTable();
+  </script>
+</body>
+
+</html>
