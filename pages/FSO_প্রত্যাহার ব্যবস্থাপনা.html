@@ -148,6 +148,7 @@
       </div>
     </nav>
 
+
     <div class="container-fluid py-4">
       <!-- Recall Statistics -->
       <div class="row">
@@ -193,7 +194,7 @@
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive">
-                <table class="table align-items-center mb-0">
+                <table class="table align-items-center mb-0" id="recallTable">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্য</th>
@@ -221,7 +222,6 @@
                         <span class="badge badge-sm bg-gradient-warning">চলমান</span>
                       </td>
                     </tr>
-                    <!-- Add more rows as necessary -->
                   </tbody>
                 </table>
               </div>
@@ -233,17 +233,97 @@
       <!-- Add Recall Button -->
       <div class="row mt-4">
         <div class="col-lg-12 text-end">
-          <button class="btn btn-primary">নতুন প্রত্যাহার যোগ করুন</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRecallModal">নতুন প্রত্যাহার যোগ করুন</button>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Modal Structure -->
+  <div class="modal fade" id="addRecallModal" tabindex="-1" aria-labelledby="addRecallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addRecallModalLabel">নতুন প্রত্যাহার যোগ করুন</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addRecallForm">
+            <div class="mb-3">
+              <label for="productName" class="form-label">পণ্যের নাম</label>
+              <input type="text" class="form-control" id="productName" required>
+            </div>
+            <div class="mb-3">
+              <label for="productRFID" class="form-label">RFID</label>
+              <input type="text" class="form-control" id="productRFID" required>
+            </div>
+            <div class="mb-3">
+              <label for="recallReason" class="form-label">কারণ</label>
+              <input type="text" class="form-control" id="recallReason" required>
+            </div>
+            <div class="mb-3">
+              <label for="recallDate" class="form-label">তারিখ</label>
+              <input type="date" class="form-control" id="recallDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="recallStatus" class="form-label">অবস্থা</label>
+              <select class="form-control" id="recallStatus" required>
+                <option value="চলমান">চলমান</option>
+                <option value="সম্পন্ন">সম্পন্ন</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+          <button type="button" class="btn btn-primary" id="saveRecall">সংরক্ষণ করুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- JS Scripts -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+  <script>
+    document.getElementById('saveRecall').addEventListener('click', function () {
+      const productName = document.getElementById('productName').value;
+      const productRFID = document.getElementById('productRFID').value;
+      const recallReason = document.getElementById('recallReason').value;
+      const recallDate = document.getElementById('recallDate').value;
+      const recallStatus = document.getElementById('recallStatus').value;
+
+      const tableBody = document.querySelector('#recallTable tbody');
+      const newRow = document.createElement('tr');
+
+      newRow.innerHTML = `
+        <td class="align-middle">
+          <p class="text-sm font-weight-bold mb-0">${productName}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${productRFID}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${recallReason}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${recallDate}</p>
+        </td>
+        <td class="align-middle text-center">
+          <span class="badge badge-sm bg-gradient-${recallStatus === 'চলমান' ? 'warning' : 'success'}">${recallStatus}</span>
+        </td>
+      `;
+
+      tableBody.appendChild(newRow);
+
+      // Reset the form and close the modal
+      document.getElementById('addRecallForm').reset();
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addRecallModal'));
+      modal.hide();
+    });
+  </script>
 </body>
 
 </html>
