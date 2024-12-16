@@ -27,7 +27,7 @@
             <ul class="navbar-nav">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="..//Know Your Grass/distributors.html">
+                    <a class="nav-link active" href="../Know Your Grass/distributors.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-tachometer-alt text-primary"></i>
                         </div>
@@ -95,7 +95,53 @@
             </ul>
         </div>
     </aside>
-    
+    <!-- Add Product Tracking Modal -->
+    <div class="modal fade" id="addProductTrackingModal" tabindex="-1" aria-labelledby="addProductTrackingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="addProductTrackingModalLabel">নতুন পণ্য যোগ করুন</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="trackingProductName" class="form-label">পণ্যের নাম</label>
+                          <input type="text" class="form-control" id="trackingProductName">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingRFID" class="form-label">স্টক পরিমাণ</label>
+                          <input type="text" class="form-control" id="trackingRFID">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingStatus" class="form-label">বিতরণ পরিমাণ</label>
+                          <input type="text" class="form-control" id="trackingRFID">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingSource" class="form-label">দোকানের নাম 	</label>
+                          <input type="text" class="form-control" id="trackingSource">
+                      </div>
+                      <div class="mb-3">
+                        <label for="trackingStatus" class="form-label">অবস্থা</label>
+                        <select class="form-control" id="trackingStatus">
+                          <option value="বিতরণ করা হয়েছে">বিতরণ করা হয়েছে</option>  
+                          <option value="বিতরণ করা বাকি">বিতরণ করা বাকি</option>
+                            
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingDate" class="form-label">তারিখ</label>
+                          <input type="date" class="form-control" id="trackingDate">
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                  <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+              </div>
+          </div>
+      </div>
+  </div>    
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -155,7 +201,7 @@
                 </div>
               </div>
           
-              <div class="col-lg-3 col-md-6 col-12 mb-4">
+<!--          <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
                     <div class="d-flex">
@@ -163,30 +209,30 @@
                         <i class="fas fa-thermometer-half text-lg text-white opacity-10"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">সংরক্ষণের তাপমাত্রা</p>
-                        <h5 class="font-weight-bolder mb-0">৮°C</h5>
+                        <p class="text-sm mb-0 text-capitalize">বিতরণ করা আইটেম</p>
+                        <h5 class="font-weight-bolder mb-0">১০০০</h5>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div>-->
           
               <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
-                        <i class="fas fa-percent text-lg text-white opacity-10"></i>
+                        <i class="fas fa-clock"></i> <!-- Pending Icon -->
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">আর্দ্রতা</p>
-                        <h5 class="font-weight-bolder mb-0">৬০%</h5>
+                        <p class="text-sm mb-0 text-capitalize">মুলতুবি বিতরণ</p>
+                        <h5 class="font-weight-bolder mb-0">৮০০</h5>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-          
+    
               <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
@@ -195,14 +241,97 @@
                         <i class="fas fa-check-circle text-lg text-white opacity-10"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">গুণমান পরীক্ষিত</p>
-                        <h5 class="font-weight-bolder mb-0">৯৫০</h5>
+                        <p class="text-sm mb-0 text-capitalize">বিতরণ করা আইটেম</p>
+                        <h5 class="font-weight-bolder mb-0">১০০০</h5>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+                        <!-- Product Tracking Table -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mb-4">
+                                    <div class="card-header pb-0 d-flex justify-content-between">
+                                        <h6>পণ্যের তালিকা</h6>
+                                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductTrackingModal">নতুন পণ্য যোগ করুন</button>
+                                    </div>
+                                    <div class="card-body px-0 pt-0 pb-2">
+                                        <div class="table-responsive p-0">
+                                            <table class="table align-items-center mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">স্টক পরিমাণ</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বিতরণ পরিমাণ</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">দোকানের নাম</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অবস্থা</th>
+                                                        
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">তারিখ</th>
+                                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="align-middle">
+                                                            <p class="text-sm font-weight-bold mb-0">আপেল</p>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">RFID1234</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="badge badge-sm bg-gradient-info">গুদামে</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">জয়পুরহাট</span>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">ঢাকা</span>
+                                                        </td>
+                                                        
+                                                        <td class="align-middle text-center">
+                                                          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                                          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                                                      </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="align-middle">
+                                                            <p class="text-sm font-weight-bold mb-0">আলু</p>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">RFID5678</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">ঢাকা</span>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <span class="text-xs font-weight-bold">ঢাকা</span>
+                                                        </td>
+                                                        
+                                                        <td class="align-middle text-center">
+                                                          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                                          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- Add more rows as needed -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
           
             <!-- Inventory Bar Chart -->
             <div class="row mt-4">
@@ -231,13 +360,199 @@
             </div>
           </div>
       </main>
+ <!-- Edit Product Tracking Modal -->
+ <div class="modal fade" id="editProductTrackingModal" tabindex="-1" aria-labelledby="editProductTrackingModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editProductTrackingModalLabel">পণ্য সম্পাদনা করুন</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="mb-3">
+                      <label for="editTrackingProductName" class="form-label">পণ্যের নাম</label>
+                      <input type="text" class="form-control" id="editTrackingProductName">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">খামারের নাম</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>                        <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">উৎস</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                      <input type="text" class="form-control" id="editTrackingRFID">
+                  </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="editTrackingDate" class="form-label">তারিখ</label>
+                      <input type="date" class="form-control" id="editTrackingDate">
+                  </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+              <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+          </div>
+      </div>
+  </div>
+</div>
       
-     
+      <!-- Delete Product Modal -->
+      <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteProductMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+                </div>
+            </div>
+        </div>
+    </div>   
 
   <!-- JS Scripts -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+  <script>
+    function populateEditModal(name, rfid, status, source, date) {
+        document.getElementById('editTrackingProductName').value = name;
+        document.getElementById('editTrackingRFID').value = rfid;
+        document.getElementById('editTrackingStatus').value = status;
+        document.getElementById('editTrackingSource').value = source;
+        document.getElementById('editTrackingDate').value = date;
+    }
+
+    // Product Tracking Pie Chart
+    var ctxProductTrackingChart = document.getElementById('productTrackingChart').getContext('2d');
+    new Chart(ctxProductTrackingChart, {
+      type: 'pie',
+      data: {
+        labels: ['আসছে', 'গুদামে', 'বিতরণ করা হয়েছে'],
+        datasets: [{
+          data: [30, 50, 20],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)'
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+</script>
 
 
   <script>

@@ -204,7 +204,8 @@
                                                 <span class="text-xs font-weight-bold">ঢাকা</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductTrackingModal" onclick="populateEditModal('আপেল', 'RFID1234', 'গুদামে', 'জয়পুরহাট', '১৫/১১/২০২৪')">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আপেল', 'RFID1234', 'গুদামে', 'জয়পুরহাট', '১৫/১১/২০২৪')"">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -230,7 +231,8 @@
                                                 <span class="text-xs font-weight-bold">ঢাকা</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductTrackingModal" onclick="populateEditModal('আলু', 'RFID5678', 'বিতরণ করা হয়েছে', 'ঢাকা', '২০/১১/২০২৪')">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
                                             </td>
                                         </tr>
                                         <!-- Add more rows as needed -->
@@ -530,7 +532,24 @@
             </div>
         </div>
     </div>
-
+    <!-- Delete Product Modal -->
+    <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteProductMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- JS Scripts -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

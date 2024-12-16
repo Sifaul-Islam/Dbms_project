@@ -157,6 +157,89 @@
                     </div>
                 </div>
             </div>
+<!-- Product Tracking Table -->
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0 d-flex justify-content-between">
+                <h6>পণ্যের তালিকা</h6>
+                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductTrackingModal">নতুন পণ্য যোগ করুন</button>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">স্টক পরিমাণ</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বিতরণ পরিমাণ</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">দোকানের নাম</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অবস্থা</th>
+                                
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">তারিখ</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="align-middle">
+                                    <p class="text-sm font-weight-bold mb-0">আপেল</p>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">RFID1234</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge badge-sm bg-gradient-info">গুদামে</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">জয়পুরহাট</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">ঢাকা</span>
+                                </td>
+                                
+                                <td class="align-middle text-center">
+                                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                  <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                              </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">
+                                    <p class="text-sm font-weight-bold mb-0">আলু</p>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">RFID5678</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">ঢাকা</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="text-xs font-weight-bold">ঢাকা</span>
+                                </td>
+                                
+                                <td class="align-middle text-center">
+                                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                  <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                                </td>
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
             <!-- Graphs and Analytics Section -->
             <div class="row mt-4">
@@ -176,6 +259,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- Product Quality Status Pie Chart -->
                 <div class="col-lg-6">
                     <div class="card h-100">
