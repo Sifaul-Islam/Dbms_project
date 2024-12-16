@@ -36,24 +36,24 @@
                 </li>
     
                 <!-- Inventory Management -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="../pages/বিতরণকারী গুদাম ব্যবস্থাপনা.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-warehouse text-info"></i>
                         </div>
                         <span class="nav-link-text ms-1">গুদাম ব্যবস্থাপনা</span>
                     </a>
-                </li>
+                </li> -->
     
                 <!-- Storage Conditions -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="..//pages/বিতরণকারী সংরক্ষণ অবস্থা.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
                         <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
                     </a>
-                </li>
+                </li> -->
     
                 <!-- Quality Control -->
                 <li class="nav-item">
@@ -95,53 +95,7 @@
             </ul>
         </div>
     </aside>
-    <!-- Add Product Tracking Modal -->
-    <div class="modal fade" id="addProductTrackingModal" tabindex="-1" aria-labelledby="addProductTrackingModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="addProductTrackingModalLabel">নতুন পণ্য যোগ করুন</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <form>
-                      <div class="mb-3">
-                          <label for="trackingProductName" class="form-label">পণ্যের নাম</label>
-                          <input type="text" class="form-control" id="trackingProductName">
-                      </div>
-                      <div class="mb-3">
-                          <label for="trackingRFID" class="form-label">স্টক পরিমাণ</label>
-                          <input type="text" class="form-control" id="trackingRFID">
-                      </div>
-                      <div class="mb-3">
-                          <label for="trackingStatus" class="form-label">বিতরণ পরিমাণ</label>
-                          <input type="text" class="form-control" id="trackingRFID">
-                      </div>
-                      <div class="mb-3">
-                          <label for="trackingSource" class="form-label">দোকানের নাম 	</label>
-                          <input type="text" class="form-control" id="trackingSource">
-                      </div>
-                      <div class="mb-3">
-                        <label for="trackingStatus" class="form-label">অবস্থা</label>
-                        <select class="form-control" id="trackingStatus">
-                          <option value="বিতরণ করা হয়েছে">বিতরণ করা হয়েছে</option>  
-                          <option value="বিতরণ করা বাকি">বিতরণ করা বাকি</option>
-                            
-                        </select>
-                      </div>
-                      <div class="mb-3">
-                          <label for="trackingDate" class="form-label">তারিখ</label>
-                          <input type="date" class="form-control" id="trackingDate">
-                      </div>
-                  </form>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                  <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
-              </div>
-          </div>
-      </div>
-  </div>    
+    
 
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -185,7 +139,7 @@
           <div class="container-fluid py-4">
             <!-- Inventory Status Cards -->
             <div class="row">
-              <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
                     <div class="d-flex">
@@ -225,7 +179,7 @@
                         <i class="fas fa-clock"></i> <!-- Pending Icon -->
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">মুলতুবি বিতরণ</p>
+                        <p class="text-sm mb-0 text-capitalize">মজুদে থাকা পণ্য</p>
                         <h5 class="font-weight-bolder mb-0">৮০০</h5>
                       </div>
                     </div>
@@ -490,7 +444,54 @@
       </div>
   </div>
 </div>
-      
+ 
+    <!-- Add Product Tracking Modal -->
+    <div class="modal fade" id="addProductTrackingModal" tabindex="-1" aria-labelledby="addProductTrackingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="addProductTrackingModalLabel">নতুন পণ্য যোগ করুন</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <div class="mb-3">
+                          <label for="trackingProductName" class="form-label">পণ্যের নাম</label>
+                          <input type="text" class="form-control" id="trackingProductName">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingRFID" class="form-label">স্টক পরিমাণ</label>
+                          <input type="text" class="form-control" id="trackingRFID">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingStatus" class="form-label">বিতরণ পরিমাণ</label>
+                          <input type="text" class="form-control" id="trackingRFID">
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingSource" class="form-label">দোকানের নাম 	</label>
+                          <input type="text" class="form-control" id="trackingSource">
+                      </div>
+                      <div class="mb-3">
+                        <label for="trackingStatus" class="form-label">অবস্থা</label>
+                        <select class="form-control" id="trackingStatus">
+                          <option value="বিতরণ করা হয়েছে">বিতরণ করা হয়েছে</option>  
+                          <option value="বিতরণ করা বাকি">বিতরণ করা বাকি</option>
+                            
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                          <label for="trackingDate" class="form-label">তারিখ</label>
+                          <input type="date" class="form-control" id="trackingDate">
+                      </div>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                  <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+              </div>
+          </div>
+      </div>
+  </div>
       <!-- Delete Product Modal -->
       <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
