@@ -82,14 +82,14 @@
         </li>
 
         <!-- Storage Conditions -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_সংরক্ষণ অবস্থা.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-thermometer-half text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
           </a>
-        </li>
+        </li> -->
 
         <!-- Quality Control -->
         <li class="nav-item">
@@ -112,14 +112,14 @@
         </li>
 
         <!-- Data Reports -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_প্রতিবেদন এবং বিশ্লেষণ.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-chart-bar text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
           </a>
-        </li>
+        </li> -->
 
         <!--log out-->
         <li class="nav-item">
@@ -604,11 +604,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                <button type="button" class="btn btn-primary" onclick="updateSample()">সংরক্ষণ করুন</button>
-
-                <!-- <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button> -->
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+              <button type="button" class="btn btn-primary" onclick="updateSample()">সংরক্ষণ করুন</button>
             </div>
+            
         </div>
     </div>
 </div>
@@ -647,7 +646,6 @@
       const farmName = document.getElementById('farmName').value;
       const productionDate = document.getElementById('productionDate').value;
       const Condition = document.getElementById('Condition').value;
-      
 
       // Add a new row to the table
       const table = document.querySelector('table tbody');
@@ -662,47 +660,97 @@
           <td class="align-middle">${productionDate}</td>
           <td class="align-middle">${Condition}</td>
           <td class="align-middle text-center">
-            <button class="btn btn-sm btn-primary">সম্পাদনা</button>
+            <button class="btn btn-sm btn-primary edit-button">সম্পাদনা</button>
           </td>
       `;
 
       // Append the new row to the table
       table.appendChild(newRow);
 
-      // Assign the event listener to the new "সম্পাদনা" button
-      const editButton = newRow.querySelector('button');
-      editButton.addEventListener('click', () => {
-        populateEditModal(lotNumber, productName, origin, harvestQuantity, farmName, productionDate, Condition);
+      // Clear the form
+      document.getElementById('lotNumber').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('origin').value = '';
+      document.getElementById('harvestQuantity').value = '';
+      document.getElementById('farmName').value = '';
+      document.getElementById('productionDate').value = '';
+      document.getElementById('Condition').value = 'যাচাইয়ের অপেক্ষায়';
+
+      // Close the modal
+      document.querySelector('#addProductModal .btn-close').click();
+    }
+
+
+    document.querySelector('table tbody').addEventListener('click', function (event) {
+    if (event.target.classList.contains('edit-button')) {
+      const row = event.target.closest('tr');
+
+      // Extract data from the row
+      const lotNumber = row.children[0].textContent.trim();
+      const productName = row.children[1].textContent.trim();
+      const origin = row.children[2].textContent.trim();
+      const harvestQuantity = row.children[3].textContent.trim();
+      const farmName = row.children[4].textContent.trim();
+      const productionDate = row.children[5].textContent.trim();
+      const Condition = row.children[6].textContent.trim();
+
+      console.log('Edit button clicked:', {
+        lotNumber,
+        productName,
+        origin,
+        harvestQuantity,
+        farmName,
+        productionDate,
+        Condition,
       });
 
-      // Clear modal form
-      document.getElementById('addSampleForm').reset();
+      // Call the function to populate modal
+      populateEditModal(lotNumber, productName, origin, harvestQuantity, farmName, productionDate, Condition);
 
-      // Close modal
-      document.querySelector('#addSampleModal .btn-close').click();
+      // Trigger the modal
+      const editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+      editModal.show();
     }
+  });
 
 
 
-    function populateEditModal(lotNumber, productName, origin, quantity, farmName, productionDate, Condition) {
-      document.getElementById('editLotNumber').value = lotNumber;
-      document.getElementById('editProductName').value = productName;
-      document.getElementById('editOrigin').value = origin;
-      document.getElementById('editHarvestQuantity').value = harvestQuantity;
-      document.getElementById('editFarmName').value = farmName;
-      document.getElementById('editProductionDate').value = productionDate;
-      document.getElementById('editCondition').value = Condition;
-      
-      // Save the row being edited
-      editingRow = [...document.querySelectorAll('table tbody tr')].find(
-        row => row.children[0].textContent.trim() === lotNumber
-      );
-    }
+    function populateEditModal(lotNumber, productName, origin, harvestQuantity, farmName, productionDate, Condition) {
+    console.log('Populating modal with:', {
+      lotNumber,
+      productName,
+      origin,
+      harvestQuantity,
+      farmName,
+      productionDate,
+      Condition,
+    });
+
+    document.getElementById('editLotNumber').value = lotNumber;
+    document.getElementById('editProductName').value = productName;
+    document.getElementById('editOrigin').value = origin;
+    document.getElementById('editHarvestQuantity').value = harvestQuantity;
+    document.getElementById('editFarmName').value = farmName;
+    document.getElementById('editProductionDate').value = productionDate;
+    document.getElementById('editCondition').value = Condition;
+
+    // Save reference to the row being edited
+    editingRow = [...document.querySelectorAll('table tbody tr')].find(
+      row => row.children[0].textContent.trim() === lotNumber
+    );
+  }
+
+
+
+    let editingRow = null; // Global variable to store the row being edited
 
     function updateSample() {
-      if (!editingRow) return;
+      if (!editingRow) {
+        console.error('No row selected for editing.');
+        return;
+      }
 
-      // Get updated values
+      // Get updated values from the form
       const lotNumber = document.getElementById('editLotNumber').value;
       const productName = document.getElementById('editProductName').value;
       const origin = document.getElementById('editOrigin').value;
@@ -710,9 +758,18 @@
       const farmName = document.getElementById('editFarmName').value;
       const productionDate = document.getElementById('editProductionDate').value;
       const Condition = document.getElementById('editCondition').value;
-      
 
-      // Update the row cells
+      console.log('Updating row with:', {
+        lotNumber,
+        productName,
+        origin,
+        harvestQuantity,
+        farmName,
+        productionDate,
+        Condition,
+      });
+
+      // Update the row's cells
       editingRow.children[0].textContent = lotNumber;
       editingRow.children[1].textContent = productName;
       editingRow.children[2].textContent = origin;
@@ -720,11 +777,17 @@
       editingRow.children[4].textContent = farmName;
       editingRow.children[5].textContent = productionDate;
       editingRow.children[6].textContent = Condition;
-      
 
-      // Close modal
-      document.querySelector('#editSampleModal .btn-close').click();
+      // Clear the editingRow reference
+      editingRow = null;
+
+      // Close the modal
+      const editModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
+      editModal.hide();
+
+      console.log('Row updated successfully!');
     }
+
 
     function populateDeleteModal(lotNumber) {
         document.getElementById('deleteProductMessage').textContent = `আপনি কি নিশ্চিত যে আপনি লট নাম্বার "${lotNumber}" এর পণ্যটি মুছে ফেলতে চান?`;
