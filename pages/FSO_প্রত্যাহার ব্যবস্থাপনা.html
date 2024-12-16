@@ -143,7 +143,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">প্রত্যাহার ব্যবস্থাপনা</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">প্রত্যাহার ব্যবস্থাপনা</h6>
+          <h6 class="font-weight-bolder mb-0">খাদ্য নিরাপত্তা কর্মকর্তা</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -259,11 +259,106 @@
       <!-- Add Recall Button -->
       <div class="row mt-4">
         <div class="col-lg-12 text-end">
-          <button class="btn btn-primary">নতুন প্রত্যাহার যোগ করুন</button>
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRecallModal">নতুন প্রত্যাহার যোগ করুন</button>
+
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Add Recall Modal -->
+  <div class="modal fade" id="addRecallModal" tabindex="-1" aria-labelledby="addRecallModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addRecallModalLabel">নতুন প্রত্যাহার যোগ করুন</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addRecallForm">
+            <div class="mb-3">
+              <label for="productName" class="form-label">পণ্যের নাম</label>
+              <input type="text" class="form-control" id="productName" required>
+            </div>
+            <div class="mb-3">
+              <label for="lotNumber" class="form-label">লট নম্বর</label>
+              <input type="text" class="form-control" id="lotNumber" required>
+            </div>
+            <div class="mb-3">
+              <label for="reason" class="form-label">কারণ</label>
+              <input type="text" class="form-control" id="reason" required>
+            </div>
+            <div class="mb-3">
+              <label for="date" class="form-label">তারিখ</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="mb-3">
+              <label for="status" class="form-label">অবস্থা</label>
+              <select class="form-select" id="status" required>
+                <option value="চলমান">চলমান</option>
+                <option value="সম্পন্ন">সম্পন্ন</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+          <button type="button" class="btn btn-primary" onclick="addRecall()">সংরক্ষণ করুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function addRecall() {
+      // Get form values
+      const productName = document.getElementById('productName').value;
+      const lotNumber = document.getElementById('lotNumber').value;
+      const reason = document.getElementById('reason').value;
+      const date = document.getElementById('date').value;
+      const status = document.getElementById('status').value;
+  
+      // Validate form inputs
+      if (!productName || !lotNumber || !reason || !date || !status) {
+        alert('সব তথ্য পূরণ করুন।');
+        return;
+      }
+  
+      // Find the table body
+      const tableBody = document.querySelector('table tbody');
+  
+      // Create a new row
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td class="align-middle">
+          <p class="text-sm font-weight-bold mb-0">${productName}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${lotNumber}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${reason}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${date}</p>
+        </td>
+        <td class="align-middle text-center">
+          <span class="badge badge-sm ${status === 'চলমান' ? 'bg-gradient-warning' : 'bg-gradient-success'}">${status}</span>
+        </td>
+      `;
+  
+      // Append the new row to the table
+      tableBody.appendChild(newRow);
+  
+      // Clear the form
+      document.getElementById('addRecallForm').reset();
+  
+      // Close the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addRecallModal'));
+      modal.hide();
+    }
+  </script>
+  
+
 
   <!-- JS Scripts -->
   <script src="../assets/js/core/popper.min.js"></script>

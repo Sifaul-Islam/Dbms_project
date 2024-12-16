@@ -82,14 +82,14 @@
         </li>
 
         <!-- Storage Conditions -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_সংরক্ষণ অবস্থা.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-thermometer-half text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
           </a>
-        </li>
+        </li> -->
 
         <!-- Quality Control -->
         <li class="nav-item">
@@ -112,14 +112,14 @@
         </li>
 
         <!-- Data Reports -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_প্রতিবেদন এবং বিশ্লেষণ.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-chart-bar text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
           </a>
-        </li>
+        </li> -->
 
         <!--log out-->
         <li class="nav-item">
@@ -143,6 +143,31 @@
                     </ol>
                     <h6 class="font-weight-bolder mb-0">খাদ্য নিরাপত্তা কর্মকর্তা</h6>
                 </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                  <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <div class="input-group">
+                      <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                      <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+                    </div>
+                  </div>
+                  <ul class="navbar-nav justify-content-end">
+                    <li class="nav-item d-flex align-items-center">
+                      <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                        <i class="fa fa-user me-sm-1"></i>
+                        <span class="d-sm-inline d-none">প্রোফাইল</span>
+                      </a>
+                    </li>
+                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                      <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                        <div class="sidenav-toggler-inner">
+                          <i class="sidenav-toggler-line"></i>
+                          <i class="sidenav-toggler-line"></i>
+                          <i class="sidenav-toggler-line"></i>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
             </div>
         </nav>
 
@@ -161,11 +186,11 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">RFID</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অবস্থা</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তাপমাত্রা (°C)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">আর্দ্রতা (%)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">গুণমান অবস্থা</th>
+                                            <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তাপমাত্রা (°C)</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">আর্দ্রতা (%)</th> -->
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অনুমোদনের অবস্থা</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">সম্পাদনা</th>
                                         </tr>
                                     </thead>
@@ -175,22 +200,22 @@
                                                 <p class="text-sm font-weight-bold mb-0">আপেল</p>
                                             </td>
                                             <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">RFID1234</span>
+                                                <span class="text-xs font-weight-bold">AB1234</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="badge badge-sm bg-gradient-info">গুদামে</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <!-- <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">৮°C</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">৬০%</span>
-                                            </td>
+                                            </td> -->
                                             <td class="align-middle">
                                                 <span class="badge badge-sm bg-gradient-warning">যাচাইয়ের অপেক্ষায়</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আপেল', 'RFID1234', 'গুদামে', '৮°C', '৬০%', 'যাচাইয়ের অপেক্ষায়')">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আপেল', 'AB1234', 'গুদামে', 'যাচাইয়ের অপেক্ষায়')">সম্পাদনা</button>
                                             </td>
                                         </tr>
                                         <tr>
@@ -198,22 +223,22 @@
                                                 <p class="text-sm font-weight-bold mb-0">আলু</p>
                                             </td>
                                             <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">RFID5678</span>
+                                                <span class="text-xs font-weight-bold">BC5678</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
                                             </td>
-                                            <td class="align-middle">
+                                            <!-- <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">১০°C</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">৬৫%</span>
-                                            </td>
+                                            </td> -->
                                             <td class="align-middle">
                                                 <span class="badge badge-sm bg-gradient-success">অনুমোদিত</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আলু', 'RFID5678', 'বিতরণ করা হয়েছে', '১০°C', '৬৫%', 'অনুমোদিত')">সম্পাদনা</button>
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আলু', 'BC5678', 'বিতরণ করা হয়েছে', 'অনুমোদিত')">সম্পাদনা</button>
                                             </td>
                                         </tr>
                                         <!-- Add more rows as needed -->
@@ -258,7 +283,7 @@
                                                 <span class="text-xs font-weight-bold">আপেল</span>
                                             </td>
                                             <td class="align-middle">
-                                                <span class="badge badge-sm bg-gradient-warning">যাচাইয়ের অপেক্ষায়</span>
+                                                <span class="badge badge-sm bg-gradient-warning">অননুমোদিত</span>
                                             </td>
                                             <td class="align-middle">
                                                 <span class="text-xs font-weight-bold">প্রয়োজনীয় পুষ্টি মান মেলেনি</span>
