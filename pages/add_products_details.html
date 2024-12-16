@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 
 <head>
   <meta charset="utf-8" />
@@ -19,7 +19,6 @@
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0" href="#" target="_blank">
             <img src="kng1.png" class="navbar-brand-img h-100" alt="main_logo">
-            <br><span class="ms-1 font-weight-bold">Agri Officer</span>
         </a>
     </div>
 
@@ -27,163 +26,235 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href="agri_officer_dashboard_new.html">
+                <a class="nav-link" href="../Know Your Grass/agri_officer_dashboard.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-tachometer-alt text-primary"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">ড্যাশবোর্ড</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="agri_officers_new.html">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-user-tie text-success"></i>
                     </div>
                     <span class="nav-link-text ms-1">কৃষি অফিসার ড্যাশবোর্ড</span>
                 </a>
             </li>
 
+
             <li class="nav-item">
-                <a class="nav-link" href="add_products_details.html">
+                <a class="nav-link" href="../pages/add_products_details.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-seedling text-warning"></i>
                     </div>
-                    <span class="nav-link-text ms-1">কৃষি পণ্যের তথ্য প্রদান</span>
+                    <span class="nav-link-text ms-1">পণ্যের তথ্য যোগ</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="track_product_update.html">
+                <a class="nav-link active" href="../pages/track_product_update.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-truck text-info"></i>
                     </div>
-                    <span class="nav-link-text ms-1">পণ্য আপডেট ট্র্যাক</span>
+                    <span class="nav-link-text ms-1">পণ্য ট্র্যাক</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="add_affected_batches_details.html">
+                <a class="nav-link" href="../pages/add_affected_batches_details.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-exclamation-triangle text-danger"></i>
                     </div>
-                    <span class="nav-link-text ms-1">সংযুক্ত ব্যাচ বিবরণ যোগ করুন</span>
+                    <span class="nav-link-text ms-1">প্রভাবিত ব্যাচের বিবরণ যোগ</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="soil-analysis.html">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fas fa-chart-line text-purple"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">প্রতিবেদন বিশ্লেষণ</span>
-                </a>
-            </li>
+              <a class="nav-link" href="../Know Your Grass/login.html">
+                  <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                       <i class="fas fa-sign-out-alt text-danger"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">লগ আউট</span>                        
+              </a>
+          </li>
+
         </ul>
     </div>
 </aside>
 
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+    <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠাসমূহ</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">পণ্যের তথ্য যোগ</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">ড্যাশবোর্ড</h6>
+          <h6 class="font-weight-bolder mb-0">পণ্যের তথ্য যোগ</h6>
         </nav>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container-fluid py-4">
-      <!-- Header and Add Button -->
-      <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-between align-items-center">
-          <h6>পণ্যের তালিকা</h6>
-          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">পণ্য যোগ করুন</button>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="পণ্য খুঁজুন...">
+            </div>
+          </div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">প্রোফাইল</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
+    </nav>
+    <!-- End Navbar -->
 
-      <!-- Products Table -->
+    <div class="container-fluid py-4">
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        নতুন পণ্য যোগ করুন
+      </button>
+
       <div class="row">
         <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>পণ্যের নাম</th>
-                    <th>উৎপত্তিস্থান</th>
-                    <th>প্রজাতি</th>
-                    <th>ফসল কাটার তারিখ</th>
-                    <th>কার্যক্রম</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>ধান</td>
-                    <td>রাজশাহী</td>
-                    <td>ব্রি-২৮</td>
-                    <td>২০২৩-১২-০১</td>
-                    <td>
-                      <button class="btn btn-sm btn-danger">মুছুন</button>
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>পণ্য তালিকা</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পণ্যের আইডি</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পণ্যের নাম</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">প্রজাতি</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">খামারের নাম</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">উৎপত্তিস্থান</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ফসল তোলার সময়</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">পণ্যের বিবরণ</th>
+                      <!--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">মেয়াদ শেষের তারিখ</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ফসল সংগ্রহের তারিখ</th>-->
+                      <th class="text-secondary opacity-7"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">110</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">লেডি ফিঙ্গার</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">ছি-১২</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">শখের এগ্রো ফার্ম</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">চাঁপাইনবাবগঞ্জ</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">১২/৪/২০২৪</p>
+                      </td>
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0">বিবরণ</p>
+                      </td>
+                     
+                     
+                      <td class="align-middle text-center">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                        <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
                     </td>
-                  </tr>
-                  <!-- Add more rows dynamically -->
-                </tbody>
-              </table>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Modal for Adding Product -->
-    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="addProductModalLabel">নতুন পণ্য যোগ করুন</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="productName" class="form-label">পণ্যের নাম</label>
-                <input type="text" class="form-control" id="productName" placeholder="পণ্যের নাম লিখুন">
-              </div>
-              <div class="mb-3">
-                <label for="origin" class="form-label">উৎপত্তিস্থান</label>
-                <input type="text" class="form-control" id="origin" placeholder="উৎপত্তিস্থান লিখুন">
-              </div>
-              <div class="mb-3">
-                <label for="variety" class="form-label">প্রজাতি</label>
-                <input type="text" class="form-control" id="variety" placeholder="প্রজাতির নাম লিখুন">
-              </div>
-              <div class="mb-3">
-                <label for="harvestDate" class="form-label">ফসল কাটার তারিখ</label>
-                <input type="date" class="form-control" id="harvestDate">
-              </div>
-              <div class="mb-3">
-                <label for="certificate" class="form-label">প্রাসঙ্গিক শংসাপত্র</label>
-                <input type="file" class="form-control" id="certificate">
-              </div>
-              <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">যোগ করুন</button>
-              </div>
-            </form>
+      <!-- Modal for adding new product -->
+      <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addProductModalLabel">নতুন পণ্য যোগ করুন</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="বন্ধ করুন"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="productID" class="form-label">পণ্যের আইডি</label>
+                  <input type="text" class="form-control" id="productID" placeholder="পণ্যের আইডি লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="productName" class="form-label">পণ্যের নাম</label>
+                  <input type="text" class="form-control" id="productName" placeholder="পণ্যের নাম লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="productVariety" class="form-label">প্রজাতি</label>
+                  <input type="text" class="form-control" id="productVariety" placeholder="পণ্যের প্রকার লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="farmerID" class="form-label">খামারের নাম</label>
+                  <input type="text" class="form-control" id="farmerID" placeholder="কৃষকের আইডি লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="origin" class="form-label">উৎপত্তিস্থান</label>
+                  <input type="text" class="form-control" id="origin" placeholder="উৎপত্তির স্থান লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="quality" class="form-label">ফসল তোলার সময়</label>
+                  <input type="text" class="form-control" id="quality" placeholder="গুণমান লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="healthSafety" class="form-label">পণ্যের বিবরণ</label>
+                  <input type="text" class="form-control" id="healthSafety" placeholder="স্বাস্থ্য ও নিরাপত্তা মান লিখুন" required>
+                </div>
+                <div class="mb-3">
+                  <label for="expiryDate" class="form-label">মেয়াদ শেষের তারিখ</label>
+                  <input type="date" class="form-control" id="expiryDate" required>
+                </div>
+                <div class="mb-3">
+                  <label for="harvestDate" class="form-label">ফসল সংগ্রহের তারিখ</label>
+                  <input type="date" class="form-control" id="harvestDate" required>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+              <button type="button" class="btn btn-primary">পণ্য যোগ করুন</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- JS Scripts -->
+  <!-- Core JS Files -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
 </body>
 
