@@ -82,14 +82,14 @@
         </li>
 
         <!-- Storage Conditions -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_সংরক্ষণ অবস্থা.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-thermometer-half text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
           </a>
-        </li>
+        </li> -->
 
         <!-- Quality Control -->
         <li class="nav-item">
@@ -112,14 +112,14 @@
         </li>
 
         <!-- Data Reports -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_প্রতিবেদন এবং বিশ্লেষণ.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-chart-bar text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
           </a>
-        </li>
+        </li> -->
 
         <!--log out-->
         <li class="nav-item">
@@ -145,6 +145,31 @@
           </ol>
           <h6 class="font-weight-bolder mb-0">প্রত্যাহার ব্যবস্থাপনা</h6>
         </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+            </div>
+          </div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">প্রোফাইল</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -159,8 +184,8 @@
                   <i class="ni ni-alert-circle text-lg text-white opacity-10"></i>
                 </div>
                 <div class="ms-3">
-                  <p class="text-sm mb-0 text-capitalize">সক্রিয় প্রত্যাহার</p>
-                  <h5 class="font-weight-bolder mb-0">৫</h5>
+                  <p class="text-sm mb-0 text-capitalize">পরীক্ষিত</p>
+                  <h5 class="font-weight-bolder mb-0">১৫</h5>
                 </div>
               </div>
             </div>
@@ -175,13 +200,14 @@
                   <i class="ni ni-check-bold text-lg text-white opacity-10"></i>
                 </div>
                 <div class="ms-3">
-                  <p class="text-sm mb-0 text-capitalize">সম্পন্ন প্রত্যাহার</p>
-                  <h5 class="font-weight-bolder mb-0">১৫</h5>
+                  <p class="text-sm mb-0 text-capitalize">অননুমোদিত</p>
+                  <h5 class="font-weight-bolder mb-0">৫</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
 
       <!-- Recall Table -->
@@ -197,7 +223,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্য</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">RFID</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">কারণ</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তারিখ</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা</th>
