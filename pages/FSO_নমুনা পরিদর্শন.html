@@ -181,69 +181,82 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>নমুনা পণ্যের তালিকা</h6>
-                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addQualityVerificationModal">নতুন নমুনা পরীক্ষা যোগ করুন</button>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">নতুন নমুনা পরীক্ষা যোগ করুন</button>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">RFID</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অবস্থা</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তাপমাত্রা (°C)</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">আর্দ্রতা (%)</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">গুণমান অবস্থা</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                                          উৎপত্তিস্থল</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                                          পরিমাণ</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                                          খামারের নাম</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">নমুনা প্রাপ্তির তারিখ</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">
+                                          ফলাফল</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">সম্পাদনা</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td class="align-middle">
-                                            <p class="text-sm font-weight-bold mb-0">আপেল</p>
+                                            <p class="text-sm font-weight-bold mb-0">122</p>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">RFID1234</span>
+                                            <span class="text-xs font-weight-bold">আপেল</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="badge badge-sm bg-gradient-info">গুদামে</span>
+                                            <span class="text-xs font-weight-bold">Dhaka</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">৮°C</span>
+                                            <span class="text-xs font-weight-bold">২ টন</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">৬০%</span>
+                                            <span class="text-xs font-weight-bold">স্বপ্ন খামার</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="badge badge-sm bg-gradient-warning">যাচাইয়ের অপেক্ষায়</span>
+                                          <span class="text-xs font-weight-bold">11/12/21</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="badge badge-sm bg-gradient-danger">যাচাইয়ের অপেক্ষায়</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আপেল', 'RFID1234', 'গুদামে', '৮°C', '৬০%', 'যাচাইয়ের অপেক্ষায়')">সম্পাদনা</button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('122', 'আপেল', 'Dhaka', '২ টন', 'স্বপ্ন খামার', '11/12/21', 'যাচাইয়ের অপেক্ষায়')">সম্পাদনা</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="align-middle">
-                                            <p class="text-sm font-weight-bold mb-0">আলু</p>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">RFID5678</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">১০°C</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="text-xs font-weight-bold">৬৫%</span>
-                                        </td>
-                                        <td class="align-middle">
-                                            <span class="badge badge-sm bg-gradient-success">অনুমোদিত</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editQualityVerificationModal" onclick="populateEditModal('আলু', 'RFID5678', 'বিতরণ করা হয়েছে', '১০°C', '৬৫%', 'অনুমোদিত')">সম্পাদনা</button>
-                                        </td>
-                                    </tr>
+                                      <td class="align-middle">
+                                          <p class="text-sm font-weight-bold mb-0">123</p>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">
+                                            কমলা</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">Khulna</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">৩ টন</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">বন্ধু খামার</span>
+                                      </td>
+                                      <td class="align-middle">
+                                        <span class="text-xs font-weight-bold">08/12/21</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="badge badge-sm bg-gradient-success">
+                                            অনুমোদিত</span>
+                                      </td>
+                                      <td class="align-middle text-center">
+                                          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('123', 'কমলা', 'Khulna', '৩ টন', 'বন্ধু খামার', '08/12/21', 'অনুমোদিত')">সম্পাদনা</button>
+                                      </td>
+                                  </tr>
                                     <!-- Add more rows as needed -->
                                 </tbody>
                             </table>
@@ -255,10 +268,373 @@
 
   </main>
 
+  <!-- Add Product Modal -->
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductModalLabel">নতুন পণ্য যোগ করুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="lotNumber" class="form-label">লট নম্বর</label>
+                    <input type="text" class="form-control" id="lotNumber">
+                  </div>
+                  <div class="mb-3">
+                    <label for="productName" class="form-label">পণ্যের নাম</label>
+                    <input type="text" class="form-control" id="productName">
+                  </div>
+                  <div class="mb-3">
+                    <label for="farmID" class="form-label">খামার আইডি</label>
+                    <input type="text" class="form-control" id="farmID">
+                  </div>
+                  <div class="mb-3">
+                    <label for="origin" class="form-label">উৎপত্তিস্থল</label>
+                    <input type="text" class="form-control" id="origin">
+                  </div>
+                  <div class="mb-3">
+                    <label for="quality" class="form-label">গুণমান</label>
+                    <input type="text" class="form-control" id="quality">
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label for="hygiene" class="form-label">পরিচ্ছন্নতার অবস্থা</label>
+                    <input type="text" class="form-control" id="hygiene">
+                </div>
+                <div class="mb-3">
+                    <label for="sustainability" class="form-label">পরিবেশ বান্ধবতা</label>
+                    <input type="text" class="form-control" id="sustainability">
+                </div>
+                <div class="mb-3">
+                    <label for="healthSafetyStandards" class="form-label">স্বাস্থ্য ও সুরক্ষা মান</label>
+                    <input type="text" class="form-control" id="healthSafetyStandards">
+                </div>
+                <div class="mb-3">
+                    <label for="validityEndDate" class="form-label">
+                      সার্টিফিকেট মেয়াদ শেষ হওয়ার তারিখ</label>
+                    <input type="date" class="form-control" id="validityEndDate">
+                </div>
+                <div class="mb-3">
+                    <label for="harvestDate" class="form-label">শস্য সংগ্রহ তারিখ</label>
+                    <input type="date" class="form-control" id="harvestDate">
+                </div>
+                <div class="mb-3">
+                    <label for="harvestQuantity" class="form-label">পরিমাণ (কেজি)</label>
+                    <input type="number" class="form-control" id="harvestQuantity">
+                </div>
+                <div class="mb-3">
+                    <label for="proteins" class="form-label">প্রোটিন (%)</label>
+                    <input type="number" class="form-control" id="proteins">
+                </div>
+                <div class="mb-3">
+                    <label for="fats" class="form-label">চর্বি (%)</label>
+                    <input type="number" class="form-control" id="fats">
+                </div>
+                <div class="mb-3">
+                    <label for="carbohydrates" class="form-label">কার্বোহাইড্রেট (%)</label>
+                    <input type="number" class="form-control" id="carbohydrates">
+                </div>
+                <div class="mb-3">
+                    <label for="minerals" class="form-label">খনিজ পদার্থ (%)</label>
+                    <input type="number" class="form-control" id="minerals">
+                </div>
+                <div class="mb-3">
+                    <label for="waterContent" class="form-label">জলীয় উপাদান (%)</label>
+                    <input type="number" class="form-control" id="waterContent">
+                </div>
+                <div class="mb-3">
+                    <label for="vitamins" class="form-label">ভিটামিন</label>
+                    <input type="text" class="form-control" id="vitamins">
+                </div>
+                <div class="mb-3">
+                    <label for="maxTemperature" class="form-label">সর্বোচ্চ তাপমাত্রা (°C)</label>
+                    <input type="number" class="form-control" id="maxTemperature">
+                </div>
+                <div class="mb-3">
+                    <label for="minTemperature" class="form-label">সর্বনিম্ন তাপমাত্রা (°C)</label>
+                    <input type="number" class="form-control" id="minTemperature">
+                </div>
+                <div class="mb-3">
+                    <label for="lowHumidity" class="form-label">ন্যূনতম আর্দ্রতা (%)</label>
+                    <input type="number" class="form-control" id="lowHumidity">
+                </div>
+                <div class="mb-3">
+                    <label for="highHumidity" class="form-label">সর্বোচ্চ আর্দ্রতা (%)</label>
+                    <input type="number" class="form-control" id="highHumidity">
+                </div>
+                <div class="mb-3">
+                    <label for="salmonella" class="form-label">স্যালমোনেলা (CFU/গ্রাম)</label>
+                    <input type="text" class="form-control" id="salmonella">
+                </div>
+                <div class="mb-3">
+                    <label for="eColi" class="form-label">ই.কোলাই (CFU/গ্রাম)</label>
+                    <input type="text" class="form-control" id="eColi">
+                </div>
+                <div class="mb-3">
+                    <label for="pesticides" class="form-label">কীটনাশক (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="pesticides">
+                </div>
+                <div class="mb-3">
+                    <label for="heavyMetals" class="form-label">ভারী ধাতু (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="heavyMetals">
+                </div>
+                <div class="mb-3">
+                    <label for="herbicides" class="form-label">উদ্ভিদনাশক (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="herbicides">
+                </div>
+                <div class="mb-3">
+                    <label for="additives" class="form-label">কেমিক্যালস্ (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="additives">
+                </div>
+                <div class="mb-3">
+                    <label for="preservatives" class="form-label">সংরক্ষক পদার্থ (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="preservatives">
+                </div>
+                <div class="mb-3">
+                    <label for="unauthorizedSubstances" class="form-label">অননুমোদিত পদার্থ</label>
+                    <input type="text" class="form-control" id="unauthorizedSubstances">
+                </div>
+                <div class="mb-3">
+                    <label for="productionDate" class="form-label">উৎপাদনের তারিখ</label>
+                    <input type="date" class="form-control" id="productionDate">
+                </div>
+                <div class="mb-3">
+                    <label for="expiryDate" class="form-label">মেয়াদ উত্তীর্ণ তারিখ</label>
+                    <input type="date" class="form-control" id="expiryDate">
+                </div>
+                <div class="mb-3">
+                    <label for="productId" class="form-label">পণ্যের আইডি</label>
+                    <input type="text" class="form-control" id="productId">
+                </div>
+                <div class="mb-3">
+                    <label for="EmployeeId" class="form-label">খাদ্য নিরাপত্তা কর্মকর্তা আইডি</label>
+                    <input type="text" class="form-control" id="EmployeeId">
+                </div>
+                <div class="mb-3">
+                    <label for="seedDistributionId" class="form-label">বীজ বিতরণ আইডি</label>
+                    <input type="text" class="form-control" id="seedDistributionId">
+                </div>
+                    <div class="mb-3">
+                        <label for="Condition" class="form-label">অবস্থা</label>
+                        <select class="form-control" id="Condition">
+                            <option value="যাচাইয়ের অপেক্ষায়">যাচাইয়ের অপেক্ষায়</option>
+                            <option value="অনুমোদিত">অনুমোদিত</option>
+                            <option value="অননুমোদিত">অননুমোদিত</option>
+                        </select>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="mb-3">
+                    <label for="editLotNumber" class="form-label">লট নাম্বার</label>
+                    <input type="text" class="form-control" id="editLotNumber">
+                </div>
+                <div class="mb-3">
+                  <label for="editProductName" class="form-label">পণ্যের নাম</label>
+                  <input type="text" class="form-control" id="editProductName">
+                </div>
+                <div class="mb-3">
+                    <label for="editFarmId" class="form-label">খামার আইডি</label>
+                    <input type="text" class="form-control" id="editFarmId">
+                </div>
+                <div class="mb-3">
+                    <label for="editOrigin" class="form-label">উৎপত্তি</label>
+                    <input type="text" class="form-control" id="editOrigin">
+                </div>
+                <div class="mb-3">
+                    <label for="editQuality" class="form-label">গুণমান</label>
+                    <input type="text" class="form-control" id="editQuality">
+                </div>
+                <div class="mb-3">
+                    <label for="editHygiene" class="form-label">পরিচ্ছন্নতার অবস্থা</label>
+                    <input type="text" class="form-control" id="editHygiene">
+                </div>
+                <div class="mb-3">
+                    <label for="editSustainability" class="form-label">পরিবেশ বান্ধবতা</label>
+                    <input type="text" class="form-control" id="editSustainability">
+                </div>
+                <div class="mb-3">
+                    <label for="editHealthSafetyStandards" class="form-label">স্বাস্থ্য ও সুরক্ষা মান</label>
+                    <input type="text" class="form-control" id="editHealthSafetyStandards">
+                </div>
+                <div class="mb-3">
+                    <label for="editValidityEndDate" class="form-label">সার্টিফিকেট মেয়াদ শেষ হওয়ার তারিখ</label>
+                    <input type="date" class="form-control" id="editValidityEndDate">
+                </div>
+                <div class="mb-3">
+                    <label for="editHarvestDate" class="form-label">শস্য সংগ্রহ তারিখ</label>
+                    <input type="date" class="form-control" id="editHarvestDate">
+                </div>
+                <div class="mb-3">
+                    <label for="editHarvestQuantity" class="form-label">পরিমাণ (কেজি)</label>
+                    <input type="number" class="form-control" id="editHarvestQuantity">
+                </div>
+                <div class="mb-3">
+                    <label for="editProteins" class="form-label">প্রোটিন (%)</label>
+                    <input type="number" class="form-control" id="editProteins">
+                </div>
+                <div class="mb-3">
+                    <label for="editFats" class="form-label">চর্বি (%)</label>
+                    <input type="number" class="form-control" id="editFats">
+                </div>
+                <div class="mb-3">
+                    <label for="editCarbohydrates" class="form-label">কার্বোহাইড্রেট (%)</label>
+                    <input type="number" class="form-control" id="editCarbohydrates">
+                </div>
+                <div class="mb-3">
+                    <label for="editMinerals" class="form-label">খনিজ পদার্থ (%)</label>
+                    <input type="number" class="form-control" id="editMinerals">
+                </div>
+                <div class="mb-3">
+                    <label for="editWaterContent" class="form-label">জলীয় উপাদান (%)</label>
+                    <input type="number" class="form-control" id="editWaterContent">
+                </div>
+                <div class="mb-3">
+                    <label for="editVitamins" class="form-label">ভিটামিন</label>
+                    <input type="number" class="form-control" id="editVitamins">
+                </div>
+                <div class="mb-3">
+                    <label for="editMaxTemperature" class="form-label">সর্বোচ্চ তাপমাত্রা (°C)</label>
+                    <input type="number" class="form-control" id="editMaxTemperature">
+                </div>
+                <div class="mb-3">
+                    <label for="editMinTemperature" class="form-label">সর্বনিম্ন তাপমাত্রা (°C)</label>
+                    <input type="number" class="form-control" id="editMinTemperature">
+                </div>
+                <div class="mb-3">
+                    <label for="editLowHumidity" class="form-label">ন্যূনতম আর্দ্রতা (%)</label>
+                    <input type="number" class="form-control" id="editLowHumidity">
+                </div>
+                <div class="mb-3">
+                    <label for="editHighHumidity" class="form-label">সর্বোচ্চ আর্দ্রতা (%)</label>
+                    <input type="number" class="form-control" id="editHighHumidity">
+                </div>
+                <div class="mb-3">
+                    <label for="editSalmonella" class="form-label">স্যালমোনেলা (CFU/গ্রাম)</label>
+                    <input type="text" class="form-control" id="editSalmonella">
+                </div>
+                <div class="mb-3">
+                    <label for="editEColi" class="form-label">ই.কোলাই (CFU/গ্রাম)</label>
+                    <input type="text" class="form-control" id="editEColi">
+                </div>
+                <div class="mb-3">
+                    <label for="editPesticides" class="form-label">কীটনাশক (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="editPesticides">
+                </div>
+                <div class="mb-3">
+                    <label for="editHeavyMetals" class="form-label">ভারী ধাতু (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="editHeavyMetals">
+                </div>
+                <div class="mb-3">
+                    <label for="editHerbicides" class="form-label">উদ্ভিদনাশক (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="editHerbicides">
+                </div>
+                <div class="mb-3">
+                    <label for="editAdditives" class="form-label">কেমিক্যালস্ (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="editAdditives">
+                </div>
+                <div class="mb-3">
+                    <label for="editPreservatives" class="form-label">সংরক্ষক পদার্থ (মি.গ্রা./কেজি)</label>
+                    <input type="number" class="form-control" id="editPreservatives">
+                </div>
+                <div class="mb-3">
+                    <label for="editUnauthorizedSubstances" class="form-label">অননুমোদিত পদার্থ</label>
+                    <input type="text" class="form-control" id="editUnauthorizedSubstances">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductionDate" class="form-label">উৎপাদনের তারিখ</label>
+                    <input type="date" class="form-control" id="editProductionDate">
+                </div>
+                <div class="mb-3">
+                    <label for="editExpiryDate" class="form-label">মেয়াদ উত্তীর্ণ তারিখ</label>
+                    <input type="date" class="form-control" id="editExpiryDate">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductId" class="form-label">পণ্যের আইডি</label>
+                    <input type="text" class="form-control" id="editProductId">
+                </div>
+                <div class="mb-3">
+                    <label for="editFarmEmployeeId" class="form-label">খাদ্য নিরাপত্তা কর্মকর্তা আইডি</label>
+                    <input type="text" class="form-control" id="editFarmEmployeeId">
+                </div>
+                <div class="mb-3">
+                    <label for="editSeedDistributionId" class="form-label">বীজ বিতরণ আইডি</label>
+                    <input type="text" class="form-control" id="editSeedDistributionId">
+                </div>
+                <div class="mb-3">
+                  <label for="editCondition" class="form-label">অবস্থা</label>
+                  <select class="form-control" id="editCondition">
+                      <option value="যাচাইয়ের অপেক্ষায়">যাচাইয়ের অপেক্ষায়</option>
+                      <option value="অনুমোদিত">অনুমোদিত</option>
+                      <option value="অননুমোদিত">অননুমোদিত</option>
+                  </select>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Product Modal -->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteProductMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+            </div>
+        </div>
+    </div>
+</div>
+
   <!-- JS Scripts -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+  <script>
+    function populateEditModal(lotNumber, farmID, origin, quantity, temperature) {
+      document.getElementById('editLotNumber').value = lotNumber;
+      document.getElementById('editFarmID').value = farmID;
+      document.getElementById('editOrigin').value = origin;
+      document.getElementById('editQuantity').value = quantity;
+      document.getElementById('editTemperature').value = temperature;
+    }
+
+    function populateDeleteModal(lotNumber) {
+        document.getElementById('deleteProductMessage').textContent = `আপনি কি নিশ্চিত যে আপনি লট নাম্বার "${lotNumber}" এর পণ্যটি মুছে ফেলতে চান?`;
+    }
+</script>
 </body>
 
 </html>
