@@ -108,6 +108,13 @@
                 </ol>
                 <h6 class="font-weight-bolder mb-0">গুদাম ব্যবস্থাপনা</h6>
               </nav>
+              <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                  <div class="input-group">
+                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+                  </div>
+                </div>
             </div>
         </nav>
         
@@ -117,7 +124,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0 d-flex justify-content-between">
-                            <h6>গুদামের পণ্য তালিকা</h6>
+                            <h6>ব্যাচ পণ্য তালিকা</h6>
                             <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">নতুন পণ্য যোগ করুন</button>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -126,10 +133,10 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">স্টক</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">সংরক্ষণ অবস্থা</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">আর্দ্রতা (%)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">তাপমাত্রা (°C)</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">খামারের নাম</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">আগমনের তারিখ</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">প্যাকেজিং তারিখ</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
                                         </tr>
                                     </thead>
@@ -180,9 +187,88 @@
                                     </tbody>
                                 </table>
                             </div>
+                            
                         </div>
+                        
                     </div>
                 </div>
+                <div class="card mb-4">
+                    <div class="card-header pb-0 d-flex justify-content-between">
+                        <h6>প্যাকেজ  পণ্য তালিকা</h6>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">নতুন পণ্য যোগ করুন</button>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">ব্যাচ নম্বর</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বারকোড</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পরিমাণ</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">মোট পরিমাণ</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">প্যাকেজিং তারিখ</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <p class="text-sm font-weight-bold mb-0">আপেল</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="text-xs font-weight-bold">৫০০</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="badge badge-sm bg-gradient-success">ভাল</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">৬০%</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">৮°C</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">৮°C</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আপেল', 500, 'ভাল', 60, 8)">সম্পাদনা</button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আপেল')">মুছে ফেলুন</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <p class="text-sm font-weight-bold mb-0">আলু</p>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="text-xs font-weight-bold">৮০০</span>
+                                        </td>
+                                        <td class="align-middle">
+                                            <span class="badge badge-sm bg-gradient-warning">মধ্যম</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">৬৫%</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">১০°C</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">৮°C</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Add more rows as needed -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             </div>
         </div>
     </main>

@@ -374,7 +374,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="trackingStatus" class="form-label">বিতরণ পরিমাণ</label>
-                            <input type="text" class="form-control" id="trackingRFID">
+                            <input type="number" class="form-control" id="trackingRFID">
                         </div>
                         <div class="mb-3">
                             <label for="trackingSource" class="form-label">দোকানের নাম 	</label>
@@ -418,7 +418,78 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div> 
+    
+        <!-- Edit Product Modal -->
+        <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="editProductName" class="form-label">বারকোড</label>
+                                <input type="text" class="form-control" id="editProductName">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProductStock" class="form-label">লটনম্বর</label>
+                                <input type="text" class="form-control" id="editProductStock">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProductStock" class="form-label">প্যাকেজিং তারিখ</label>
+                                <input type="date" class="form-control" id="editProductStock">
+                            </div>
+                            <!-- <div class="mb-3">
+                                <label for="editProductCondition" class="form-label">প্যাকেজিং তারিখ</label>
+                                <select class="form-control" id="editProductCondition">
+                                    <option value="ভাল">ভাল</option>
+                                    <option value="মধ্যম">মধ্যম</option>
+                                    <option value="খারাপ">খারাপ</option>
+                                </select>
+                            </div> -->
+                            <div class="mb-3">
+                                <label for="editProductHumidity" class="form-label">মেয়াদ </label>
+                                <input type="date" class="form-control" id="editProductHumidity">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProductTemperature" class="form-label">মোট প্যাকেজের সংখ্যা</label>
+                                <input type="number" class="form-control" id="editProductTemperature">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editProductTemperature" class="form-label">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</label>
+                                <input type="number" class="form-control" id="editProductTemperature">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                        <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Delete Product Modal -->
+        <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="deleteProductMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                        <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- JS Scripts -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
