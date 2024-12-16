@@ -2,6 +2,53 @@
 <html lang="en">
 
 <head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>পণ্য ট্র্যাকিং</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
+    <!-- Leaflet CSS (for the map) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet" />
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .card-header {
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .container {
+            margin: 20px;
+        }
+    </style>  
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>পণ্য ট্র্যাকিং - বিতরণকারী</title>
@@ -124,9 +171,11 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">RFID</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">অবস্থা</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">উৎস/গন্তব্য</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">খামারের নাম</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">গুদামের নাম</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">উৎস</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">সংরক্ষিত</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">গন্তব্য</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">তারিখ</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
                                         </tr>
@@ -148,6 +197,12 @@
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
                                             </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">ঢাকা</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">ঢাকা</span>
+                                            </td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductTrackingModal" onclick="populateEditModal('আপেল', 'RFID1234', 'গুদামে', 'জয়পুরহাট', '১৫/১১/২০২৪')">সম্পাদনা</button>
                                             </td>
@@ -168,6 +223,12 @@
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
                                             </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">ঢাকা</span>
+                                            </td>
+                                            <td class="align-middle">
+                                                <span class="text-xs font-weight-bold">ঢাকা</span>
+                                            </td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductTrackingModal" onclick="populateEditModal('আলু', 'RFID5678', 'বিতরণ করা হয়েছে', 'ঢাকা', '২০/১১/২০২৪')">সম্পাদনা</button>
                                             </td>
@@ -175,15 +236,6 @@
                                         <!-- Add more rows as needed -->
                                     </tbody>
                                 </table>
-                                <script>
-                                    var map = L.map('map').setView([37.7749, -122.4194], 13);
-                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    }).addTo(map);
-                                    L.marker([37.7749, -122.4194]).addTo(map)
-                                        .bindPopup('San Francisco')
-                                        .openPopup();
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -198,75 +250,58 @@
             .bindPopup('San Francisco')
             .openPopup();
     </script>
-            <!-- Pie Chart for Product Tracking Summary and Distributor Table -->
-            <div class="row mt-4">
-                <div class="col-lg-6">
-                    <div class="card h-100">
-                        <div class="card-header pb-0">
-                            <h6>পণ্য ট্র্যাকিং সারাংশ</h6>
-                        </div>
-                        <div class="card-body p-3">
-                            <canvas id="productTrackingChart" height="300"></canvas>
-                        </div>
-                    </div>
+            <!-- Pie Chart and Map for Product Tracking Summary -->
+<!-- Row for Product Tracking Summary with Map -->
+    <div class="row mt-4">
+        <!-- Pie Chart for Product Tracking Summary -->
+        <div class="col-lg-6">
+            <div class="card h-100">
+                <div class="card-header pb-0">
+                    <h6>পণ্য ট্র্যাকিং সারাংশ</h6>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card h-100">
-                        <div class="card-header pb-0 d-flex justify-content-between">
-                            <h6>উৎস এবং বিতরণকারীদের তালিকা</h6>
-                            <div>
-                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addSourceModal">নতুন উৎস যোগ করুন</button>
-                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addDistributorModal">নতুন বিতরণকারী যোগ করুন</button>
-                            </div>
-                        </div>
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">উৎসের নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">মুছে ফেলুন</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">জয়পুরহাট</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-danger">মুছে ফেলুন</button>
-                                            </td>
-                                        </tr>
-                                        <!-- Add more sources as needed -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="table-responsive p-0 mt-4">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বিতরণকারীর নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">মুছে ফেলুন</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="align-middle">
-                                                <span class="text-xs font-weight-bold">ঢাকা ডিস্ট্রিবিউশন</span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <button class="btn btn-sm btn-danger">মুছে ফেলুন</button>
-                                            </td>
-                                        </tr>
-                                        <!-- Add more distributors as needed -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card-body p-3">
+                    <canvas id="productTrackingChart" height="300"></canvas>
                 </div>
             </div>
         </div>
+
+        <!-- Map beside the Pie Chart -->
+        <div class="col-lg-6">
+            <div class="card h-100">
+                <div class="card-header pb-0">
+                    <h6>পণ্য ট্র্যাকিং মানচিত্র</h6>
+                </div>
+                <div class="card-body p-3">
+                    <div id="map" style="height: 500; "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS and Map Initialization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([23.685, 90.3563], 6); // Centered on Bangladesh
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add markers for cities
+        var locations = [
+            { name: "ঢাকা", coords: [23.8103, 90.4125] },
+            { name: "চট্টগ্রাম", coords: [22.3569, 91.7832] },
+            { name: "খুলনা", coords: [22.8456, 89.5403] },
+            { name: "বরিশাল", coords: [22.7010, 90.3535] }
+        ];
+
+        locations.forEach(location => {
+            L.marker(location.coords).addTo(map)
+                .bindPopup(location.name);
+        });
+    </script>
+
+
     </main>
 
     <!-- Add Product Tracking Modal -->
@@ -284,19 +319,23 @@
                             <input type="text" class="form-control" id="trackingProductName">
                         </div>
                         <div class="mb-3">
-                            <label for="trackingRFID" class="form-label">RFID</label>
+                            <label for="trackingRFID" class="form-label">খামারের নাম</label>
                             <input type="text" class="form-control" id="trackingRFID">
                         </div>
                         <div class="mb-3">
-                            <label for="trackingStatus" class="form-label">অবস্থা</label>
-                            <select class="form-control" id="trackingStatus">
-                                <option value="আসছে">আসছে</option>
-                                <option value="গুদামে">গুদামে</option>
-                                <option value="বিতরণ করা হয়েছে">বিতরণ করা হয়েছে</option>
-                            </select>
+                            <label for="trackingStatus" class="form-label">গুদামের নাম</label>
+                            <input type="text" class="form-control" id="trackingRFID">
                         </div>
                         <div class="mb-3">
-                            <label for="trackingSource" class="form-label">উৎস/গন্তব্য</label>
+                            <label for="trackingSource" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="trackingSource">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trackingSource" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="trackingSource">
+                        </div>
+                        <div class="mb-3">
+                            <label for="trackingSource" class="form-label">গন্তব্য</label>
                             <input type="text" class="form-control" id="trackingSource">
                         </div>
                         <div class="mb-3">
@@ -328,27 +367,114 @@
                             <input type="text" class="form-control" id="editTrackingProductName">
                         </div>
                         <div class="mb-3">
-                            <label for="editTrackingRFID" class="form-label">RFID</label>
+                            <label for="editTrackingRFID" class="form-label">খামারের নাম</label>
                             <input type="text" class="form-control" id="editTrackingRFID">
                         </div>
                         <div class="mb-3">
-                            <label for="editTrackingStatus" class="form-label">অবস্থা</label>
-                            <select class="form-control" id="editTrackingStatus">
-                                <option value="আসছে">আসছে</option>
-                                <option value="গুদামে">গুদামে</option>
-                                <option value="বিতরণ করা হয়েছে">বিতরণ করা হয়েছে</option>
-                            </select>
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
                         </div>
                         <div class="mb-3">
-                            <label for="editTrackingSource" class="form-label">উৎস/গন্তব্য</label>
-                            <input type="text" class="form-control" id="editTrackingSource">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">উৎস</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">সংরক্ষিত</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTrackingRFID" class="form-label">গন্তব্য</label>
+                            <input type="text" class="form-control" id="editTrackingRFID">
+                        </div>
                         </div>
                         <div class="mb-3">
                             <label for="editTrackingDate" class="form-label">তারিখ</label>
                             <input type="date" class="form-control" id="editTrackingDate">
                         </div>
-                    </form>
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
                     <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
@@ -445,6 +571,7 @@
           }
         });
     </script>
+    
 </body>
 
 </html>
