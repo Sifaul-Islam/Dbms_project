@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>প্রতিবেদন এবং বিশ্লেষণ - বিতরণকারী</title>
+  <title>প্রতিবেদন এবং বিশ্লেষণ - Reports & Analytics</title>
 
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -19,14 +19,16 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="#" target="_blank">
                 <img src="../Know Your Grass/kng1.png" class="navbar-brand-img h-100" alt="main_logo">
+                
             </a>
         </div>
+    
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main" style="height: auto;">
             <ul class="navbar-nav">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../Know Your Grass/distributors.html">
+                    <a class="nav-link" href="../Know Your Grass/warehouse_manager_dashboard.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-tachometer-alt text-primary"></i>
                         </div>
@@ -35,8 +37,8 @@
                 </li>
     
                 <!-- Inventory Management -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="../pages/বিতরণকারী গুদাম ব্যবস্থাপনা.html">
+                <li class="nav-item">
+                    <a class="nav-link" href="../pages/warehouse_management.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-warehouse text-info"></i>
                         </div>
@@ -44,19 +46,19 @@
                     </a>
                 </li>
     
-                 Storage Conditions 
+                <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী সংরক্ষণ অবস্থা.html">
+                    <a class="nav-link" href="../pages/warehouse_storage.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
                         <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
                     </a>
-                </li> -->
+                </li>
     
                 <!-- Quality Control -->
                 <!-- <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী গুণমান যাচাইকরণ.html">
+                    <a class="nav-link" href="../pages/warehouse_quality_verification.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-check-circle text-danger"></i>
                         </div>
@@ -66,7 +68,7 @@
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/বিতরণকারী পণ্য ট্র্যাকিং.html">
+                    <a class="nav-link" href="../pages/warehouse_product_tracking.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-route text-warning"></i>
                         </div>
@@ -76,21 +78,22 @@
     
                 <!-- Data Reports -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="./বিতরণকারী প্রতিবেদন এবং বিশ্লেষণ.html">
+                    <a class="nav-link active" href="../pages/warehouse_report.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-chart-bar text-secondary"></i>
                         </div>
                         <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
                     </a>
                 </li>
+                <!-- Logout -->
                 <li class="nav-item">
                   <a class="nav-link" href="../Know Your Grass/login.html">
                       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                            <i class="fas fa-sign-out-alt text-danger"></i>
                       </div>
                       <span class="nav-link-text ms-1">লগ আউট</span>                        
-                  </a>    
-              </li>                
+                  </a>
+              </li>
             </ul>
         </div>
     </aside>
@@ -111,7 +114,8 @@
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
                       </div>
-                </div>
+                    </div>
+                    
             </div>
         </nav>
 
@@ -282,65 +286,65 @@
                 </div>
             </div>
 
-            <!-- Product Entry and Distribution Over Time Chart -->
-            <div class="row mt-2">
+ <!-- Product Entry and Distribution Over Time Chart -->
+ <div class="row mt-2">
                 
-                    <div class="card h-30">
-                        <div class="card-header pb-0">
-                            <div class="card-header pb-0">
-                                <h6>প্রভাবিত ব্যাচের স্থিতি</h6>
-                              </div>
-                        </div>
-                        <div class="card-body p-3">
-                            <canvas id="batchStatusChart" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Include Chart.js Library -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-        <script>
-          // Initializing the Batch Status Chart
-          const ctx = document.getElementById('batchStatusChart').getContext('2d');
-          const batchStatusChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ['খামার', 'প্রসেসিং', 'স্টোরেজ', 'বিতরণ'], // Labels for stages
-              datasets: [{
-                label: 'প্রভাবিত ব্যাচের সংখ্যা',
-                data: [5, 10, 3, 8], // Sample data for affected batches at each stage
-                backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
-                borderColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              responsive: true,
-              plugins: {
-                legend: {
-                  display: true,
-                  position: 'top'
-                }
-              },
-              scales: {
-                y: {
-                  beginAtZero: true,
-                  title: {
-                    display: true,
-                    text: 'প্রভাবিত ব্যাচের সংখ্যা'
-                  }
-                },
-                x: {
-                  title: {
-                    display: true,
-                    text: 'ধাপসমূহ'
-                  }
-                }
-              }
-            }
-          });
-        </script>
+    <div class="card h-30">
+        <div class="card-header pb-0">
+            <div class="card-header pb-0">
+                <h6>প্রভাবিত ব্যাচের স্থিতি</h6>
+              </div>
+        </div>
+        <div class="card-body p-3">
+            <canvas id="batchStatusChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Include Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// Initializing the Batch Status Chart
+const ctx = document.getElementById('batchStatusChart').getContext('2d');
+const batchStatusChart = new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['খামার', 'প্রসেসিং', 'স্টোরেজ', 'বিতরণ'], // Labels for stages
+datasets: [{
+label: 'প্রভাবিত ব্যাচের সংখ্যা',
+data: [5, 10, 3, 8], // Sample data for affected batches at each stage
+backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
+borderColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
+borderWidth: 1
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+  display: true,
+  position: 'top'
+}
+},
+scales: {
+y: {
+  beginAtZero: true,
+  title: {
+    display: true,
+    text: 'প্রভাবিত ব্যাচের সংখ্যা'
+  }
+},
+x: {
+  title: {
+    display: true,
+    text: 'ধাপসমূহ'
+  }
+}
+}
+}
+});
+</script>
 
             <!-- Product Distribution Report -->
             <div class="row mt-4">
@@ -531,7 +535,6 @@
                 </div>
             </div>
         </div>
-        
     <!-- JS Scripts -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

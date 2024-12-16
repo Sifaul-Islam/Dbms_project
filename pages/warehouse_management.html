@@ -19,7 +19,7 @@
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="#" target="_blank">
                 <img src="../Know Your Grass/kng1.png" class="navbar-brand-img h-100" alt="main_logo">
-                <br><span class="ms-1 font-weight-bold">Warehouse Manager</span>
+                
             </a>
         </div>
     
@@ -57,14 +57,14 @@
                 </li>
     
                 <!-- Quality Control -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="warehouse_quality_verification.html">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-check-circle text-danger"></i>
                         </div>
                         <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
                     </a>
-                </li>
+                </li> -->
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
@@ -195,7 +195,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0 d-flex justify-content-between">
                         <h6>প্যাকেজ  পণ্য তালিকা</h6>
-                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">নতুন পণ্য যোগ করুন</button>
+                        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal2">নতুন পণ্য যোগ করুন</button>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
@@ -232,7 +232,7 @@
                                             <span class="text-xs font-weight-bold">৮°C</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আপেল', 500, 'ভাল', 60, 8)">সম্পাদনা</button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal2" onclick="populateEditModal('আপেল', 500, 'ভাল', 60, 8)">সম্পাদনা</button>
                                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আপেল')">মুছে ফেলুন</button>
                                         </td>
                                     </tr>
@@ -256,7 +256,7 @@
                                             <span class="text-xs font-weight-bold">৮°C</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal2" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
                                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
                                         </td>
                                     </tr>
@@ -288,24 +288,28 @@
                             <input type="text" class="form-control" id="productName">
                         </div>
                         <div class="mb-3">
-                            <label for="productStock" class="form-label">স্টক</label>
-                            <input type="number" class="form-control" id="productStock">
+                            <label for="productStock" class="form-label">খামারের নাম</label>
+                            <input type="text" class="form-control" id="productStock">
                         </div>
                         <div class="mb-3">
-                            <label for="productCondition" class="form-label">সংরক্ষণ অবস্থা</label>
+                            <label for="productStock" class="form-label">লট নম্বর</label>
+                            <input type="text" class="form-control" id="productStock">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="productCondition" class="form-label">লট নম্বর</label>
                             <select class="form-control" id="productCondition">
                                 <option value="ভাল">ভাল</option>
                                 <option value="মধ্যম">মধ্যম</option>
                                 <option value="খারাপ">খারাপ</option>
                             </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="productHumidity" class="form-label">আগমনের তারিখ</label>
+                            <input type="date" class="form-control" id="productHumidity">
                         </div>
                         <div class="mb-3">
-                            <label for="productHumidity" class="form-label">আর্দ্রতা (%)</label>
-                            <input type="number" class="form-control" id="productHumidity">
-                        </div>
-                        <div class="mb-3">
-                            <label for="productTemperature" class="form-label">তাপমাত্রা (°C)</label>
-                            <input type="number" class="form-control" id="productTemperature">
+                            <label for="productTemperature" class="form-label">প্যাকেজিং তারিখ</label>
+                            <input type="date" class="form-control" id="productTemperature">
                         </div>
                     </form>
                 </div>
@@ -316,13 +320,63 @@
             </div>
         </div>
     </div>
-
+    <!-- Add Product Modal -->
+    <div class="modal fade" id="addProductModal2" tabindex="-1" aria-labelledby="addProductModalLabel2" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addProductModalLabel2">নতুন পণ্য যোগ করুন</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">পণ্যের নাম</label>
+                            <input type="text" class="form-control" id="productName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productStock" class="form-label">ব্যাচ নম্বর</label>
+                            <input type="text" class="form-control" id="productStock">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productStock" class="form-label">বারকোড</label>
+                            <input type="text" class="form-control" id="productStock">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="productCondition" class="form-label">লট নম্বর</label>
+                            <select class="form-control" id="productCondition">
+                                <option value="ভাল">ভাল</option>
+                                <option value="মধ্যম">মধ্যম</option>
+                                <option value="খারাপ">খারাপ</option>
+                            </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="productHumidity" class="form-label">পরিমাণ</label>
+                            <input type="number" class="form-control" id="productHumidity">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productTemperature" class="form-label">মোট পরিমাণ</label>
+                            <input type="number" class="form-control" id="productTemperature">
+                        </div>
+                        <div class="mb-3">
+                            <label for="productTemperature" class="form-label">প্যাকেজিং তারিখ</label>
+                            <input type="date" class="form-control" id="productTemperature">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Edit Product Modal -->
     <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
+                    <h5 class="modal-title" id="editProductModalLabel2">পণ্য সম্পাদনা করুন</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -332,23 +386,27 @@
                             <input type="text" class="form-control" id="editProductName">
                         </div>
                         <div class="mb-3">
-                            <label for="editProductStock" class="form-label">স্টক</label>
-                            <input type="number" class="form-control" id="editProductStock">
+                            <label for="editProductName" class="form-label">খামারের নাম</label>
+                            <input type="text" class="form-control" id="editProductName">
                         </div>
                         <div class="mb-3">
+                            <label for="editProductStock" class="form-label">লট নম্বর</label>
+                            <input type="text" class="form-control" id="editProductStock">
+                        </div>
+                        <!-- <div class="mb-3">
                             <label for="editProductCondition" class="form-label">সংরক্ষণ অবস্থা</label>
                             <select class="form-control" id="editProductCondition">
                                 <option value="ভাল">ভাল</option>
                                 <option value="মধ্যম">মধ্যম</option>
                                 <option value="খারাপ">খারাপ</option>
                             </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="editProductHumidity" class="form-label">আগমনের তারিখ</label>
+                            <input type="date" class="form-control" id="editProductHumidity">
                         </div>
                         <div class="mb-3">
-                            <label for="editProductHumidity" class="form-label">আর্দ্রতা (%)</label>
-                            <input type="number" class="form-control" id="editProductHumidity">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editProductTemperature" class="form-label">তাপমাত্রা (°C)</label>
+                            <label for="editProductTemperature" class="form-label">প্যাকেজিং তারিখ</label>
                             <input type="number" class="form-control" id="editProductTemperature">
                         </div>
                     </form>
@@ -360,6 +418,57 @@
             </div>
         </div>
     </div>
+<!-- Edit Product Modal -->
+<div class="modal fade" id="editProductModal2" tabindex="-1" aria-labelledby="editProductModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProductModalLabel2">পণ্য সম্পাদনা করুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="editProductName" class="form-label">পণ্যের নাম</label>
+                        <input type="text" class="form-control" id="editProductName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductName" class="form-label">ব্যাচ নম্বর</label>
+                        <input type="text" class="form-control" id="editProductName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductStock" class="form-label">বারকোড</label>
+                        <input type="text" class="form-control" id="editProductStock">
+                    </div>
+                    <!-- <div class="mb-3">
+                        <label for="editProductCondition" class="form-label">সংরক্ষণ অবস্থা</label>
+                        <select class="form-control" id="editProductCondition">
+                            <option value="ভাল">ভাল</option>
+                            <option value="মধ্যম">মধ্যম</option>
+                            <option value="খারাপ">খারাপ</option>
+                        </select>
+                    </div> -->
+                    <div class="mb-3">
+                        <label for="editProductHumidity" class="form-label">পরিমাণ</label>
+                        <input type="number" class="form-control" id="editProductHumidity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductHumidity" class="form-label">মোট পরিমাণ</label>
+                        <input type="number" class="form-control" id="editProductHumidity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editProductTemperature" class="form-label">প্যাকেজিং তারিখ</label>
+                        <input type="number" class="form-control" id="editProductTemperature">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <!-- Delete Product Modal -->
     <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
