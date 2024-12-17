@@ -149,8 +149,8 @@
                         <i class="fas fa-boxes text-lg text-white opacity-10"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">মোট জিনিসপত্র</p>
-                        <h5 class="font-weight-bolder mb-0">১,৮০০ আইটেম</h5>
+                        <p class="text-sm mb-0 text-capitalize">মোট কক্ষ</p>
+                        <h5 class="font-weight-bolder mb-0">৩</h5>
                       </div>
                     </div>
                   </div>
@@ -162,34 +162,34 @@
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                        <i class="fas fa-thermometer-half text-lg text-white opacity-10"></i>
+                        <i class="fas fa-box text-4xl text-white opacity-10"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">সংরক্ষণের তাপমাত্রা</p>
-                        <h5 class="font-weight-bolder mb-0">৮°C</h5>
+                        <p class="text-sm mb-0 text-capitalize">বিতরণ করা হয়েছে</p>
+                        <h5 class="font-weight-bolder mb-0">৮০০</h5>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
           
-              <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <div class="col-lg-4 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
                     <div class="d-flex">
                       <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
-                        <i class="fas fa-percent text-lg text-white opacity-10"></i>
+                        <i class="fas fa-seedling text-4xl text-white opacity-10"></i>
                       </div>
                       <div class="ms-3">
-                        <p class="text-sm mb-0 text-capitalize">আর্দ্রতা</p>
-                        <h5 class="font-weight-bolder mb-0">৬০%</h5>
+                        <p class="text-sm mb-0 text-capitalize">খামার থেকে উৎপাদিত পণ্য</p>
+                        <h5 class="font-weight-bolder mb-0">১৫০০</h5>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
           
-              <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <!-- <div class="col-lg-3 col-md-6 col-12 mb-4">
                 <div class="card">
                   <div class="card-body p-3">
                     <div class="d-flex">
@@ -204,7 +204,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           
             <!-- Inventory Bar Chart -->
             <div class="row mt-4">
@@ -248,14 +248,22 @@
     new Chart(ctxInventoryBar, {
       type: 'bar',
       data: {
-        labels: ['Stored', 'In Transit', 'Awaiting Inspection'],
+        labels: ['সঞ্চিত', 'ট্রানজিটে', 'বিতরণ করা হয়েছে'],
         datasets: [{
-          label: 'Inventory Levels',
-          data: [55, 25, 20],
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
-        }]
+            label: 'তাপমাত্রা (°C)',
+              data: [30, 50, 20],
+              backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)'
+              ],
+              borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+              ],
+              borderWidth: 1
+            }]
       },
       options: {
         responsive: true,
