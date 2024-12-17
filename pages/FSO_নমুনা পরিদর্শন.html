@@ -82,14 +82,14 @@
         </li>
 
         <!-- Storage Conditions -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_সংরক্ষণ অবস্থা.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-thermometer-half text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
           </a>
-        </li>
+        </li> -->
 
         <!-- Quality Control -->
         <li class="nav-item">
@@ -112,14 +112,14 @@
         </li>
 
         <!-- Data Reports -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_প্রতিবেদন এবং বিশ্লেষণ.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-chart-bar text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
           </a>
-        </li>
+        </li> -->
 
         <!--log out-->
         <li class="nav-item">
@@ -223,7 +223,7 @@
                                           <span class="text-xs font-weight-bold">11/12/21</span>
                                         </td>
                                         <td class="align-middle">
-                                            <span class="badge badge-sm bg-gradient-danger">যাচাইয়ের অপেক্ষায়</span>
+                                            <span class="text-xs font-weight-bold">যাচাইয়ের অপেক্ষায়</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('122', 'আপেল', 'Dhaka', '২ টন', 'স্বপ্ন খামার', '11/12/21', 'যাচাইয়ের অপেক্ষায়')">সম্পাদনা</button>
@@ -250,7 +250,7 @@
                                         <span class="text-xs font-weight-bold">08/12/21</span>
                                       </td>
                                       <td class="align-middle">
-                                          <span class="badge badge-sm bg-gradient-success">
+                                          <span class="text-xs font-weight-bold">
                                             অনুমোদিত</span>
                                       </td>
                                       <td class="align-middle text-center">
@@ -289,6 +289,10 @@
                   <div class="mb-3">
                     <label for="farmID" class="form-label">খামার আইডি</label>
                     <input type="text" class="form-control" id="farmID">
+                  </div>
+                  <div class="mb-3">
+                    <label for="farmName" class="form-label">খামারের নাম</label>
+                    <input type="text" class="form-control" id="farmName">
                   </div>
                   <div class="mb-3">
                     <label for="origin" class="form-label">উৎপত্তিস্থল</label>
@@ -416,20 +420,23 @@
                     <label for="seedDistributionId" class="form-label">বীজ বিতরণ আইডি</label>
                     <input type="text" class="form-control" id="seedDistributionId">
                 </div>
-                    <div class="mb-3">
-                        <label for="Condition" class="form-label">অবস্থা</label>
-                        <select class="form-control" id="Condition">
-                            <option value="যাচাইয়ের অপেক্ষায়">যাচাইয়ের অপেক্ষায়</option>
-                            <option value="অনুমোদিত">অনুমোদিত</option>
-                            <option value="অননুমোদিত">অননুমোদিত</option>
-                        </select>
-                    </div>
+
+                <div class="mb-3">
+                    <label for="Condition" class="form-label">অবস্থা</label>
+                    <select class="form-control" id="Condition">
+                        <option value="যাচাইয়ের অপেক্ষায়">যাচাইয়ের অপেক্ষায়</option>
+                        <option value="অনুমোদিত">অনুমোদিত</option>
+                        <option value="অননুমোদিত">অননুমোদিত</option>
+                    </select>
+                </div>
                     
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+                <!-- <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button> -->
+                <button type="button" class="btn btn-primary" onclick="addSample()">সংরক্ষণ করুন</button>
+
             </div>
         </div>
     </div>
@@ -456,6 +463,10 @@
                 <div class="mb-3">
                     <label for="editFarmId" class="form-label">খামার আইডি</label>
                     <input type="text" class="form-control" id="editFarmId">
+                </div>
+                <div class="mb-3">
+                  <label for="editFarmName" class="form-label">খামারের নাম</label>
+                  <input type="text" class="form-control" id="editFarmName">
                 </div>
                 <div class="mb-3">
                     <label for="editOrigin" class="form-label">উৎপত্তি</label>
@@ -581,6 +592,7 @@
                     <label for="editSeedDistributionId" class="form-label">বীজ বিতরণ আইডি</label>
                     <input type="text" class="form-control" id="editSeedDistributionId">
                 </div>
+                
                 <div class="mb-3">
                   <label for="editCondition" class="form-label">অবস্থা</label>
                   <select class="form-control" id="editCondition">
@@ -592,9 +604,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+              <button type="button" class="btn btn-primary" onclick="updateSample()">সংরক্ষণ করুন</button>
             </div>
+            
         </div>
     </div>
 </div>
@@ -623,13 +636,158 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
   <script>
-    function populateEditModal(lotNumber, farmID, origin, quantity, temperature) {
-      document.getElementById('editLotNumber').value = lotNumber;
-      document.getElementById('editFarmID').value = farmID;
-      document.getElementById('editOrigin').value = origin;
-      document.getElementById('editQuantity').value = quantity;
-      document.getElementById('editTemperature').value = temperature;
+
+    function addSample() {
+      // Get input values
+      const lotNumber = document.getElementById('lotNumber').value;
+      const productName = document.getElementById('productName').value;
+      const origin = document.getElementById('origin').value;
+      const harvestQuantity = document.getElementById('harvestQuantity').value;
+      const farmName = document.getElementById('farmName').value;
+      const productionDate = document.getElementById('productionDate').value;
+      const Condition = document.getElementById('Condition').value;
+
+      // Add a new row to the table
+      const table = document.querySelector('table tbody');
+      const newRow = document.createElement('tr');
+
+      newRow.innerHTML = `
+          <td class="align-middle">${lotNumber}</td>
+          <td class="align-middle">${productName}</td>
+          <td class="align-middle">${origin}</td>
+          <td class="align-middle">${harvestQuantity}</td>
+          <td class="align-middle">${farmName}</td>
+          <td class="align-middle">${productionDate}</td>
+          <td class="align-middle">${Condition}</td>
+          <td class="align-middle text-center">
+            <button class="btn btn-sm btn-primary edit-button">সম্পাদনা</button>
+          </td>
+      `;
+
+      // Append the new row to the table
+      table.appendChild(newRow);
+
+      // Clear the form
+      document.getElementById('lotNumber').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('origin').value = '';
+      document.getElementById('harvestQuantity').value = '';
+      document.getElementById('farmName').value = '';
+      document.getElementById('productionDate').value = '';
+      document.getElementById('Condition').value = 'যাচাইয়ের অপেক্ষায়';
+
+      // Close the modal
+      document.querySelector('#addProductModal .btn-close').click();
     }
+
+
+    document.querySelector('table tbody').addEventListener('click', function (event) {
+    if (event.target.classList.contains('edit-button')) {
+      const row = event.target.closest('tr');
+
+      // Extract data from the row
+      const lotNumber = row.children[0].textContent.trim();
+      const productName = row.children[1].textContent.trim();
+      const origin = row.children[2].textContent.trim();
+      const harvestQuantity = row.children[3].textContent.trim();
+      const farmName = row.children[4].textContent.trim();
+      const productionDate = row.children[5].textContent.trim();
+      const Condition = row.children[6].textContent.trim();
+
+      console.log('Edit button clicked:', {
+        lotNumber,
+        productName,
+        origin,
+        harvestQuantity,
+        farmName,
+        productionDate,
+        Condition,
+      });
+
+      // Call the function to populate modal
+      populateEditModal(lotNumber, productName, origin, harvestQuantity, farmName, productionDate, Condition);
+
+      // Trigger the modal
+      const editModal = new bootstrap.Modal(document.getElementById('editProductModal'));
+      editModal.show();
+    }
+  });
+
+
+
+    function populateEditModal(lotNumber, productName, origin, harvestQuantity, farmName, productionDate, Condition) {
+    console.log('Populating modal with:', {
+      lotNumber,
+      productName,
+      origin,
+      harvestQuantity,
+      farmName,
+      productionDate,
+      Condition,
+    });
+
+    document.getElementById('editLotNumber').value = lotNumber;
+    document.getElementById('editProductName').value = productName;
+    document.getElementById('editOrigin').value = origin;
+    document.getElementById('editHarvestQuantity').value = harvestQuantity;
+    document.getElementById('editFarmName').value = farmName;
+    document.getElementById('editProductionDate').value = productionDate;
+    document.getElementById('editCondition').value = Condition;
+
+    // Save reference to the row being edited
+    editingRow = [...document.querySelectorAll('table tbody tr')].find(
+      row => row.children[0].textContent.trim() === lotNumber
+    );
+  }
+
+
+
+    let editingRow = null; // Global variable to store the row being edited
+
+    function updateSample() {
+      if (!editingRow) {
+        console.error('No row selected for editing.');
+        return;
+      }
+
+      // Get updated values from the form
+      const lotNumber = document.getElementById('editLotNumber').value;
+      const productName = document.getElementById('editProductName').value;
+      const origin = document.getElementById('editOrigin').value;
+      const harvestQuantity = document.getElementById('editHarvestQuantity').value;
+      const farmName = document.getElementById('editFarmName').value;
+      const productionDate = document.getElementById('editProductionDate').value;
+      const Condition = document.getElementById('editCondition').value;
+
+      console.log('Updating row with:', {
+        lotNumber,
+        productName,
+        origin,
+        harvestQuantity,
+        farmName,
+        productionDate,
+        Condition,
+      });
+
+      // Update the row's cells
+      editingRow.children[0].textContent = lotNumber;
+      editingRow.children[1].textContent = productName;
+      editingRow.children[2].textContent = origin;
+      editingRow.children[3].textContent = harvestQuantity;
+      editingRow.children[4].textContent = farmName;
+      editingRow.children[5].textContent = productionDate;
+      editingRow.children[6].textContent = Condition;
+
+      // Clear the editingRow reference
+      editingRow = null;
+
+      // Close the modal
+      const editModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
+      editModal.hide();
+
+      console.log('Row updated successfully!');
+    }
+
 
     function populateDeleteModal(lotNumber) {
         document.getElementById('deleteProductMessage').textContent = `আপনি কি নিশ্চিত যে আপনি লট নাম্বার "${lotNumber}" এর পণ্যটি মুছে ফেলতে চান?`;

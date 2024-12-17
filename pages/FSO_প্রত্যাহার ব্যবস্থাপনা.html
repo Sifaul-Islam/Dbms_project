@@ -82,14 +82,14 @@
         </li>
 
         <!-- Storage Conditions -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_সংরক্ষণ অবস্থা.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-thermometer-half text-primary"></i>
             </div>
             <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
           </a>
-        </li>
+        </li> -->
 
         <!-- Quality Control -->
         <li class="nav-item">
@@ -112,14 +112,14 @@
         </li>
 
         <!-- Data Reports -->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="../pages/FSO_প্রতিবেদন এবং বিশ্লেষণ.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-chart-bar text-secondary"></i>
             </div>
             <span class="nav-link-text ms-1">প্রতিবেদন এবং বিশ্লেষণ</span>
           </a>
-        </li>
+        </li> -->
 
         <!--log out-->
         <li class="nav-item">
@@ -143,11 +143,35 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">প্রত্যাহার ব্যবস্থাপনা</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">প্রত্যাহার ব্যবস্থাপনা</h6>
+          <h6 class="font-weight-bolder mb-0">খাদ্য নিরাপত্তা কর্মকর্তা</h6>
         </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+            </div>
+          </div>
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none">প্রোফাইল</span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
-
 
     <div class="container-fluid py-4">
       <!-- Recall Statistics -->
@@ -160,8 +184,8 @@
                   <i class="ni ni-alert-circle text-lg text-white opacity-10"></i>
                 </div>
                 <div class="ms-3">
-                  <p class="text-sm mb-0 text-capitalize">সক্রিয় প্রত্যাহার</p>
-                  <h5 class="font-weight-bolder mb-0">৫</h5>
+                  <p class="text-sm mb-0 text-capitalize">পরীক্ষিত</p>
+                  <h5 class="font-weight-bolder mb-0">১৫</h5>
                 </div>
               </div>
             </div>
@@ -176,13 +200,14 @@
                   <i class="ni ni-check-bold text-lg text-white opacity-10"></i>
                 </div>
                 <div class="ms-3">
-                  <p class="text-sm mb-0 text-capitalize">সম্পন্ন প্রত্যাহার</p>
-                  <h5 class="font-weight-bolder mb-0">১৫</h5>
+                  <p class="text-sm mb-0 text-capitalize">অননুমোদিত</p>
+                  <h5 class="font-weight-bolder mb-0">৫</h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
       </div>
 
       <!-- Recall Table -->
@@ -194,11 +219,11 @@
             </div>
             <div class="card-body px-0 pb-2">
               <div class="table-responsive">
-                <table class="table align-items-center mb-0" id="recallTable">
+                <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্য</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">RFID</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">কারণ</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তারিখ</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা</th>
@@ -222,6 +247,7 @@
                         <span class="badge badge-sm bg-gradient-warning">চলমান</span>
                       </td>
                     </tr>
+                    <!-- Add more rows as necessary -->
                   </tbody>
                 </table>
               </div>
@@ -234,12 +260,13 @@
       <div class="row mt-4">
         <div class="col-lg-12 text-end">
           <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRecallModal">নতুন প্রত্যাহার যোগ করুন</button>
+
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Modal Structure -->
+  <!-- Add Recall Modal -->
   <div class="modal fade" id="addRecallModal" tabindex="-1" aria-labelledby="addRecallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -254,20 +281,20 @@
               <input type="text" class="form-control" id="productName" required>
             </div>
             <div class="mb-3">
-              <label for="productRFID" class="form-label">RFID</label>
-              <input type="text" class="form-control" id="productRFID" required>
+              <label for="lotNumber" class="form-label">লট নম্বর</label>
+              <input type="text" class="form-control" id="lotNumber" required>
             </div>
             <div class="mb-3">
-              <label for="recallReason" class="form-label">কারণ</label>
-              <input type="text" class="form-control" id="recallReason" required>
+              <label for="reason" class="form-label">কারণ</label>
+              <input type="text" class="form-control" id="reason" required>
             </div>
             <div class="mb-3">
-              <label for="recallDate" class="form-label">তারিখ</label>
-              <input type="date" class="form-control" id="recallDate" required>
+              <label for="date" class="form-label">তারিখ</label>
+              <input type="date" class="form-control" id="date" required>
             </div>
             <div class="mb-3">
-              <label for="recallStatus" class="form-label">অবস্থা</label>
-              <select class="form-control" id="recallStatus" required>
+              <label for="status" class="form-label">অবস্থা</label>
+              <select class="form-select" id="status" required>
                 <option value="চলমান">চলমান</option>
                 <option value="সম্পন্ন">সম্পন্ন</option>
               </select>
@@ -276,54 +303,68 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-          <button type="button" class="btn btn-primary" id="saveRecall">সংরক্ষণ করুন</button>
+          <button type="button" class="btn btn-primary" onclick="addRecall()">সংরক্ষণ করুন</button>
         </div>
       </div>
     </div>
   </div>
+  <script>
+    function addRecall() {
+      // Get form values
+      const productName = document.getElementById('productName').value;
+      const lotNumber = document.getElementById('lotNumber').value;
+      const reason = document.getElementById('reason').value;
+      const date = document.getElementById('date').value;
+      const status = document.getElementById('status').value;
+  
+      // Validate form inputs
+      if (!productName || !lotNumber || !reason || !date || !status) {
+        alert('সব তথ্য পূরণ করুন।');
+        return;
+      }
+  
+      // Find the table body
+      const tableBody = document.querySelector('table tbody');
+  
+      // Create a new row
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td class="align-middle">
+          <p class="text-sm font-weight-bold mb-0">${productName}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${lotNumber}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${reason}</p>
+        </td>
+        <td class="align-middle">
+          <p class="text-sm mb-0">${date}</p>
+        </td>
+        <td class="align-middle text-center">
+          <span class="badge badge-sm ${status === 'চলমান' ? 'bg-gradient-warning' : 'bg-gradient-success'}">${status}</span>
+        </td>
+      `;
+  
+      // Append the new row to the table
+      tableBody.appendChild(newRow);
+  
+      // Clear the form
+      document.getElementById('addRecallForm').reset();
+  
+      // Close the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addRecallModal'));
+      modal.hide();
+    }
+  </script>
+  
+
 
   <!-- JS Scripts -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
-  <script>
-    document.getElementById('saveRecall').addEventListener('click', function () {
-      const productName = document.getElementById('productName').value;
-      const productRFID = document.getElementById('productRFID').value;
-      const recallReason = document.getElementById('recallReason').value;
-      const recallDate = document.getElementById('recallDate').value;
-      const recallStatus = document.getElementById('recallStatus').value;
-
-      const tableBody = document.querySelector('#recallTable tbody');
-      const newRow = document.createElement('tr');
-
-      newRow.innerHTML = `
-        <td class="align-middle">
-          <p class="text-sm font-weight-bold mb-0">${productName}</p>
-        </td>
-        <td class="align-middle">
-          <p class="text-sm mb-0">${productRFID}</p>
-        </td>
-        <td class="align-middle">
-          <p class="text-sm mb-0">${recallReason}</p>
-        </td>
-        <td class="align-middle">
-          <p class="text-sm mb-0">${recallDate}</p>
-        </td>
-        <td class="align-middle text-center">
-          <span class="badge badge-sm bg-gradient-${recallStatus === 'চলমান' ? 'warning' : 'success'}">${recallStatus}</span>
-        </td>
-      `;
-
-      tableBody.appendChild(newRow);
-
-      // Reset the form and close the modal
-      document.getElementById('addRecallForm').reset();
-      const modal = bootstrap.Modal.getInstance(document.getElementById('addRecallModal'));
-      modal.hide();
-    });
-  </script>
 </body>
 
 </html>
