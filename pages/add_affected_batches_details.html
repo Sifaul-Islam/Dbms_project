@@ -46,7 +46,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/track_product_update.html">
+                <a class="nav-link" href="../pages/track_product_update.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-truck text-info"></i>
                     </div>
@@ -55,7 +55,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../pages/add_affected_batches_details.html">
+                <a class="nav-link active" href="../pages/add_affected_batches_details.html">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-exclamation-triangle text-danger"></i>
                     </div>
@@ -76,176 +76,738 @@
     </div>
 </aside>
 
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
-          </ol>
-          <h6 class="font-weight-bolder mb-0">ড্যাশবোর্ড</h6>
-        </nav>
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                  <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
+                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">প্রভাবিত ব্যাচের বিবরণ যোগ</li>
+              </ol>
+              <h6 class="font-weight-bolder mb-0">প্রভাবিত ব্যাচের বিবরণ যোগ</h6>
+          </nav>
+          <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+              <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                <div class="input-group">
+                  <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                  <input type="text" class="form-control" placeholder="এখানে টাইপ করুন...">
+                </div>
+              </div>
+              
       </div>
-    </nav>
+  </nav>
 
-    <div class="container-fluid py-4">
-      <!-- Affected Batches Table -->
-      <div class="row mb-4">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header pb-0 d-flex justify-content-between">
-              <h6>প্রভাবিত ব্যাচের তালিকা</h6>
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#affectedBatchModal" onclick="clearModal()">নতুন ব্যাচ যোগ করুন</button>
+  <div class="container-fluid py-4">
+    <!-- Overview Section -->
+    <div class="row">
+        <!-- Section 1 -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="d-flex">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="fas fa-shopping-cart" style="font-size: 24px; color: white;"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-sm mb-0 text-capitalize">মোট ব্যাচ</p>
+                            <h5 class="font-weight-bolder mb-0">৫০০০</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-              <table class="table table-striped" id="affectedBatchTable">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>ব্যাচ আইডি</th>
-                    <th>তারিখ ও সময়</th>
-                    <th>বিতরণ পয়েন্ট</th>
-                    <th>বিজ্ঞপ্তি স্থিতি</th>
-                    <th>কার্যক্রম</th>
-                  </tr>
-                </thead>
-                <tbody id="affectedBatchTableBody">
-                  <!-- Rows populated dynamically -->
-                </tbody>
+        </div>
+        <!-- Section 2 -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="d-flex">
+                        <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                            <i class="fas fa-times-circle" style="font-size: 24px; color: white;"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-sm mb-0 text-capitalize">ক্ষতিগ্রস্ত ব্যাচ</p>
+                            <h5 class="font-weight-bolder mb-0">৩০০০</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section 3 -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="d-flex">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="fas fa-shopping-cart" style="font-size: 24px; color: white;"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-sm mb-0 text-capitalize">মোট প্যাকেজ</p>
+                            <h5 class="font-weight-bolder mb-0">৭০০০</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section 4 -->
+        <div class="col-lg-3 col-md-6 col-12 mb-4">
+            <div class="card">
+                <div class="card-body p-2">
+                    <div class="d-flex">
+                        <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
+                            <i class="fas fa-times-circle" style="font-size: 24px; color: white;"></i>
+                        </div>
+                        <div class="ms-3">
+                            <p class="text-sm mb-0 text-capitalize">ক্ষতিগ্রস্ত প্যাকেজ</p>
+                            <h5 class="font-weight-bolder mb-0">৩০০০</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          <!-- <div class="col-lg-4 col-md-6 col-12 mb-4">
+              <div class="card">
+                  <div class="card-body p-3">
+                      <div class="d-flex">
+                          <div class="icon icon-shape bg-gradient-warning shadow text-center border-radius-md">
+                              <i class="ni ni-tag text-lg text-white opacity-10"></i>
+                              <i class="fas fa-warehouse text-4xl text-white opacity-10" style="font-size: 24px; color: white;"></i>
+                          </div>
+                          <div class="ms-3">
+                              <p class="text-sm mb-0 text-capitalize">মজুদে থাকা পণ্য</p>
+                              <h5 class="font-weight-bolder mb-0">২০০০</h5>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+      </div>
+<!-- Product Tracking Table -->
+<div class="row">
+<div class="col-12">
+  <div class="card mb-4">
+      <div class="card-header pb-0 d-flex justify-content-between">
+          <h6>পণ্যের তালিকা</h6>
+          <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductTrackingModal">নতুন পণ্য যোগ করুন</button>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                  <thead>
+                      <tr>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বারকোড</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লটনম্বর</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder">মোট ব্যাচের সংখ্যা </th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">ক্ষতিগ্রস্ত ব্যাচের সংখ্যা</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder">মোট প্যাকেজের সংখ্যা</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</th>
+                          <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th> -->
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td class="align-middle">
+                              <p class="text-sm font-weight-bold mb-0">আপেল</p>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">RFID1234</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="badge badge-sm bg-gradient-info">গুদামে</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">জয়পুরহাট</span>
+                          </td>
+                          <td class="align-middle text-center">
+                              <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">ঢাকা</span>
+                          </td>
+                          <td class="align-middle">
+                            <span class="text-xs font-weight-bold">ঢাকা</span>
+                        </td>
+                          
+                          <td class="align-middle text-center">
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td class="align-middle">
+                              <p class="text-sm font-weight-bold mb-0">আলু</p>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">RFID5678</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">ঢাকা</span>
+                          </td>
+                          <td class="align-middle text-center">
+                              <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
+                          </td>
+                          <td class="align-middle">
+                              <span class="text-xs font-weight-bold">ঢাকা</span>
+                          </td>
+                          <td class="align-middle">
+                            <span class="text-xs font-weight-bold">ঢাকা</span>
+                        </td>
+                          
+                          <td class="align-middle text-center">
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
+                          </td>
+                      </tr>
+                      <!-- Add more rows as needed -->
+                  </tbody>
               </table>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
-  </main>
-
-  <!-- Modal for Affected Batch Input -->
-  <div class="modal fade" id="affectedBatchModal" tabindex="-1" aria-labelledby="affectedBatchModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="affectedBatchModalLabel">প্রভাবিত ব্যাচ তথ্য</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form id="affectedBatchForm">
-            <input type="hidden" id="editIndex">
-            <div class="mb-3">
-              <label for="batchID" class="form-label">ব্যাচ আইডি</label>
-              <input type="text" class="form-control" id="batchID" placeholder="ব্যাচ আইডি লিখুন" required>
-            </div>
-            <div class="mb-3">
-              <label for="affectedTimestamp" class="form-label">তারিখ ও সময়</label>
-              <input type="datetime-local" class="form-control" id="affectedTimestamp">
-            </div>
-            <div class="mb-3">
-              <label for="distributionPoints" class="form-label">বিতরণ পয়েন্ট</label>
-              <textarea class="form-control" id="distributionPoints" rows="3" placeholder="বিতরণ পয়েন্ট লিখুন"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="notificationStatus" class="form-label">বিজ্ঞপ্তি স্থিতি</label>
-              <select class="form-control" id="notificationStatus">
-                <option>অধিকাংশ বিতরণ পয়েন্টে প্রভাবিত</option>
-                <option>কিছু বিতরণ পয়েন্টে প্রভাবিত</option>
-                <option>প্রভাব নেই</option>
-              </select>
-            </div>
-            <div class="d-flex justify-content-end mt-4">
-              <button type="submit" class="btn btn-primary">সংরক্ষণ করুন</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
+</div>
 
-  <!-- JS Scripts -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script>
-    const tableBody = document.getElementById('affectedBatchTableBody');
+   <!-- JS Scripts -->
+   <script src="../assets/js/core/popper.min.js"></script>
+   <script src="../assets/js/core/bootstrap.min.js"></script>
+   <script src="../assets/js/plugins/chartjs.min.js"></script>
+   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+   <script>
+       // Temperature and Humidity Multi-Bar Chart
+       var ctxTempHumidityChart = document.getElementById('tempHumidityChart').getContext('2d');
+       var tempHumidityChart = new Chart(ctxTempHumidityChart, {
+           type: 'bar',
+           data: {
+               labels: ['Room A', 'Room B', 'Room C'],
+               datasets: [
+                   {
+                       label: 'তাপমাত্রা (°C)',
+                       data: [8, 10, 12],
+                       backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                       borderColor: 'rgba(54, 162, 235, 1)',
+                       borderWidth: 1
+                   },
+                   {
+                       label: 'আর্দ্রতা (%)',
+                       data: [65, 70, 75],
+                       backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                       borderColor: 'rgba(255, 206, 86, 1)',
+                       borderWidth: 1
+                   }
+               ]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   y: {
+                       beginAtZero: true
+                   }
+               }
+           }
+       });
 
-    let affectedBatches = [
-      {
-        batchID: "B001",
-        affectedTimestamp: "2023-12-10T08:30",
-        distributionPoints: "Dhaka, Chittagong, Rajshahi",
-        notificationStatus: "অধিকাংশ বিতরণ পয়েন্টে প্রভাবিত",
-      },
-      {
-        batchID: "B002",
-        affectedTimestamp: "2023-12-11T10:00",
-        distributionPoints: "Khulna, Sylhet",
-        notificationStatus: "কিছু বিতরণ পয়েন্টে প্রভাবিত",
-      },
-    ];
+       function filterTempHumidityChart() {
+           var startDate = document.getElementById('tempHumidityStartDate').value;
+           var endDate = document.getElementById('tempHumidityEndDate').value;
+           // Logic to filter chart based on date range
+           alert('Filtering Temp and Humidity chart from ' + startDate + ' to ' + endDate);
+       }
 
-    document.getElementById('affectedBatchForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const batchID = document.getElementById('batchID').value;
-      const affectedTimestamp = document.getElementById('affectedTimestamp').value;
-      const distributionPoints = document.getElementById('distributionPoints').value;
-      const notificationStatus = document.getElementById('notificationStatus').value;
-      const editIndex = document.getElementById('editIndex').value;
+       // Product Quality Status Pie Chart
+       var ctxProductQualityPieChart = document.getElementById('productQualityPieChart').getContext('2d');
+       new Chart(ctxProductQualityPieChart, {
+           type: 'pie',
+           data: {
+               labels: ['প্যাকেজ', 'পরিবহন', 'ইনভেন্টরি '],
+               datasets: [{
+                   data: [50, 30, 20],
+                   backgroundColor: [
+                       'rgba(75, 192, 192, 0.6)',
+                       'rgba(255, 205, 86, 0.6)',
+                       'rgba(255, 99, 132, 0.6)'
+                   ],
+                   borderColor: [
+                       'rgba(75, 192, 192, 1)',
+                       'rgba(255, 205, 86, 1)',
+                       'rgba(255, 99, 132, 1)'
+                   ],
+                   borderWidth: 1
+               }]
+           },
+           options: {
+               responsive: true
+           }
+       });
 
-      const newEntry = { batchID, affectedTimestamp, distributionPoints, notificationStatus };
+       // Product Entry and Distribution Over Time Chart
+       var ctxEntryDistributionChart = document.getElementById('entryDistributionChart').getContext('2d');
+       new Chart(ctxEntryDistributionChart, {
+           type: 'line',
+           data: {
+               labels: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন'],
+               datasets: [
+                   {
+                       label: 'পণ্য প্রবেশ',
+                       data: [500, 700, 800, 600, 750, 900],
+                       borderColor: 'rgba(54, 162, 235, 1)',
+                       backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                       borderWidth: 2
+                   },
+                   {
+                       label: 'পণ্য বিতরণ',
+                       data: [300, 500, 700, 400, 650, 800],
+                       borderColor: 'rgba(255, 99, 132, 1)',
+                       backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                       borderWidth: 2
+                   }
+               ]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   y: {
+                       beginAtZero: true
+                   }
+               }
+           }
+       });
 
-      if (editIndex === '') {
-        affectedBatches.push(newEntry);
-      } else {
-        affectedBatches[editIndex] = newEntry;
-      }
+       function filterEntryDistributionChart() {
+           var startDate = document.getElementById('entryDistributionStartDate').value;
+           var endDate = document.getElementById('entryDistributionEndDate').value;
+           // Logic to filter chart based on date range
+           alert('Filtering Entry and Distribution chart from ' + startDate + ' to ' + endDate);
+       }
 
-      updateTable();
-      document.getElementById('affectedBatchModal').click(); // Close modal
+       function exportReport(type) {
+           if (type === 'pdf') {
+               alert('Exporting report as PDF');
+           } else if (type === 'excel') {
+               alert('Exporting report as Excel');
+           }
+       }
+       
+   </script>
+      <!-- Graphs and Analytics Section -->
+      <div class="row mt-4">
+          <!-- Temperature and Humidity Overview Chart -->
+          <div class="col-lg-6">
+              <div class="card h-100">
+                  <div class="card-header pb-0">
+                      <h6>পণ্যের অবস্থা</h6>
+                      <!-- <div class="d-flex justify-content-end">
+                          <input type="date" id="tempHumidityEndDate" class="form-control form-control-sm mx-1" />
+                          <button class="btn btn-sm btn-primary" onclick="filterTempHumidityChart()">ফিল্টার করুন</button>
+                      </div> -->
+                  </div>
+                  <div class="card-body p-3">
+                      <canvas id="tempHumidityChart" height="300"></canvas>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Product Quality Status Pie Chart -->
+          <div class="col-lg-6">
+              <div class="card h-100">
+                  <div class="card-header pb-0">
+                      <h6>ক্ষতিগ্রস্ত পণ্যের পরিমাণ</h6>
+                  </div>
+                  <div class="card-body p-3">
+                      <canvas id="productQualityPieChart" height="300"></canvas>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+<!-- Product Entry and Distribution Over Time Chart -->
+<div class="row mt-2">
+          
+<div class="card h-30">
+  <div class="card-header pb-0">
+      <div class="card-header pb-0">
+          <h6>প্রভাবিত ব্যাচের স্থিতি</h6>
+        </div>
+  </div>
+  <div class="card-body p-3">
+      <canvas id="batchStatusChart" width="400" height="200"></canvas>
+  </div>
+</div>
+</div>
+</div>
+<!-- Include Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// Initializing the Batch Status Chart
+const ctx = document.getElementById('batchStatusChart').getContext('2d');
+const batchStatusChart = new Chart(ctx, {
+type: 'bar',
+data: {
+labels: ['খামার', 'প্রসেসিং', 'স্টোরেজ', 'বিতরণ'], // Labels for stages
+datasets: [{
+label: 'প্রভাবিত ব্যাচের সংখ্যা',
+data: [5, 10, 3, 8], // Sample data for affected batches at each stage
+backgroundColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
+borderColor: ['#28a745', '#17a2b8', '#ffc107', '#dc3545'],
+borderWidth: 1
+}]
+},
+options: {
+responsive: true,
+plugins: {
+legend: {
+display: true,
+position: 'top'
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+title: {
+display: true,
+text: 'প্রভাবিত ব্যাচের সংখ্যা'
+}
+},
+x: {
+title: {
+display: true,
+text: 'ধাপসমূহ'
+}
+}
+}
+}
+});
+</script>
+
+      <!-- Product Distribution Report -->
+      <div class="row mt-4">
+          <div class="col-12">
+              <div class="card h-100">
+                  <div class="card-header pb-0 d-flex justify-content-between">
+                      <h6>বিতরণ প্রতিবেদন</h6>
+                      <button class="btn btn-sm btn-success" onclick="exportReport('pdf')">PDF হিসেবে ডাউনলোড করুন</button>
+                      <button class="btn btn-sm btn-success ms-2" onclick="exportReport('excel')">Excel হিসেবে ডাউনলোড করুন</button>
+                  </div>
+                  <div class="card-body px-0 pt-0 pb-2">
+                      <div class="table-responsive p-0">
+                          <table class="table align-items-center mb-0">
+                              <thead>
+                                  <tr>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বিতরণ সংখ্যা</th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder">তারিখ</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">আপেল</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">১০০০</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">আলু</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">৮০০</span>
+                                      </td>
+                                      <td class="align-middle">
+                                          <span class="text-xs font-weight-bold">২১/১১/২০২৪</span>
+                                      </td>
+                                  </tr>
+                                  <!-- Add more rows as needed -->
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</main>
+
+
+
+
+  <!-- Add Product Tracking Modal -->
+  <div class="modal fade" id="addProductTrackingModal" tabindex="-1" aria-labelledby="addProductTrackingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addProductTrackingModalLabel">নতুন পণ্য যোগ করুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                    <label for="editProductName" class="form-label">বারকোড</label>
+                    <input type="text" class="form-control" id="editProductName">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductStock" class="form-label">লটনম্বর</label>
+                    <input type="text" class="form-control" id="editProductStock">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductStock" class="form-label">পণ্যের নাম</label>
+                    <input type="text" class="form-control" id="editProductStock">
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="editProductCondition" class="form-label">প্যাকেজিং তারিখ</label>
+                    <select class="form-control" id="editProductCondition">
+                        <option value="ভাল">ভাল</option>
+                        <option value="মধ্যম">মধ্যম</option>
+                        <option value="খারাপ">খারাপ</option>
+                    </select>
+                </div> -->
+                <div class="mb-3">
+                    <label for="editProductHumidity" class="form-label">মোট ব্যাচের সংখ্যা </label>
+                    <input type="number" class="form-control" id="editProductHumidity">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductTemperature" class="form-label">ক্ষতিগ্রস্ত ব্যাচের সংখ্যা</label>
+                    <input type="number" class="form-control" id="editProductTemperature">
+                </div>
+                <div class="mb-3">
+                    <label for="editProductTemperature" class="form-label">মোট প্যাকেজের সংখ্যা</label>
+                    <input type="number" class="form-control" id="editProductTemperature">
+                </div>
+                <div class="mb-3">
+                  <label for="editProductTemperature" class="form-label">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</label>
+                  <input type="number" class="form-control" id="editProductTemperature">
+              </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+            </div>
+        </div>
+    </div>
+</div>    
+  <!-- Delete Product Modal -->
+  <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="deleteProductMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+            </div>
+        </div>
+    </div>
+</div> 
+
+    <!-- Edit Product Modal -->
+    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="editProductName" class="form-label">বারকোড</label>
+                            <input type="text" class="form-control" id="editProductName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductStock" class="form-label">লটনম্বর</label>
+                            <input type="text" class="form-control" id="editProductStock">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductStock" class="form-label">পণ্যের নাম</label>
+                            <input type="text" class="form-control" id="editProductStock">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="editProductCondition" class="form-label">প্যাকেজিং তারিখ</label>
+                            <select class="form-control" id="editProductCondition">
+                                <option value="ভাল">ভাল</option>
+                                <option value="মধ্যম">মধ্যম</option>
+                                <option value="খারাপ">খারাপ</option>
+                            </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="editProductHumidity" class="form-label">মোট ব্যাচের সংখ্যা </label>
+                            <input type="number" class="form-control" id="editProductHumidity">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductTemperature" class="form-label">ক্ষতিগ্রস্ত ব্যাচের সংখ্যা</label>
+                            <input type="number" class="form-control" id="editProductTemperature">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductTemperature" class="form-label">মোট প্যাকেজের সংখ্যা</label>
+                            <input type="number" class="form-control" id="editProductTemperature">
+                        </div>
+                        <div class="mb-3">
+                          <label for="editProductTemperature" class="form-label">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</label>
+                          <input type="number" class="form-control" id="editProductTemperature">
+                      </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Product Modal -->
+    <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="deleteProductMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                    <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- JS Scripts -->
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+<script>
+    // Temperature and Humidity Multi-Bar Chart
+    var ctxTempHumidityChart = document.getElementById('tempHumidityChart').getContext('2d');
+    var tempHumidityChart = new Chart(ctxTempHumidityChart, {
+        type: 'bar',
+        data: {
+            labels: ['Room A', 'Room B', 'Room C'],
+            datasets: [
+                {
+                    label: 'তাপমাত্রা (°C)',
+                    data: [8, 10, 12],
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'আর্দ্রতা (%)',
+                    data: [65, 70, 75],
+                    backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 
-    function updateTable() {
-      tableBody.innerHTML = '';
-      affectedBatches.forEach((batch, index) => {
-        const row = `<tr>
-          <td>${index + 1}</td>
-          <td>${batch.batchID}</td>
-          <td>${batch.affectedTimestamp || '-'}</td>
-          <td>${batch.distributionPoints || '-'}</td>
-          <td>${batch.notificationStatus || '-'}</td>
-          <td>
-            <button class="btn btn-sm btn-danger" onclick="deleteBatch(${index})">মুছুন</button>
-          </td>
-        </tr>`;
-        tableBody.insertAdjacentHTML('beforeend', row);
-      });
+    function filterTempHumidityChart() {
+        var startDate = document.getElementById('tempHumidityStartDate').value;
+        var endDate = document.getElementById('tempHumidityEndDate').value;
+        // Logic to filter chart based on date range
+        alert('Filtering Temp and Humidity chart from ' + startDate + ' to ' + endDate);
     }
 
-    function editBatch(index) {
-      const batch = affectedBatches[index];
-      document.getElementById('batchID').value = batch.batchID;
-      document.getElementById('affectedTimestamp').value = batch.affectedTimestamp;
-      document.getElementById('distributionPoints').value = batch.distributionPoints;
-      document.getElementById('notificationStatus').value = batch.notificationStatus;
-      document.getElementById('editIndex').value = index;
-      document.getElementById('affectedBatchModalLabel').innerText = 'ব্যাচ সম্পাদনা করুন';
-      document.getElementById('affectedBatchModal').click();
+    // Product Quality Status Pie Chart
+    var ctxProductQualityPieChart = document.getElementById('productQualityPieChart').getContext('2d');
+    new Chart(ctxProductQualityPieChart, {
+        type: 'pie',
+        data: {
+            labels: ['প্যাকেজ', 'পরিবহন', 'ইনভেন্টরি '],
+            datasets: [{
+                data: [50, 30, 20],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(255, 205, 86, 0.6)',
+                    'rgba(255, 99, 132, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Product Entry and Distribution Over Time Chart
+    var ctxEntryDistributionChart = document.getElementById('entryDistributionChart').getContext('2d');
+    new Chart(ctxEntryDistributionChart, {
+        type: 'line',
+        data: {
+            labels: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন'],
+            datasets: [
+                {
+                    label: 'পণ্য প্রবেশ',
+                    data: [500, 700, 800, 600, 750, 900],
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderWidth: 2
+                },
+                {
+                    label: 'পণ্য বিতরণ',
+                    data: [300, 500, 700, 400, 650, 800],
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderWidth: 2
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function filterEntryDistributionChart() {
+        var startDate = document.getElementById('entryDistributionStartDate').value;
+        var endDate = document.getElementById('entryDistributionEndDate').value;
+        // Logic to filter chart based on date range
+        alert('Filtering Entry and Distribution chart from ' + startDate + ' to ' + endDate);
     }
 
-    function deleteBatch(index) {
-      if (confirm('আপনি কি নিশ্চিত?')) {
-        affectedBatches.splice(index, 1);
-        updateTable();
-      }
+    function exportReport(type) {
+        if (type === 'pdf') {
+            alert('Exporting report as PDF');
+        } else if (type === 'excel') {
+            alert('Exporting report as Excel');
+        }
     }
-
-    function clearModal() {
-      document.getElementById('affectedBatchForm').reset();
-      document.getElementById('editIndex').value = '';
-      document.getElementById('affectedBatchModalLabel').innerText = 'নতুন ব্যাচ যোগ করুন';
-    }
-
-    // Initial Table Update
-    updateTable();
-  </script>
+</script>
 </body>
 
 </html>
