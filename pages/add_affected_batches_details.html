@@ -53,6 +53,14 @@
                     <span class="nav-link-text ms-1">পণ্য ট্র্যাক</span>
                 </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../pages/agri_officer_harvestBatch_details.html">
+                  <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                      <i class="fas fa-exclamation-triangle text-danger"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">ব্যাচের বিবরণ যোগ</span>
+              </a>
+          </li>
 
             <li class="nav-item">
                 <a class="nav-link active" href="../pages/add_affected_batches_details.html">
@@ -699,17 +707,17 @@ text: 'ধাপসমূহ'
     var tempHumidityChart = new Chart(ctxTempHumidityChart, {
         type: 'bar',
         data: {
-            labels: ['Room A', 'Room B', 'Room C'],
+            labels: ['আপেল', 'আলু', 'দুধ'],
             datasets: [
                 {
-                    label: 'তাপমাত্রা (°C)',
+                    label: 'ক্ষতির পরিমাণ(টন)',
                     data: [8, 10, 12],
                     backgroundColor: 'rgba(54, 162, 235, 0.6)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 },
                 {
-                    label: 'আর্দ্রতা (%)',
+                    label: 'উৎপাদনের পরিমাণ(টন)',
                     data: [65, 70, 75],
                     backgroundColor: 'rgba(255, 206, 86, 0.6)',
                     borderColor: 'rgba(255, 206, 86, 1)',
