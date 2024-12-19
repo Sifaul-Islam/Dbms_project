@@ -5,6 +5,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>ড্যাশবোর্ড - Agri Officer </title>
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    
+        <!-- Leaflet CSS (for the map) -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet" />
+    
+        <!-- Custom Styles -->
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+    
+            #map {
+                height: 500px;
+                width: 100%;
+                border-radius: 8px;
+            }
+    
+            .card {
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+            }
+    
+            .card-header {
+                background-color: #f5f5f5;
+                padding: 10px 15px;
+                border-bottom: 1px solid #ddd;
+                font-weight: bold;
+            }
+    
+            .card-body {
+                padding: 15px;
+            }
+    
+            .container {
+                margin: 20px;
+            }
+        </style> 
   
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -83,15 +127,16 @@
       </div>
   </aside>
 
+  
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
             <div class="container-fluid py-1 px-3">
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                   <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
-                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ড্যাশবোর্ড</li>
+                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">ব্যাচের বিবরণ যোগ</li>
                 </ol>
-                <h6 class="font-weight-bolder mb-0">গুদাম ব্যবস্থাপনা</h6>
+                <h6 class="font-weight-bolder mb-0">ব্যাচের বিবরণ যোগ</h6>
               </nav>
             </div>
         </nav>
@@ -102,7 +147,7 @@
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0 d-flex justify-content-between">
-                            <h6>গুদামের পণ্য তালিকা</h6>
+                            <h6>ব্যাচের তালিকা</h6>
                             <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal">নতুন পণ্য যোগ করুন</button>
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
@@ -111,11 +156,12 @@
                                     <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder">পণ্যের নাম</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">স্টক(কেজি)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">সংরক্ষণ অবস্থা</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">আর্দ্রতা (%)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">তাপমাত্রা (°C)</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">খামারের নাম</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লট নম্বর</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">আগমনের তারিখ</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">প্যাকেজিং তারিখ</th>
+                                            <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th> -->
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ব্যাচের বিবরণ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -135,6 +181,9 @@
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">৮°C</span>
                                             </td>
+                                            <td class="align-middle">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewdetail" onclick="">বিবরণ</button>
+                                              </td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আপেল', 500, 'ভাল', 60, 8)">সম্পাদনা</button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আপেল')">মুছে ফেলুন</button>
@@ -156,6 +205,9 @@
                                             <td class="align-middle text-center">
                                                 <span class="text-xs font-weight-bold">১০°C</span>
                                             </td>
+                                            <td class="align-middle">
+                                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewdetail" onclick="">বিবরণ</button>
+                                              </td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
                                                 <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
@@ -170,6 +222,70 @@
                 </div>
             </div>
         </div>
+
+
+        <script>
+            var map = L.map('map').setView([37.7749, -122.4194], 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            L.marker([37.7749, -122.4194]).addTo(map)
+                .bindPopup('San Francisco')
+                .openPopup();
+        </script>
+                <!-- Pie Chart and Map for Product Tracking Summary -->
+        <!-- Row for Product Tracking Summary with Map -->
+        <div class="row mt-4">
+            <!-- Pie Chart for Product Tracking Summary -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header pb-0">
+                        <h6>পণ্য ট্র্যাকিং সারাংশ</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <canvas id="productTrackingChart" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Map beside the Pie Chart -->
+            <div class="col-lg-6">
+                <div class="card h-100">
+                    <div class="card-header pb-0">
+                        <h6>পণ্য ট্র্যাকিং মানচিত্র</h6>
+                    </div>
+                    <div class="card-body p-3">
+                        <div id="map" style="height: 500; "></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Leaflet JS and Map Initialization -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+        <script>
+            // Initialize the map
+            var map = L.map('map').setView([23.685, 90.3563], 6); // Centered on Bangladesh
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        
+            // Add markers for cities
+            var locations = [
+                { name: "ঢাকা", coords: [23.8103, 90.4125] },
+                { name: "চট্টগ্রাম", coords: [22.3569, 91.7832] },
+                { name: "খুলনা", coords: [22.8456, 89.5403] },
+                { name: "বরিশাল", coords: [22.7010, 90.3535] }
+            ];
+        
+            locations.forEach(location => {
+                L.marker(location.coords).addTo(map)
+                    .bindPopup(location.name);
+            });
+        </script>
+        
+
+        
     </main>
 
     <!-- Add Product Modal -->
@@ -177,7 +293,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addProductModalLabel">নতুন পণ্য যোগ করুন</h5>
+                    <h5 class="modal-title" id="addProductModalLabel">নতুন ব্যাচ যোগ করুন</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -187,24 +303,28 @@
                             <input type="text" class="form-control" id="productName">
                         </div>
                         <div class="mb-3">
-                            <label for="productStock" class="form-label">স্টক</label>
-                            <input type="number" class="form-control" id="productStock">
+                            <label for="productStock" class="form-label">খামারের নাম</label>
+                            <input type="text" class="form-control" id="productStock">
                         </div>
                         <div class="mb-3">
-                            <label for="productCondition" class="form-label">সংরক্ষণ অবস্থা</label>
+                            <label for="productStock" class="form-label">লট নম্বর</label>
+                            <input type="text" class="form-control" id="productStock">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="productCondition" class="form-label">লট নম্বর</label>
                             <select class="form-control" id="productCondition">
                                 <option value="ভাল">ভাল</option>
                                 <option value="মধ্যম">মধ্যম</option>
                                 <option value="খারাপ">খারাপ</option>
                             </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="productHumidity" class="form-label">আগমনের তারিখ</label>
+                            <input type="date" class="form-control" id="productHumidity">
                         </div>
                         <div class="mb-3">
-                            <label for="productHumidity" class="form-label">আর্দ্রতা (%)</label>
-                            <input type="number" class="form-control" id="productHumidity">
-                        </div>
-                        <div class="mb-3">
-                            <label for="productTemperature" class="form-label">তাপমাত্রা (°C)</label>
-                            <input type="number" class="form-control" id="productTemperature">
+                            <label for="productTemperature" class="form-label">প্যাকেজিং তারিখ</label>
+                            <input type="date" class="form-control" id="productTemperature">
                         </div>
                     </form>
                 </div>
@@ -221,34 +341,38 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
+                    <h5 class="modal-title" id="editProductModalLabel">ব্যাচ সম্পাদনা করুন</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
-                            <label for="editProductName" class="form-label">পণ্যের নাম</label>
-                            <input type="text" class="form-control" id="editProductName">
+                            <label for="productName" class="form-label">পণ্যের নাম</label>
+                            <input type="text" class="form-control" id="productName">
                         </div>
                         <div class="mb-3">
-                            <label for="editProductStock" class="form-label">স্টক</label>
-                            <input type="number" class="form-control" id="editProductStock">
+                            <label for="productStock" class="form-label">খামারের নাম</label>
+                            <input type="text" class="form-control" id="productStock">
                         </div>
                         <div class="mb-3">
-                            <label for="editProductCondition" class="form-label">সংরক্ষণ অবস্থা</label>
-                            <select class="form-control" id="editProductCondition">
+                            <label for="productStock" class="form-label">লট নম্বর</label>
+                            <input type="text" class="form-control" id="productStock">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="productCondition" class="form-label">লট নম্বর</label>
+                            <select class="form-control" id="productCondition">
                                 <option value="ভাল">ভাল</option>
                                 <option value="মধ্যম">মধ্যম</option>
                                 <option value="খারাপ">খারাপ</option>
                             </select>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="productHumidity" class="form-label">আগমনের তারিখ</label>
+                            <input type="date" class="form-control" id="productHumidity">
                         </div>
                         <div class="mb-3">
-                            <label for="editProductHumidity" class="form-label">আর্দ্রতা (%)</label>
-                            <input type="number" class="form-control" id="editProductHumidity">
-                        </div>
-                        <div class="mb-3">
-                            <label for="editProductTemperature" class="form-label">তাপমাত্রা (°C)</label>
-                            <input type="number" class="form-control" id="editProductTemperature">
+                            <label for="productTemperature" class="form-label">প্যাকেজিং তারিখ</label>
+                            <input type="date" class="form-control" id="productTemperature">
                         </div>
                     </form>
                 </div>
@@ -265,7 +389,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                    <h5 class="modal-title" id="deleteProductModalLabel">ব্যাচ মুছে ফেলুন</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -279,23 +403,48 @@
         </div>
     </div>
 
+
+
+
     <!-- JS Scripts -->
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
     <script>
-        function populateEditModal(name, stock, condition, humidity, temperature) {
-            document.getElementById('editProductName').value = name;
-            document.getElementById('editProductStock').value = stock;
-            document.getElementById('editProductCondition').value = condition;
-            document.getElementById('editProductHumidity').value = humidity;
-            document.getElementById('editProductTemperature').value = temperature;
+        function populateEditModal(name, rfid, status, source, date) {
+            document.getElementById('editTrackingProductName').value = name;
+            document.getElementById('editTrackingRFID').value = rfid;
+            document.getElementById('editTrackingStatus').value = status;
+            document.getElementById('editTrackingSource').value = source;
+            document.getElementById('editTrackingDate').value = date;
         }
 
-        function populateDeleteModal(name) {
-            document.getElementById('deleteProductMessage').textContent = `আপনি কি নিশ্চিত যে আপনি "${name}" পণ্যটি মুছে ফেলতে চান?`;
-        }
+        // Product Tracking Pie Chart
+        var ctxProductTrackingChart = document.getElementById('productTrackingChart').getContext('2d');
+        new Chart(ctxProductTrackingChart, {
+          type: 'pie',
+          data: {
+            labels: ['আসন্ন', 'গুদামে', 'বিতরণ করা হয়েছে'],
+            datasets: [{
+              data: [30, 50, 20],
+              backgroundColor: [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)'
+              ],
+              borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true
+          }
+        });
     </script>
 </body>
 
