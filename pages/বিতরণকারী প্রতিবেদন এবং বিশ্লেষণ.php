@@ -1,3 +1,5 @@
+<!-- read -->
+
 <?php 
 
 include "./db.php";
@@ -7,6 +9,8 @@ $sql = "SELECT * FROM `batchpackagedetails`";
 $result = $conn->query($sql);
 
 ?>
+
+
  <!--delete -->
 <?php
 if (isset($_GET['barcode'])) {
@@ -38,7 +42,7 @@ if (isset($_GET['barcode'])) {
     echo "";
 }
 ?>
-<!-- add data -->
+
 
 
 
@@ -79,7 +83,7 @@ if (isset($_GET['barcode'])) {
             <ul class="navbar-nav">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../Know Your Grass/distributors.html">
+                    <a class="nav-link" href="../Know Your Grass/distributors.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-tachometer-alt text-primary"></i>
                         </div>
@@ -91,7 +95,7 @@ if (isset($_GET['barcode'])) {
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/বিতরণকারী পণ্য ট্র্যাকিং.html">
+                    <a class="nav-link" href="../pages/বিতরণকারী পণ্য ট্র্যাকিং.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-route text-warning"></i>
                         </div>
@@ -101,7 +105,7 @@ if (isset($_GET['barcode'])) {
     
                 <!-- Data Reports -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="./বিতরণকারী প্রতিবেদন এবং বিশ্লেষণ.html">
+                    <a class="nav-link active" href="./বিতরণকারী প্রতিবেদন এবং বিশ্লেষণ.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-chart-bar text-secondary"></i>
                         </div>
