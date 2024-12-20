@@ -77,7 +77,7 @@ $result = $conn->query($sql);
 
 
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/add_products_details.html">
+                <a class="nav-link active" href="../pages/agri_officer_add_product.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-seedling text-warning"></i>
                     </div>
@@ -95,7 +95,7 @@ $result = $conn->query($sql);
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="../pages/agri_officer_harvestBatch_details.html">
+                <a class="nav-link" href="../pages/agri_officer_harvestBatch_details.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-exclamation-triangle text-danger"></i>
                     </div>
@@ -104,7 +104,7 @@ $result = $conn->query($sql);
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../pages/add_affected_batches_details.html">
+                <a class="nav-link" href="../pages/agri_add_affected_batches_details.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-exclamation-triangle text-danger"></i>
                     </div>
