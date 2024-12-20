@@ -1,3 +1,49 @@
+<?php 
+
+include "./db.php";
+
+$sql = "SELECT * FROM `batchpackagedetails`";
+
+$result = $conn->query($sql);
+
+?>
+ <!--delete -->
+<?php
+if (isset($_GET['barcode'])) {
+    $barcode = $_GET['barcode'];
+
+    // Connect to the database
+    $conn = new mysqli('localhost', 'root', '', 'safe_food_traceability');
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // SQL query to delete the record
+    $sql = "DELETE FROM batchpackagedetails WHERE barcode = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $barcode);
+
+    if ($stmt->execute()) {
+        header("Location: বিতরণকারী প্রতিবেদন এবং বিশ্লেষণ.php?success=1");
+        exit;
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "";
+}
+?>
+<!-- add data -->
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +57,13 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
+  <!-- Include Bootstrap 5 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta2/css/bootstrap.min.css">
+    <!-- Fonts and icons -->
+    <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -34,35 +87,7 @@
                     </a>
                 </li>
     
-                <!-- Inventory Management -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="../pages/বিতরণকারী গুদাম ব্যবস্থাপনা.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-warehouse text-info"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুদাম ব্যবস্থাপনা</span>
-                    </a>
-                </li>
-    
-                 Storage Conditions 
-                <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী সংরক্ষণ অবস্থা.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-thermometer-half text-primary"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
-                    </a>
-                </li> -->
-    
-                <!-- Quality Control -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী গুণমান যাচাইকরণ.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-check-circle text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
-                    </a>
-                </li> -->
+                
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
@@ -175,74 +200,72 @@
         <div class="card mb-4">
             <div class="card-header pb-0 d-flex justify-content-between">
                 <h6>পণ্যের তালিকা</h6>
-                <a  href="addreport.php"
-                 class="btn btn-sm btn-success" >নতুন পণ্য যোগ করুন</a>
+                <a class="btn btn-sm btn-success" href="addreport.php">নতুন পণ্য যোগ করুন</a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">বারকোড</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">লটনম্বর</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">প্যাকেজিং তারিখ</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">মেয়াদ </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder">মোট প্যাকেজের সংখ্যা</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">বারকোড</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">লটনম্বর</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">প্যাকেজিং তারিখ</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">মেয়াদ </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">মোট প্যাকেজের সংখ্যা</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">অবস্থা পরিবর্তন</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="align-middle">
-                                    <p class="text-sm font-weight-bold mb-0">আপেল</p>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">RFID1234</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="badge badge-sm bg-gradient-info">গুদামে</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">জয়পুরহাট</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">ঢাকা</span>
-                                </td>
-                                
-                                <td class="align-middle text-center">
-                                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
-                                  <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
-                              </td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle">
-                                    <p class="text-sm font-weight-bold mb-0">আলু</p>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">RFID5678</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">ঢাকা</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
-                                </td>
-                                <td class="align-middle">
-                                    <span class="text-xs font-weight-bold">ঢাকা</span>
-                                </td>
-                                
-                                <td class="align-middle text-center">
-                                  <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
-                                  <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
-                                </td>
-                            </tr>
+<?php
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+?>
+
+        <tr>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['barcode']; ?></td>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['lotnumber']; ?></td>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['packagingdate']; ?></td>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['expirydate']; ?></td>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['number_of_total_package']; ?></td>
+
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['number_of_damaged_package']; ?></td>
+
+        <td class="text-center">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+        
+        
+
+        <a class="btn btn-sm btn-primary edit-btn" href="updatereport.php?barcode=<?php echo $row['barcode']; ?>">
+            সম্পাদনা
+        </a>
+        <button 
+            class="btn btn-danger btn-sm text-center" 
+             
+            onclick="confirmDelete('<?php echo $row['barcode']; ?>')">
+            মুছে ফেলুন
+        </button>
+    
+
+        </td>
+
+
+        </tr>                       
+
+<?php   }
+}
+$conn->close();
+
+?>              
+
+
+                            
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>
@@ -253,8 +276,8 @@
 </div>
 
 
-            <!-- Graphs and Analytics Section -->
-            <div class="row mt-4">
+ <!-- Graphs and Analytics Section -->
+ <div class="row mt-4">
                 <!-- Temperature and Humidity Overview Chart -->
                 <div class="col-lg-6">
                     <div class="card h-100">
@@ -394,141 +417,180 @@
         </div>
     </main>
 
-    <!-- Add Product Tracking Modal -->
-    <div class="modal fade" id="addProductTrackingModal" tabindex="-1" aria-labelledby="addProductTrackingModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addProductTrackingModalLabel">নতুন পণ্য যোগ করুন</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="trackingProductName" class="form-label">বারকোড</label>
-                            <input type="number" class="form-control" id="trackingProductName">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trackingRFID" class="form-label">লটনম্বর</label>
-                            <input type="number" class="form-control" id="trackingRFID">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trackingStatus" class="form-label">প্যাকেজিং তারিখ</label>
-                            <input type="date" class="form-control" id="trackingRFID">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trackingSource" class="form-label">মেয়াদ</label>
-                            <input type="date" class="form-control" id="trackingSource">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trackingSource" class="form-label">মোট প্যাকেজের সংখ্যা</label>
-                            <input type="number" class="form-control" id="trackingSource">
-                        </div>
-                        <div class="mb-3">
-                            <label for="trackingDate" class="form-label">ক্ষতিগ্রস্ত প্যাকেজের সংখ্যা</label>
-                            <input type="number" class="form-control" id="trackingDate">
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                    <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
-                </div>
-            </div>
-        </div>
-    </div>    
-      <!-- Delete Product Modal -->
-      <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p id="deleteProductMessage"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                    <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
-                </div>
-            </div>
-        </div>
-    </div> 
     
-        <!-- Edit Product Modal -->
-        <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editProductModalLabel">পণ্য সম্পাদনা করুন</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="editProductName" class="form-label">বারকোড</label>
-                                <input type="text" class="form-control" id="editProductName">
-                            </div>
-                            <div class="mb-3">
-                                <label for="editProductStock" class="form-label">লটনম্বর</label>
-                                <input type="text" class="form-control" id="editProductStock">
-                            </div>
-                            <div class="mb-3">
-                                <label for="editProductStock" class="form-label">প্যাকেজিং তারিখ</label>
-                                <input type="date" class="form-control" id="editProductStock">
-                            </div>
-                            <!-- <div class="mb-3">
-                                <label for="editProductCondition" class="form-label">প্যাকেজিং তারিখ</label>
-                                <select class="form-control" id="editProductCondition">
-                                    <option value="ভাল">ভাল</option>
-                                    <option value="মধ্যম">মধ্যম</option>
-                                    <option value="খারাপ">খারাপ</option>
-                                </select>
-                            </div> -->
-                            <div class="mb-3">
-                                <label for="editProductHumidity" class="form-label">মেয়াদ </label>
-                                <input type="date" class="form-control" id="editProductHumidity">
-                            </div>
-                            <div class="mb-3">
-                                <label for="editProductTemperature" class="form-label">মোট প্যাকেজের সংখ্যা</label>
-                                <input type="number" class="form-control" id="editProductTemperature">
-                            </div>
-                            <div class="mb-3">
-                                <label for="editProductTemperature" class="form-label">মোট প্যাকেজের সংখ্যা</label>
-                                <input type="number" class="form-control" id="editProductTemperature">
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                        <button type="button" class="btn btn-primary">সংরক্ষণ করুন</button>
-                    </div>
-                </div>
+
+
+
+
+ <!-- Delete Product Modal -->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>আপনি কি নিশ্চিত যে আপনি এই আইটেমটি মুছে ফেলতে চান?</p>
+                <p id="deleteProductMessage" class="text-danger"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                <a id="confirmDeleteButton" class="btn btn-sm btn-danger" href="#">মুছে ফেলুন</a>
             </div>
         </div>
-    
-        <!-- Delete Product Modal -->
-        <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p id="deleteProductMessage"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                        <button type="button" class="btn btn-danger">মুছে ফেলুন</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
+
+<!-- Script to handle deletion -->
+<script>
+    // Function to set up delete confirmation
+    function confirmDelete(barcode, productName) {
+        // Set the confirmation message
+        // document.getElementById('deleteProductMessage').textContent = `আইটেম: ${productName} (বারকোড: ${barcode})`;
+        
+        // Set the delete link with the correct barcode
+        const deleteUrl = `বিতরণকারী প্রতিবেদন এবং বিশ্লেষণ.php?barcode=${barcode}`;
+        document.getElementById('confirmDeleteButton').setAttribute('href', deleteUrl);
+
+        // Show the modal
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteProductModal'));
+        deleteModal.show();
+    }
+</script>
+
+
         
     <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta2/js/bootstrap.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/chartjs.min.js"></script>
+<script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
     <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
+    <script>
+        // Temperature and Humidity Multi-Bar Chart
+        var ctxTempHumidityChart = document.getElementById('tempHumidityChart').getContext('2d');
+        var tempHumidityChart = new Chart(ctxTempHumidityChart, {
+            type: 'bar',
+            data: {
+                labels: ['Room A', 'Room B', 'Room C'],
+                datasets: [
+                    {
+                        label: 'তাপমাত্রা (°C)',
+                        data: [8, 10, 12],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'আর্দ্রতা (%)',
+                        data: [65, 70, 75],
+                        backgroundColor: 'rgba(255, 206, 86, 0.6)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+      
+
+        // Product Quality Status Pie Chart
+        var ctxProductQualityPieChart = document.getElementById('productQualityPieChart').getContext('2d');
+        new Chart(ctxProductQualityPieChart, {
+            type: 'pie',
+            data: {
+                labels: ['প্যাকেজ', 'পরিবহন', 'ইনভেন্টরি '],
+                datasets: [{
+                    data: [50, 30, 20],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 205, 86, 0.6)',
+                        'rgba(255, 99, 132, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Product Entry and Distribution Over Time Chart
+        var ctxEntryDistributionChart = document.getElementById('entryDistributionChart').getContext('2d');
+        new Chart(ctxEntryDistributionChart, {
+            type: 'line',
+            data: {
+                labels: ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন'],
+                datasets: [
+                    {
+                        label: 'পণ্য প্রবেশ',
+                        data: [500, 700, 800, 600, 750, 900],
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'পণ্য বিতরণ',
+                        data: [300, 500, 700, 400, 650, 800],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+
+    
+
+
+
+        function setDeleteAction(barcode) {
+    const deleteButton = document.getElementById('confirmDeleteButton');
+    deleteButton.href = `deletereport.php?barcode=${barcode}`;
+}
+
+}
+ 
+
+        function exportReport(type) {
+            if (type === 'pdf') {
+                alert('Exporting report as PDF');
+            } else if (type === 'excel') {
+                alert('Exporting report as Excel');
+            }
+        }
+    </script>
+
+<script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.1.0"></script>
@@ -637,6 +699,8 @@
             }
         }
     </script>
+
+
 </body>
 
 </html>
