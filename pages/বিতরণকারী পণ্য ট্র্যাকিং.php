@@ -148,35 +148,11 @@ if (isset($_GET['Product_Name'])) {
                 </li>
                 
     
-                <!-- Inventory Management -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="../pages/বিতরণকারী গুদাম ব্যবস্থাপনা.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-warehouse text-info"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুদাম ব্যবস্থাপনা</span>
-                    </a>
-                </li>
+                
     
-                 Storage Conditions 
-                <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী সংরক্ষণ অবস্থা.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-thermometer-half text-primary"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">সংরক্ষণ অবস্থা</span>
-                    </a>
-                </li> -->
+             
     
-                <!-- Quality Control -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="./বিতরণকারী গুণমান যাচাইকরণ.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-check-circle text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
-                    </a>
-                </li> -->
+              
 
                 <!-- Product Tracking -->
                 <li class="nav-item">

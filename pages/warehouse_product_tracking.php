@@ -168,15 +168,6 @@ if (isset($_GET['Product_Name'])) {
                     </a>
                 </li>
     
-                <!-- Quality Control -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="warehouse_quality_verification.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-check-circle text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
-                    </a>
-                </li> -->
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
@@ -280,7 +271,7 @@ if ($result->num_rows > 0) {
         
         
 
-        <a class="btn btn-sm btn-primary edit-btn" href="updatwpt.php?Product_Name=<?php echo $row['Product_Name']; ?>">
+        <a class="btn btn-sm btn-primary edit-btn" href="updatewpt.php?Product_Name=<?php echo $row['Product_Name']; ?>">
             সম্পাদনা
         </a>
         <button 

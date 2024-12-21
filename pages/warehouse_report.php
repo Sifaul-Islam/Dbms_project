@@ -267,7 +267,7 @@ if ($result->num_rows > 0) {
         
         
 
-        <a class="btn btn-sm btn-primary edit-btn" href="updatewr.php.php?barcode=<?php echo $row['barcode']; ?>">
+        <a class="btn btn-sm btn-primary edit-btn" href="updatewr.php?barcode=<?php echo $row['barcode']; ?>">
             সম্পাদনা
         </a>
         <button 
