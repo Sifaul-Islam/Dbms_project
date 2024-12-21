@@ -40,7 +40,7 @@ $result = $conn->query($sql);
   <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
-  <style>
+  <!-- <style>
     /* Ensure no scrollbars on the sidenav and parent containers */
     body {
       overflow: hidden; /* Prevent scrolling for the entire page */
@@ -55,7 +55,7 @@ $result = $conn->query($sql);
       height: 100%; /* Full height for the navbar collapse */
       overflow: hidden; /* Prevent scrolling within */
     }
-  </style>
+  </style> -->
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -301,7 +301,7 @@ $conn->close();
           </div>
         </div>
       </div>
-
+  
     <!-- Add Recall Button -->
     <div class="row mt-4">
         <div class="col-lg-12 text-end">
@@ -310,7 +310,7 @@ $conn->close();
         </div>
       </div>
     </div>
-  </main>
+</main>
 
   <!-- Add Recall Modal -->
   <div class="modal fade" id="addRecallModal" tabindex="-1" aria-labelledby="addRecallModalLabel" aria-hidden="true">
