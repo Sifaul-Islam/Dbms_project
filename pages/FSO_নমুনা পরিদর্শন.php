@@ -85,7 +85,7 @@ $result = $conn->query($sql);
 
         <!-- Sample Inspections -->
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/FSO_নমুনা পরিদর্শন.html">
+          <a class="nav-link active" href="../pages/FSO_নমুনা পরিদর্শন.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-box-open text-info"></i>
             </div>
@@ -95,7 +95,7 @@ $result = $conn->query($sql);
 
         <!-- Quality Control Logs -->
         <li class="nav-item">
-          <a class="nav-link" href="../pages/FSO_মান নিয়ন্ত্রণ প্রতিবেদন.html">
+          <a class="nav-link" href="../pages/FSO_মান নিয়ন্ত্রণ প্রতিবেদন.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-route text-success"></i>
             </div>

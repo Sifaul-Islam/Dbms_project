@@ -8,8 +8,8 @@ $sql = "
     p.name AS `Product Name`,
     f.farmname AS `Farm Name`,
     hb.lotnumber AS `Lot Number`,
-    hb.harvestdate AS `Harvest Date`,
-    hb.`production date` AS `Production Date`
+    hb.`harvest date` AS `Harvest Date`,
+    hb.`productiondate` AS `Production Date`
 FROM 
     harvestbatch hb
 JOIN 

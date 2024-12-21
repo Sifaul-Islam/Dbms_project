@@ -10,7 +10,7 @@ $sql = "
     p.variety AS `Species`,
     f.farmname AS `Farm Name`,
     f.location AS `Place of Origin`,
-    hb.harvestdate AS `Harvest Time`,
+    hb.`harvest date` AS `Harvest Time`,
     p.`growing season`,
     p.Calories,
     p.proteins,
