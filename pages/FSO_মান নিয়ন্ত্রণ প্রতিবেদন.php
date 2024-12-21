@@ -128,7 +128,7 @@ $result = $conn->query($sql);
 
         <!-- Recall Management -->
         <li class="nav-item">
-          <a class="nav-link" href="../pages/FSO_প্রত্যাহার ব্যবস্থাপনা.html">
+          <a class="nav-link" href="../pages/FSO_প্রত্যাহার ব্যবস্থাপনা.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="fas fa-exclamation-triangle text-dark"></i>
             </div>
