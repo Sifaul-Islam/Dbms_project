@@ -48,12 +48,8 @@ $result2 = $conn->query($sql2);
 ?>
 
 <?php
-if (isset($_GET['barcode'])) {
-    $barcodeToDelete = $_GET['barcode'];
-
-    // Sanitize the input to prevent XSS
-    $barcodeToDelete = htmlspecialchars($barcodeToDelete);
-
+// Check if a barcode or lotnumber is set in the URL for deletion
+if (isset($_GET['barcode']) || isset($_GET['lotnumber'])) {
     // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'safe_food_traceability');
 
@@ -62,76 +58,53 @@ if (isset($_GET['barcode'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to delete the record from the 'harvestbatch' table based on barcode
-    $sql = "DELETE FROM harvestbatch WHERE barcode = ?";
+    if (isset($_GET['barcode'])) {
+        // Get barcode and sanitize it
+        $barcodeToDelete = htmlspecialchars($_GET['barcode']);
 
-    // Prepare the query
-    $stmt = $conn->prepare($sql);
+        // SQL query to delete the record from the 'batchpackagedetails' and 'package' tables based on barcode
+        $deletePackageSQL = "DELETE FROM package WHERE barcode = ?";
+        $deleteBatchSQL = "DELETE FROM batchpackagedetails WHERE barcode = ?";
 
-    // Bind the parameter (assuming barcode is a string)
-    $stmt->bind_param("s", $barcodeToDelete);
+        // Prepare and execute the package delete query
+        $stmt = $conn->prepare($deletePackageSQL);
+        $stmt->bind_param("s", $barcodeToDelete);
+        if (!$stmt->execute()) {
+            echo "Error deleting package: " . $conn->error;
+        }
+        $stmt->close();
 
-    // Execute the query
-    if ($stmt->execute()) {
-        // Redirect after successful deletion
-        header("Location: /Dbms_project/pages/warehouse_management.php"); // Redirect to a list page or any other page
-        exit;
-    } else {
-        // Error deleting the record
-        echo "Error deleting record: " . $conn->error;
+        // Prepare and execute the batch delete query
+        $stmt = $conn->prepare($deleteBatchSQL);
+        $stmt->bind_param("s", $barcodeToDelete);
+        if (!$stmt->execute()) {
+            echo "Error deleting batch package details: " . $conn->error;
+        }
+        $stmt->close();
     }
 
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-} else {
-    // If barcode is not set
-    echo "";
+    if (isset($_GET['lotnumber'])) {
+        // Get lotnumber and sanitize it
+        $lotnumberToDelete = htmlspecialchars($_GET['lotnumber']);
+
+        // SQL query to delete the record from the 'harvestbatch' table based on lotnumber
+        $deleteHarvestSQL = "DELETE FROM harvestbatch WHERE lotnumber = ?";
+
+        // Prepare and execute the harvest batch delete query
+        $stmt = $conn->prepare($deleteHarvestSQL);
+        $stmt->bind_param("s", $lotnumberToDelete);
+        if (!$stmt->execute()) {
+            echo "Error deleting harvest batch: " . $conn->error;
+        }
+        $stmt->close();
+    }
+
+    // Redirect back to the management page after deletion
+    header("Location: /Dbms_project/pages/warehouse_management.php");
+    exit;
 }
 ?>
 
-<?php
-if (isset($_GET['lotnumber'])) {
-    $lotnumberToDelete = $_GET['lotnumber'];
-
-    // Sanitize the input to prevent XSS
-    $lotnumberToDelete = htmlspecialchars($lotnumberToDelete);
-
-    // Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'safe_food_traceability');
-
-    // Check the connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // SQL query to delete the record from the 'harvestbatch' table based on lotnumber
-    $sql = "DELETE FROM harvestbatch WHERE lotnumber = ?";
-
-    // Prepare the query
-    $stmt = $conn->prepare($sql);
-
-    // Bind the parameter (assuming lotnumber is a string)
-    $stmt->bind_param("s", $lotnumberToDelete);
-
-    // Execute the query
-    if ($stmt->execute()) {
-        // Redirect after successful deletion
-        header("Location: /Dbms_project/pages/warehouse_management.php"); // Redirect to a list page or any other page
-        exit;
-    } else {
-        // Error deleting the record
-        echo "Error deleting record: " . $conn->error;
-    }
-
-    // Close the statement and connection
-    $stmt->close();
-    $conn->close();
-} else {
-    // If lotnumber is not set
-    echo "";
-}
-?>
 
 
 
@@ -295,7 +268,7 @@ if ($result1->num_rows > 0) {
             </a>
             <button 
                 class="btn btn-danger btn-sm text-center" 
-                onclick="confirmDelete2('<?php echo $row['lotnumber']; ?>')">
+                onclick="confirmDelete('warehouse_management.php?lotnumber=<?php echo $row['lotnumber']; ?>')">
                 মুছে ফেলুন
             </button>
         </div>
@@ -350,7 +323,7 @@ if ($result1->num_rows > 0) {
                             </a>
                             <button 
                                 class="btn btn-danger btn-sm text-center" 
-                                onclick="confirmDelete('<?php echo $row['barcode']; ?>')">
+                                onclick="confirmDelete('warehouse_management.php?barcode=<?php echo $row['barcode']; ?>')">
                                 মুছে ফেলুন
                             </button>
                         </div>
@@ -372,77 +345,34 @@ if ($result1->num_rows > 0) {
         </div>
     </main>
 
- <!-- Delete Product Modal -->
-<div class="modal fade" id="deleteProductModal2" tabindex="-1" aria-labelledby="deleteProductModal2Label" aria-hidden="true">
+ <!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteProductModal2Label">পণ্য মুছে ফেলুন</h5>
+                <h5 class="modal-title" id="deleteModalLabel">Delete Item</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>আপনি কি নিশ্চিত যে আপনি এই আইটেমটি মুছে ফেলতে চান?</p>
-                <p id="deleteProductMessage" class="text-danger"></p>
+                <p id="deleteModalMessage" class="text-danger"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                <a id="confirmDelete2Button" class="btn btn-sm btn-danger" href="#">মুছে ফেলুন</a>
+                <a id="deleteConfirmButton" class="btn btn-danger" href="#">মুছে ফেলুন</a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Script to handle deletion -->
 <script>
-    // Function to set up delete confirmation
-    function confirmDelete2(lotnumber, productName) {
-        // Set the confirmation message
-        // const message = `আপনি কি নিশ্চিত যে আপনি ${productName} (স্টোরেজ রুম: ${lotnumber}) মুছে ফেলতে চান?`;
-        // document.getElementById('deleteProductMessage').textContent = message;
-
-        // Set the delete link with the correct lotnumber
-        const deleteUrl = `warehouse_management.php?lotnumber=${lotnumber}`;
-        document.getElementById('confirmDelete2Button').setAttribute('href', deleteUrl);
+    // Function to show the delete confirmation modal
+    function confirmDelete(deleteUrl) {
+        // Set the delete link in the modal
+        document.getElementById('deleteConfirmButton').setAttribute('href', deleteUrl);
 
         // Show the modal
-        const deleteModal = new bootstrap.Modal(document.getElementById('deleteProductModal2'));
-        deleteModal.show();
-    }
-</script>
-<!-- Delete Product Modal -->
-<div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="deleteProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteProductModalLabel">পণ্য মুছে ফেলুন</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>আপনি কি নিশ্চিত যে আপনি এই আইটেমটি মুছে ফেলতে চান?</p>
-                <p id="deleteProductMessage" class="text-danger"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
-                <a id="confirmDelete2Button" class="btn btn-sm btn-danger" href="#">মুছে ফেলুন</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Script to handle deletion -->
-<script>
-    // Function to set up delete confirmation
-    function confirmDelete(barcode, productName) {
-        // Set the confirmation message
-        // const message = `আপনি কি নিশ্চিত যে আপনি ${productName} (স্টোরেজ রুম: ${barcode}) মুছে ফেলতে চান?`;
-        // document.getElementById('deleteProductMessage').textContent = message;
-
-        // Set the delete link with the correct barcode
-        const deleteUrl = `warehouse_management.php?barcode=${barcode}`;
-        document.getElementById('confirmDelete2Button').setAttribute('href', deleteUrl);
-
-        // Show the modal
-        const deleteModal = new bootstrap.Modal(document.getElementById('deleteProductModal'));
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
         deleteModal.show();
     }
 </script>

@@ -1,119 +1,155 @@
 <?php
-// Database connection
-include "db.php";
+// Include the database connection
+include "./db.php"; // Adjust the path based on your file structure
 
-// Handle form submission for inserting new data
-if (isset($_POST['add_product'])) {
-    // Sanitize form input
-    $product_name = $conn->real_escape_string($_POST['product_name']);
-    $barcode = $conn->real_escape_string($_POST['barcode']);
-    $quantity = $conn->real_escape_string($_POST['quantity']);
-    $lotnumber = $conn->real_escape_string($_POST['lotnumber']); // From dropdown
+// Check if form is submitted
+if (isset($_POST['addPackage'])) {
+    // Step 1: Sanitize input data
+    $ProductName = $conn->real_escape_string($_POST['ProductName']);
+    $Barcode = $conn->real_escape_string($_POST['Barcode']);
+    $Amount = intval($_POST['Amount']);
+    $TotalAmount = intval($_POST['TotalAmount']);
+    $PackagingDate = $conn->real_escape_string($_POST['PackagingDate']);
 
-    // Check if required fields are not empty
-    if (empty($product_name) || empty($barcode) || empty($quantity) || empty($lotnumber)) {
-        echo "<div class='alert alert-danger'>All fields are required.</div>";
-        exit; // Stop execution if any required field is empty
+    // Step 2: Ensure the product exists
+    $productCheckSQL = "SELECT productID FROM product WHERE name = '$ProductName' LIMIT 1";
+    $productResult = $conn->query($productCheckSQL);
+
+    if ($productResult && $productResult->num_rows > 0) {
+        $productRow = $productResult->fetch_assoc();
+        $productID = $productRow['productID'];
+    } else {
+        $insertProductSQL = "INSERT INTO product (name) VALUES ('$ProductName')";
+        if ($conn->query($insertProductSQL) === TRUE) {
+            $productID = $conn->insert_id; // Get the auto-generated productID
+        } else {
+            echo '<div class="alert alert-danger">Error adding product: ' . $conn->error . '</div>';
+            exit;
+        }
     }
 
-    // Get the warehouseID, production_date, and farmID values (assuming these are predefined or from the form)
-    $warehouseID = 1;  // Default or selected warehouseID
-    $production_date = NULL; // Optional, can be NULL
-    $expiry_date = NULL; // Optional, can be NULL
-    $farmID = 1; // Default or selected farmID
+    // Step 3: Ensure the warehouse exists (use a default ID or add one if missing)
+    $warehouseID = 1; // Default warehouse ID (adjust as needed)
+    $warehouseCheckSQL = "SELECT warehouseID FROM warehouse WHERE warehouseID = '$warehouseID' LIMIT 1";
+    $warehouseResult = $conn->query($warehouseCheckSQL);
 
-    // 1. Insert Product into the product table
-    $insert_product_sql = "
-        INSERT INTO product (name) 
-        VALUES ('$product_name')
-    ";
-    
-    if ($conn->query($insert_product_sql) === TRUE) {
-        $productID = $conn->insert_id;  // Get the last inserted productID
-        
-        // 2. Insert into Package table
-        $insert_package_sql = "
-            INSERT INTO package (barcode, warehouseID, quantity) 
-            VALUES ('$barcode', NULL, '$quantity')
+    if (!$warehouseResult || $warehouseResult->num_rows === 0) {
+        $insertWarehouseSQL = "
+            INSERT INTO warehouse (warehouseID, warehousename, location) 
+            VALUES ('$warehouseID', 'Default Warehouse', 'Default Location')
         ";
-
-        if ($conn->query($insert_package_sql) === TRUE) {
-            // 3. Insert into Batch Package Details table
-            $insert_batch_sql = "
-                INSERT INTO batchpackagedetails (barcode, lotnumber, packagingdate, number_of_total_package) 
-                VALUES ('$barcode', '$lotnumber', NULL, NULL)
-            ";
-
-            if ($conn->query($insert_batch_sql) === TRUE) {
-                // 4. Insert into Harvest Batch table
-                $insert_harvestbatch_sql = "
-                    INSERT INTO harvestbatch (lotnumber, productID, farmID, productiondate, expirydate) 
-                    VALUES ('$lotnumber', '$productID', '$farmID', NULL, NULL)
-                ";
-
-                if ($conn->query($insert_harvestbatch_sql) === TRUE) {
-                    echo '<div class="alert alert-success" role="alert">New product, package, batch, and harvest batch inserted successfully.</div>';
-                    header("refresh:0; url=/Dbms_project/pages/warehouse_management.php");
-                    exit;
-                } else {
-                    echo '<div class="alert alert-danger" role="alert">Error inserting harvest batch data: ' . $conn->error . '</div>';
-                }
-            } else {
-                echo '<div class="alert alert-danger" role="alert">Error inserting batch package details: ' . $conn->error . '</div>';
-            }
-        } else {
-            echo '<div class="alert alert-danger" role="alert">Error inserting package data: ' . $conn->error . '</div>';
+        if (!$conn->query($insertWarehouseSQL)) {
+            echo '<div class="alert alert-danger">Error adding warehouse: ' . $conn->error . '</div>';
+            exit;
         }
+    }
+
+    // Step 4: Insert into harvestbatch
+    $lotnumber = rand(10000, 99999); // Generate a random lot number
+    $insertHarvestSQL = "
+        INSERT INTO harvestbatch (lotnumber, productID) 
+        VALUES ('$lotnumber', '$productID')
+    ";
+    if (!$conn->query($insertHarvestSQL)) {
+        echo '<div class="alert alert-danger">Error adding harvest batch: ' . $conn->error . '</div>';
+        exit;
+    }
+
+    // Step 5: Insert into batchpackagedetails
+    $insertBatchDetailsSQL = "
+        INSERT INTO batchpackagedetails (barcode, lotnumber, packagingdate, number_of_total_package) 
+        VALUES ('$Barcode', '$lotnumber', '$PackagingDate', '$TotalAmount')
+    ";
+    if (!$conn->query($insertBatchDetailsSQL)) {
+        echo '<div class="alert alert-danger">Error adding batch package details: ' . $conn->error . '</div>';
+        exit;
+    }
+
+    // Step 6: Insert into package
+    $insertPackageSQL = "
+        INSERT INTO package (barcode, warehouseID, quantity) 
+        VALUES ('$Barcode', '$warehouseID', '$Amount')
+    ";
+    if ($conn->query($insertPackageSQL)) {
+        // Redirect to warehouse_management.php on success
+        header("Location: warehouse_management.php");
+        exit; // Stop further script execution after redirect
     } else {
-        echo '<div class="alert alert-danger" role="alert">Error inserting product data: ' . $conn->error . '</div>';
+        echo '<div class="alert alert-danger">Error adding package: ' . $conn->error . '</div>';
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product, Package, and Batch</title>
+    <title>Add Package</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h2>Add a New Product, Package, and Batch Details</h2>
-        <form method="post" action="">
-            <!-- Product Name -->
-            <label for="product_name">Product Name:</label>
-            <input type="text" name="product_name" id="product_name" required><br>
-
-            <!-- Barcode -->
-            <label for="barcode">Barcode:</label>
-            <input type="text" name="barcode" id="barcode" required><br>
-
-            <!-- Quantity -->
-            <label for="quantity">Quantity:</label>
-            <input type="number" name="quantity" id="quantity" required><br>
-
-            <!-- Lot Number (Dropdown) -->
-            <label for="lotnumber">Lot Number:</label>
-            <select name="lotnumber" id="lotnumber" required>
-                <option value="">Select Lot Number</option>
-                <?php
-                // Fetch all existing lotnumbers from harvestbatch table
-                $lot_sql = "SELECT lotnumber FROM harvestbatch";
-                $lot_result = $conn->query($lot_sql);
-
-                if ($lot_result->num_rows > 0) {
-                    while ($lot_row = $lot_result->fetch_assoc()) {
-                        echo "<option value='" . $lot_row['lotnumber'] . "'>" . $lot_row['lotnumber'] . "</option>";
-                    }
-                } else {
-                    echo "<option value=''>No Lot Numbers Available</option>";
-                }
-                ?>
-            </select><br>
-
-            <!-- Submit Button -->
-            <input type="submit" name="add_product" value="Add Product, Package, and Batch">
+        <h1>Add New Package</h1>
+        <form action="" method="POST">
+            <div>
+                <label for="ProductName">Product Name:</label>
+                <input type="text" name="ProductName" id="ProductName" required>
+            </div>
+            <div>
+                <label for="Barcode">Barcode:</label>
+                <input type="text" name="Barcode" id="Barcode" required>
+            </div>
+            <div>
+                <label for="Amount">Amount:</label>
+                <input type="number" name="Amount" id="Amount" required>
+            </div>
+            <div>
+                <label for="TotalAmount">Total Amount:</label>
+                <input type="number" name="TotalAmount" id="TotalAmount" required>
+            </div>
+            <div>
+                <label for="PackagingDate">Date of Packaging:</label>
+                <input type="date" name="PackagingDate" id="PackagingDate" required>
+            </div>
+            <button type="submit" name="addPackage">Add Package</button>
         </form>
     </div>
 </body>
