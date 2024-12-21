@@ -1,3 +1,35 @@
+<?php 
+
+include "./db.php";
+
+// SQL query to join tables and fetch required data
+$sql = "
+    SELECT 
+    bp.barcode AS `Barcode`,
+    bp.lotnumber AS `Lot Number`,
+    p.name AS `Product Name`,
+    COALESCE(sd.quantity, 0) AS `Total Number of Batches`,
+    pk.quantity AS `Package Quantity`,
+    bp.number_of_total_package AS `Total Number of Packages`,
+    bp.number_of_damaged_package AS `Number of Damaged Packages`
+FROM 
+    batchpackagedetails bp
+JOIN 
+    harvestbatch hb ON bp.lotnumber = hb.lotnumber
+JOIN 
+    product p ON hb.productID = p.productID
+LEFT JOIN 
+    `seed distribution batch` sd ON bp.lotnumber = sd.`lot number`
+LEFT JOIN 
+    package pk ON bp.barcode = pk.barcode;
+
+";
+
+$result = $conn->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +69,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="../pages/add_products_details.html">
+                <a class="nav-link" href="../pages/agri_officer_add_product.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-seedling text-warning"></i>
                     </div>
@@ -54,7 +86,7 @@
                 </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../pages/agri_officer_harvestBatch_details.html">
+              <a class="nav-link" href="../pages/agri_officer_harvestBatch_details.php">
                   <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                       <i class="fas fa-exclamation-triangle text-danger"></i>
                   </div>
@@ -63,7 +95,7 @@
           </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="../pages/add_affected_batches_details.html">
+                <a class="nav-link active" href="../pages/agri_add_affected_batches_details.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-exclamation-triangle text-danger"></i>
                     </div>
@@ -90,7 +122,7 @@
           <nav aria-label="breadcrumb">
               <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                   <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">পৃষ্ঠা</a></li>
-                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">প্রভাবিত ব্যাচের বিবরণ যোগ</li>
+                  <li class="breadcrumb-item text-sm text-dark active" aria-current="page">কৃষি অফিসার</li>
               </ol>
               <h6 class="font-weight-bolder mb-0">প্রভাবিত ব্যাচের বিবরণ যোগ</h6>
           </nav>
@@ -215,62 +247,37 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td class="align-middle">
-                              <p class="text-sm font-weight-bold mb-0">আপেল</p>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">RFID1234</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="badge badge-sm bg-gradient-info">গুদামে</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">জয়পুরহাট</span>
-                          </td>
-                          <td class="align-middle text-center">
-                              <span class="text-xs font-weight-bold">১৫/১১/২০২৪</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">ঢাকা</span>
-                          </td>
-                          <td class="align-middle">
-                            <span class="text-xs font-weight-bold">ঢাকা</span>
-                        </td>
-                          
-                          <td class="align-middle text-center">
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
-                        </td>
-                      </tr>
-                      <tr>
-                          <td class="align-middle">
-                              <p class="text-sm font-weight-bold mb-0">আলু</p>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">RFID5678</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="badge badge-sm bg-gradient-success">বিতরণ করা হয়েছে</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">ঢাকা</span>
-                          </td>
-                          <td class="align-middle text-center">
-                              <span class="text-xs font-weight-bold">২০/১১/২০২৪</span>
-                          </td>
-                          <td class="align-middle">
-                              <span class="text-xs font-weight-bold">ঢাকা</span>
-                          </td>
-                          <td class="align-middle">
-                            <span class="text-xs font-weight-bold">ঢাকা</span>
-                        </td>
-                          
-                          <td class="align-middle text-center">
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="populateEditModal('আলু', 800, 'মধ্যম', 65, 10)">সম্পাদনা</button>
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" onclick="populateDeleteModal('আলু')">মুছে ফেলুন</button>
-                          </td>
-                      </tr>
+                  <?php
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+?>
+
+        <tr>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Barcode']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Lot Number']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Product Name']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Total Number of Batches']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Package Quantity']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Total Number of Packages']; ?></td>
+        <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Number of Damaged Packages']; ?></td>
+        
+
+
+        <td class="text-center">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px;"></div>
+
+        <td>
+          <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProductModal" >সম্পাদনা</button>
+          <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProductModal" >মুছে ফেলুন</button>
+        </td>
+
+        </tr>                       
+
+<?php   }
+}
+$conn->close(); 
+?>  
                       <!-- Add more rows as needed -->
                   </tbody>
               </table>
