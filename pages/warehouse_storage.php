@@ -137,7 +137,7 @@ if (isset($_GET['Storage_Room'])) {
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_product_tracking.html">
+                    <a class="nav-link" href="warehouse_product_tracking.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-route text-warning"></i>
                         </div>
