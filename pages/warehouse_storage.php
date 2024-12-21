@@ -115,7 +115,7 @@ if (isset($_GET['Storage_Room'])) {
     
                 <!-- Inventory Management -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_management.html">
+                    <a class="nav-link" href="warehouse_management.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-warehouse text-info"></i>
                         </div>
@@ -125,7 +125,7 @@ if (isset($_GET['Storage_Room'])) {
     
                 <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="warehouse_storage.html">
+                    <a class="nav-link active" href="warehouse_storage.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
@@ -147,7 +147,7 @@ if (isset($_GET['Storage_Room'])) {
     
                 <!-- Data Reports -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_report.html">
+                    <a class="nav-link" href="warehouse_report.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-chart-bar text-secondary"></i>
                         </div>

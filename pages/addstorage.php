@@ -1,80 +1,179 @@
 <?php
-// Include your database connection
-include "./db.php";  // Adjust the path as necessary
+// addstorage.php - Backend logic to insert and update sensor data
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve data from POST request (ensure data is sanitized before inserting)
-    $productName = htmlspecialchars($_POST['product_name']);  // Product name
-    $farmName = htmlspecialchars($_POST['farm_name']);  // Farm name
-    $productionDate = $_POST['production_date'];  // Production date
-    $expiryDate = $_POST['expiry_date'];  // Expiry date
+include "db.php"; // Include the database connection
 
-    // Step 1: Insert into the `farm` table
-    $farmQuery = "INSERT INTO farm (farmname) VALUES (?)";
-    $farmStmt = $conn->prepare($farmQuery);
-    $farmStmt->bind_param("s", $farmName);
-    
-    if ($farmStmt->execute()) {
-        // Step 2: Insert into the `product` table
-        $productQuery = "INSERT INTO product (name) VALUES (?)";
-        $productStmt = $conn->prepare($productQuery);
-        $productStmt->bind_param("s", $productName);
+// Handle form submission for adding or updating sensor data
+if (isset($_POST['submit'])) {
+    // Fetch the input values
+    $Storage_Room = $conn->real_escape_string($_POST['Storage_Room']);
+    $Temperature = $conn->real_escape_string($_POST['Temperature']);
+    $Humidity = $conn->real_escape_string($_POST['Humidity']);
+    $WarehouseID = $conn->real_escape_string($_POST['WarehouseID']);
+    $Oxygen = $conn->real_escape_string($_POST['Oxygen']);
+    $LightIntensity = $conn->real_escape_string($_POST['LightIntensity']);
+    $ProductID = $conn->real_escape_string($_POST['ProductName']); // Get selected product ID
+    $Time_Stamp = $conn->real_escape_string($_POST['Time_Stamp']); // This will be the datetime input
 
-        if ($productStmt->execute()) {
-            // Retrieve the last inserted IDs for product and farm
-            $farmID = $conn->insert_id;
-            $productID = $conn->insert_id;
+    // Check if the record already exists in the sensor table
+    $check_sql = "SELECT * FROM sensor WHERE warehouseID = '$WarehouseID' AND roomNo = '$Storage_Room'";
+    $check_result = $conn->query($check_sql);
 
-            // Step 3: Insert into the `harvestbatch` table
-            $lotnumber = "HB" . rand(1000, 9999);  // Generate a random lot number (can be changed as needed)
-            $harvestQuery = "INSERT INTO harvestbatch (lotnumber, farmID, productiondate, expirydate, productID) 
-                             VALUES (?, ?, ?, ?, ?)";
-            $harvestStmt = $conn->prepare($harvestQuery);
-            $harvestStmt->bind_param("siiss", $lotnumber, $farmID, $productionDate, $expiryDate, $productID);
+    if ($check_result->num_rows > 0) {
+        // Record exists, so update the existing record
+        $update_sql = "
+            UPDATE sensor 
+            SET temperature = '$Temperature', 
+                humidity = '$Humidity', 
+                oxygen = '$Oxygen', 
+                `light intensity` = '$LightIntensity', 
+                timeStamp = '$Time_Stamp' 
+            WHERE warehouseID = '$WarehouseID' AND roomNo = '$Storage_Room'";
 
-            if ($harvestStmt->execute()) {
-                echo "Data inserted successfully!";
-            } else {
-                echo "Error inserting data into harvestbatch: " . $conn->error;
-            }
+        if ($conn->query($update_sql) === TRUE) {
+            // After update, refresh page
+            header("Location: warehouse_storage.php");
+            exit();
         } else {
-            echo "Error inserting data into product: " . $conn->error;
+            echo '<div class="alert alert-danger" role="alert">Error updating sensor data: ' . $conn->error . '</div>';
         }
     } else {
-        echo "Error inserting data into farm: " . $conn->error;
+        // If no existing record, proceed with insertion into sensor table
+        $insert_sql = "
+            INSERT INTO sensor (roomNo, temperature, humidity, oxygen, `light intensity`, timeStamp, warehouseID) 
+            VALUES ('$Storage_Room', '$Temperature', '$Humidity', '$Oxygen', '$LightIntensity', '$Time_Stamp', '$WarehouseID')";
+
+        if ($conn->query($insert_sql) === TRUE) {
+            // Insert associated product into harvestbatch table
+            $lotnumber_sql = "SELECT lotnumber FROM warehouse WHERE warehouseID = '$WarehouseID'";
+            $lotnumber_result = $conn->query($lotnumber_sql);
+            $lotnumber_row = $lotnumber_result->fetch_assoc();
+            $lotnumber = $lotnumber_row['lotnumber'];
+
+            // Check if the product already exists in harvestbatch for the given lotnumber
+            $check_harvest_sql = "SELECT * FROM harvestbatch WHERE lotnumber = '$lotnumber' AND productID = '$ProductID'";
+            $check_harvest_result = $conn->query($check_harvest_sql);
+
+            // If record exists, skip the insert and refresh page
+            if ($check_harvest_result->num_rows > 0) {
+                header("Location: warehouse_storage.php");
+                exit();
+            } else {
+                // If the record doesn't exist, insert it into harvestbatch
+                $insert_harvest_sql = "INSERT INTO harvestbatch (lotnumber, productID) VALUES ('$lotnumber', '$ProductID')";
+                if ($conn->query($insert_harvest_sql) === TRUE) {
+                    // After insertion, refresh the page
+                    header("Location: warehouse_storage.php");
+                    exit();
+                } else {
+                    echo '<div class="alert alert-danger" role="alert">Error inserting product into harvestbatch: ' . $conn->error . '</div>';
+                }
+            }
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Error adding sensor data: ' . $conn->error . '</div>';
+        }
     }
-
-    // Close prepared statements
-    $farmStmt->close();
-    $productStmt->close();
-    $harvestStmt->close();
+    $conn->close();
 }
-
-// Close the database connection
-$conn->close();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insert Data</title>
+    <title>Add Storage Sensor Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <form action="your_php_script.php" method="POST">
-        <label for="product_name">Product Name:</label>
-        <input type="text" id="product_name" name="product_name" required><br><br>
+    <div class="container">
+        <h2 class="mt-5">Add or Update Storage Sensor Data</h2>
+        
+        <!-- Form for adding/updating sensor data -->
+        <form action="" method="POST">
+            <!-- Storage Room -->
+            <div class="form-group">
+                <label for="Storage_Room">Storage Room:</label>
+                <input type="text" class="form-control" id="Storage_Room" name="Storage_Room" required>
+            </div>
 
-        <label for="farm_name">Farm Name:</label>
-        <input type="text" id="farm_name" name="farm_name" required><br><br>
+            <!-- Temperature -->
+            <div class="form-group">
+                <label for="Temperature">Temperature:</label>
+                <input type="number" class="form-control" id="Temperature" name="Temperature" step="0.01" required>
+            </div>
 
-        <label for="production_date">Production Date:</label>
-        <input type="date" id="production_date" name="production_date" required><br><br>
+            <!-- Humidity -->
+            <div class="form-group">
+                <label for="Humidity">Humidity:</label>
+                <input type="number" class="form-control" id="Humidity" name="Humidity" step="0.01" required>
+            </div>
 
-        <label for="expiry_date">Expiry Date:</label>
-        <input type="date" id="expiry_date" name="expiry_date" required><br><br>
+            <!-- Oxygen -->
+            <div class="form-group">
+                <label for="Oxygen">Oxygen:</label>
+                <input type="number" class="form-control" id="Oxygen" name="Oxygen" step="0.01" required>
+            </div>
 
-        <input type="submit" value="Insert Data">
-    </form>
+            <!-- Light Intensity -->
+            <div class="form-group">
+                <label for="LightIntensity">Light Intensity:</label>
+                <input type="number" class="form-control" id="LightIntensity" name="LightIntensity" step="0.01" required>
+            </div>
+
+            <!-- Product Name -->
+            <div class="form-group">
+                <label for="ProductName">Product Name:</label>
+                <select class="form-control" id="ProductName" name="ProductName" required>
+                    <option value="">Select Product</option>
+                    <?php
+                    // Fetch all product names
+                    $product_sql = "SELECT productID, name FROM product";
+                    $product_result = $conn->query($product_sql);
+
+                    if ($product_result->num_rows > 0) {
+                        while ($row = $product_result->fetch_assoc()) {
+                            echo '<option value="' . $row['productID'] . '">' . $row['name'] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <!-- Warehouse ID -->
+            <div class="form-group">
+                <label for="WarehouseID">Warehouse ID:</label>
+                <select class="form-control" id="WarehouseID" name="WarehouseID" required>
+                    <option value="">Select Warehouse</option>
+                    <?php
+                    // Fetch all warehouse IDs
+                    $warehouse_sql = "SELECT warehouseID FROM warehouse";
+                    $warehouse_result = $conn->query($warehouse_sql);
+
+                    if ($warehouse_result->num_rows > 0) {
+                        while ($row = $warehouse_result->fetch_assoc()) {
+                            echo '<option value="' . $row['warehouseID'] . '">' . $row['warehouseID'] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </div>
+
+            <!-- Timestamp -->
+            <div class="form-group">
+                <label for="Time_Stamp">Time Stamp:</label>
+                <input type="datetime-local" class="form-control" id="Time_Stamp" name="Time_Stamp" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

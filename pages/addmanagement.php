@@ -57,6 +57,11 @@ if (isset($_POST['insert'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert Harvest Batch</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/nucleo/2.0.6/css/nucleo-icons.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.1.0" rel="stylesheet" />
 </head>
 <body>
     <div class="container mt-5">
@@ -94,8 +99,8 @@ if (isset($_POST['insert'])) {
                             <input type="date" class="form-control" name="Expiry_Date" id="Expiry_Date" required>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="insert">Save</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">সংরক্ষণ করুন</button>
+                            <button type="submit" class="btn btn-primary" name="insert">সংরক্ষণ করুন</button>
                         </div>
                     </form>
                 </div>

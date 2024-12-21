@@ -177,7 +177,7 @@ if (isset($_GET['lotnumber'])) {
     
                 <!-- Inventory Management -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="warehouse_management.html">
+                    <a class="nav-link active" href="warehouse_management.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-warehouse text-info"></i>
                         </div>
@@ -187,7 +187,7 @@ if (isset($_GET['lotnumber'])) {
     
                 <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_storage.html">
+                    <a class="nav-link" href="warehouse_storage.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
@@ -195,19 +195,10 @@ if (isset($_GET['lotnumber'])) {
                     </a>
                 </li>
     
-                <!-- Quality Control -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="warehouse_quality_verification.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-check-circle text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
-                    </a>
-                </li> -->
-
+             
                 <!-- Product Tracking -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_product_tracking.html">
+                    <a class="nav-link" href="warehouse_product_tracking.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-route text-warning"></i>
                         </div>
@@ -217,7 +208,7 @@ if (isset($_GET['lotnumber'])) {
     
                 <!-- Data Reports -->
                 <li class="nav-item">
-                    <a class="nav-link" href="warehouse_report.html">
+                    <a class="nav-link" href="warehouse_report.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-chart-bar text-secondary"></i>
                         </div>
@@ -324,8 +315,8 @@ if ($result1->num_rows > 0) {
 <div class="card mb-4">
     <div class="card-header pb-0 d-flex justify-content-between">
         <h6>প্যাকেজ  পণ্য তালিকা</h6>
-        <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#addProductModal2">নতুন পণ্য যোগ করুন</button>
-    </div>
+        <a class="btn btn-sm btn-success" href="addmanagement2.php">নতুন পণ্য যোগ করুন</a>     
+     </div>
     <div class="card-body px-0 pt-0 pb-2">
         <div class="table-responsive p-0">
             <table class="table align-items-center mb-0">
@@ -354,7 +345,7 @@ if ($result1->num_rows > 0) {
                         <td class="text-uppercase text-secondary text-xs font-weight-bolder text-center"><?php echo $row['Date_of_Packaging']; ?></td>
                         <td class="text-center">
                         <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-                            <a class="btn btn-sm btn-primary edit-btn" href="updatemanagement2.php?lotnumber=<?php echo $row['barcode']; ?>">
+                            <a class="btn btn-sm btn-primary edit-btn" href="updatemanagement2.php?barcode=<?php echo $row['barcode']; ?>">
                                 সম্পাদনা
                             </a>
                             <button 

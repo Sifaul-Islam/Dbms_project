@@ -85,7 +85,7 @@ if (isset($_GET['barcode'])) {
     
                 <!-- Inventory Management -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/warehouse_management.html">
+                    <a class="nav-link" href="../pages/warehouse_management.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-warehouse text-info"></i>
                         </div>
@@ -95,7 +95,7 @@ if (isset($_GET['barcode'])) {
     
                 <!-- Storage Conditions -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../pages/warehouse_storage.html">
+                    <a class="nav-link" href="../pages/warehouse_storage.php">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="fas fa-thermometer-half text-primary"></i>
                         </div>
@@ -103,15 +103,7 @@ if (isset($_GET['barcode'])) {
                     </a>
                 </li>
     
-                <!-- Quality Control -->
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="../pages/warehouse_quality_verification.html">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="fas fa-check-circle text-danger"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">গুণমান যাচাইকরণ</span>
-                    </a>
-                </li> -->
+                
 
                 <!-- Product Tracking -->
                 <li class="nav-item">
